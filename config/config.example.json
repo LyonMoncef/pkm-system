@@ -1,0 +1,26 @@
+{
+  "app": {
+    "name": "PKM System Widget",
+    "version": "0.1.0",
+    "author": "Moncef Lyon"
+  },
+  "paths": {
+    "vault": "/path/to/your/obsidian/vault",
+    "inbox": "00_Inbox",
+    "exports": "/path/to/exports"
+  },
+  "widget": {
+    "hotkey": "CommandOrControl+Shift+Space",
+    "defaultOpacity": 0.95,
+    "alwaysOnTop": true,
+    "frameless": true,
+    "startMinimized": false
+  },
+  "editor": {
+    "theme": "dark",
+    "fontSize": 14,
+    "fontFamily": "Monaco, Courier New, monospace",
+    "autosave": true,
+    "autosaveInterval": 5000
+  }
+}

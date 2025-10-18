@@ -1,0 +1,12 @@
+{
+  "name": "pkm-widget",
+  "version": "0.1.0",
+  "description": "Quick capture widget for PKM System",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "echo 'Widget ready! Open src/index.html in your browser'"
+  },
+  "keywords": ["pkm", "knowledge-management", "note-taking"],
+  "author": "Moncef Lyon",
+  "license": "AGPL-3.0"
+}

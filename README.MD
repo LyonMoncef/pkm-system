@@ -223,3 +223,32 @@ If you find this project useful, consider:
 **Built with ❤️ and ☕ in France** 🇫🇷
 
 *Last updated: October 2025*
+
+
+===================================
+-- Le 18/10/2025 à 06:59
+
+## 🗓️ Development Timeline
+
+### ✅ Phase 1 - Browser MVP (Week 1) - COMPLETED
+- Quick Capture widget with markdown support
+- Quick Reference overlay with cheatsheets
+- Hub navigation system
+- Multi-language support (EN/FR)
+- Multi-theme support (Mac/Windows)
+
+### 🚀 Phase 1.5 - Electron Migration (Week 2) - NEXT
+- Native desktop application
+- System-wide hotkeys
+- Direct filesystem access
+- Tray icon integration
+- Auto-start capability
+
+### 📈 Phase 2+ - Advanced Features (Month 2+)
+- Dashboards (health, finance, projects)
+- NAS integration & sync
+- AI-powered synthesis
+- Collaboration features
+
+
+

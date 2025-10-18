@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PKM Quick Reference V4</title>
+    <title>PKM Quick Reference</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+            font-family: 'Segoe UI', 'Monaco', 'Consolas', monospace;
             background: rgba(0, 0, 0, 0.85);
             min-height: 100vh;
             display: flex;
@@ -21,11 +21,75 @@
             padding: 20px;
         }
 
-        .overlay-container {
+        /* ========== MAC THEME ========== */
+        .overlay-container.theme-mac {
             background: rgba(20, 20, 30, 0.98);
             border-radius: 16px;
+        }
+
+        .theme-mac .overlay-header {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .theme-mac .close-btn {
+            background: rgba(255, 95, 86, 0.2);
+            border: 1px solid rgba(255, 95, 86, 0.4);
+            color: #ff5f56;
+            border-radius: 50%;
+        }
+
+        /* ========== WINDOWS THEME ========== */
+        .overlay-container.theme-windows {
+            background: #1e1e1e;
+            border-radius: 8px;
+            border: 1px solid #3c3c3c;
+        }
+
+        .theme-windows .overlay-header {
+            background: #2d2d2d;
+        }
+
+        .theme-windows .close-btn {
+            background: transparent;
+            border: none;
+            color: #fff;
+            border-radius: 0;
+            width: 46px;
+            height: 32px;
+        }
+
+        .theme-windows .close-btn:hover {
+            background: #e81123;
+            border-radius: 0;
+        }
+
+        .theme-windows .search-input {
+            border-radius: 4px;
+            background: #3c3c3c;
+            border: 1px solid #555;
+        }
+
+        .theme-windows .search-input:focus {
+            border-color: #0078d4;
+            box-shadow: 0 0 0 1px #0078d4;
+        }
+
+        .theme-windows .btn-primary {
+            background: #0078d4;
+        }
+
+        .theme-windows .btn-primary:hover {
+            background: #106ebe;
+        }
+
+        .theme-windows .tag {
+            background: rgba(0, 120, 212, 0.2);
+            color: #4cc2ff;
+        }
+
+        /* ========== COMMON STYLES ========== */
+        .overlay-container {
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
             width: 600px;
             max-width: 95vw;
             max-height: 90vh;
@@ -46,7 +110,6 @@
         }
 
         .overlay-header {
-            background: rgba(255, 255, 255, 0.05);
             padding: 16px 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
@@ -69,7 +132,7 @@
             align-items: center;
         }
 
-        .lang-toggle {
+        .theme-toggle, .lang-toggle {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.15);
             color: #fff;
@@ -81,17 +144,13 @@
             font-family: inherit;
         }
 
-        .lang-toggle:hover {
+        .theme-toggle:hover, .lang-toggle:hover {
             background: rgba(255, 255, 255, 0.15);
         }
 
         .close-btn {
-            background: rgba(255, 95, 86, 0.2);
-            border: 1px solid rgba(255, 95, 86, 0.4);
-            color: #ff5f56;
             width: 28px;
             height: 28px;
-            border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -100,24 +159,18 @@
             transition: all 0.2s;
         }
 
-        .close-btn:hover {
-            background: rgba(255, 95, 86, 0.4);
-            transform: scale(1.1);
-        }
-
         .search-container {
             padding: 16px 20px;
             background: rgba(255, 255, 255, 0.03);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
         }
 
         .search-input {
             width: 100%;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            padding: 12px 16px;
-            padding-left: 40px;
+            padding: 12px 16px 12px 40px;
             color: #fff;
             font-size: 14px;
             font-family: inherit;
@@ -127,8 +180,6 @@
         .search-input:focus {
             outline: none;
             background: rgba(255, 255, 255, 0.12);
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
         }
 
         .search-input::placeholder {
@@ -165,6 +216,11 @@
         .cheatsheet-item.active {
             background: rgba(102, 126, 234, 0.1);
             border-left: 3px solid #667eea;
+        }
+
+        .theme-windows .cheatsheet-item.active {
+            border-left-color: #0078d4;
+            background: rgba(0, 120, 212, 0.1);
         }
 
         .cheatsheet-icon {
@@ -253,6 +309,12 @@
             flex-direction: column;
         }
 
+        .theme-windows .detail-content {
+            background: #1e1e1e;
+            border: 1px solid #3c3c3c;
+            border-radius: 8px;
+        }
+
         .detail-header {
             background: rgba(255, 255, 255, 0.05);
             padding: 20px;
@@ -260,6 +322,10 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+        }
+
+        .theme-windows .detail-header {
+            background: #2d2d2d;
         }
 
         .detail-title {
@@ -287,10 +353,18 @@
             border-bottom: 2px solid rgba(102, 126, 234, 0.3);
         }
 
+        .theme-windows .detail-body h2 {
+            border-bottom-color: rgba(0, 120, 212, 0.3);
+        }
+
         .detail-body h3 {
             color: #a5b4fc;
             font-size: 16px;
             margin: 16px 0 8px 0;
+        }
+
+        .theme-windows .detail-body h3 {
+            color: #4cc2ff;
         }
 
         .detail-body ul {
@@ -310,6 +384,11 @@
             font-family: inherit;
         }
 
+        .theme-windows .detail-body code {
+            background: rgba(0, 120, 212, 0.2);
+            color: #4cc2ff;
+        }
+
         .detail-footer {
             padding: 16px 20px;
             background: rgba(255, 255, 255, 0.03);
@@ -317,6 +396,10 @@
             display: flex;
             gap: 8px;
             justify-content: flex-end;
+        }
+
+        .theme-windows .detail-footer {
+            background: #2d2d2d;
         }
 
         .btn {
@@ -351,6 +434,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .theme-windows .footer {
+            background: #2d2d2d;
         }
 
         .hotkey-hint {
@@ -396,7 +483,7 @@
     </style>
 </head>
 <body>
-    <div class="overlay-container">
+    <div class="overlay-container theme-mac" id="overlayContainer">
         <div class="overlay-header">
             <div class="overlay-title">
                 <span>⚡</span>
@@ -404,11 +491,12 @@
             </div>
             <div class="header-controls">
                 <button class="lang-toggle" onclick="toggleLanguage()" id="langToggle">🇫🇷 FR</button>
+                <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">🪟 Win</button>
                 <button class="close-btn" onclick="hideOverlay()">×</button>
             </div>
         </div>
 
-        <div class="search-container" style="position: relative;">
+        <div class="search-container">
             <span class="search-icon">🔍</span>
             <input 
                 type="text" 
@@ -422,7 +510,7 @@
 
         <div class="footer">
             <div class="hotkey-hint">
-                <span class="hotkey-key">Ctrl+Shift+F</span> <span id="toggleText">to toggle</span> · 
+                <span class="hotkey-key">Ctrl+Q</span> <span id="toggleText">to toggle</span> · 
                 <span class="hotkey-key">Esc</span> <span id="closeText">to close</span>
             </div>
             <div class="hotkey-hint">
@@ -431,8 +519,9 @@
         </div>
     </div>
 
+    <!-- Detail View -->
     <div class="detail-view" id="detailView">
-        <div class="detail-content">
+        <div class="detail-content" id="detailContent">
             <div class="detail-header">
                 <div class="detail-title" id="detailTitle"></div>
                 <button class="close-btn" onclick="closeDetail()">×</button>
@@ -446,6 +535,7 @@
     </div>
 
     <script>
+        // Translations
         const translations = {
             en: {
                 title: 'Quick Reference',
@@ -457,7 +547,6 @@
                 closeBtn: 'Close',
                 emptyState: 'No cheatsheets found',
                 pinned: '★ PINNED',
-                copySuccess: 'Copied to clipboard!',
                 cheatsheets: [
                     {
                         id: 1,
@@ -468,7 +557,6 @@
                         preview: 'Essential tmux commands for session and window management',
                         content: `
                             <h2>🖥️ Tmux Commands</h2>
-                            
                             <h3>Sessions</h3>
                             <ul>
                                 <li><code>tmux new -s name</code> - Create new session</li>
@@ -476,23 +564,19 @@
                                 <li><code>Ctrl+B d</code> - Detach from session</li>
                                 <li><code>tmux ls</code> - List all sessions</li>
                             </ul>
-
                             <h3>Windows</h3>
                             <ul>
                                 <li><code>Ctrl+B c</code> - Create new window</li>
                                 <li><code>Ctrl+B n</code> - Next window</li>
                                 <li><code>Ctrl+B p</code> - Previous window</li>
                                 <li><code>Ctrl+B ,</code> - Rename window</li>
-                                <li><code>Ctrl+B &</code> - Close window</li>
                             </ul>
-
                             <h3>Panes</h3>
                             <ul>
                                 <li><code>Ctrl+B %</code> - Split vertical</li>
                                 <li><code>Ctrl+B "</code> - Split horizontal</li>
                                 <li><code>Ctrl+B ←→↑↓</code> - Navigate panes</li>
-                                <li><code>Ctrl+B z</code> - Toggle fullscreen pane</li>
-                                <li><code>Ctrl+B x</code> - Close pane</li>
+                                <li><code>Ctrl+B z</code> - Toggle fullscreen</li>
                             </ul>
                         `
                     },
@@ -505,7 +589,6 @@
                         preview: 'Essential Neovim navigation and editing commands',
                         content: `
                             <h2>⚡ Neovim Commands</h2>
-                            
                             <h3>Navigation</h3>
                             <ul>
                                 <li><code>h j k l</code> - Left, Down, Up, Right</li>
@@ -513,33 +596,13 @@
                                 <li><code>b</code> - Previous word</li>
                                 <li><code>gg</code> - Go to top</li>
                                 <li><code>G</code> - Go to bottom</li>
-                                <li><code>0</code> - Start of line</li>
-                                <li><code>$</code> - End of line</li>
                             </ul>
-
-                            <h3>Modes</h3>
-                            <ul>
-                                <li><code>i</code> - Insert mode</li>
-                                <li><code>ESC</code> - Normal mode</li>
-                                <li><code>v</code> - Visual mode</li>
-                                <li><code>V</code> - Visual line mode</li>
-                            </ul>
-
                             <h3>Editing</h3>
                             <ul>
                                 <li><code>dd</code> - Delete line</li>
                                 <li><code>yy</code> - Copy line</li>
                                 <li><code>p</code> - Paste</li>
                                 <li><code>u</code> - Undo</li>
-                                <li><code>Ctrl+R</code> - Redo</li>
-                            </ul>
-
-                            <h3>Commands</h3>
-                            <ul>
-                                <li><code>:w</code> - Save</li>
-                                <li><code>:q</code> - Quit</li>
-                                <li><code>:wq</code> - Save and quit</li>
-                                <li><code>:q!</code> - Quit without saving</li>
                             </ul>
                         `
                     },
@@ -552,102 +615,12 @@
                         preview: 'Common Git commands for daily workflow',
                         content: `
                             <h2>🔧 Git Commands</h2>
-                            
-                            <h3>Basic Workflow</h3>
+                            <h3>Basic</h3>
                             <ul>
                                 <li><code>git status</code> - Check status</li>
-                                <li><code>git add .</code> - Stage all changes</li>
-                                <li><code>git commit -m "message"</code> - Commit changes</li>
-                                <li><code>git push</code> - Push to remote</li>
-                                <li><code>git pull</code> - Pull from remote</li>
-                            </ul>
-
-                            <h3>Branching</h3>
-                            <ul>
-                                <li><code>git branch</code> - List branches</li>
-                                <li><code>git checkout -b name</code> - Create new branch</li>
-                                <li><code>git checkout name</code> - Switch branch</li>
-                                <li><code>git merge name</code> - Merge branch</li>
-                            </ul>
-
-                            <h3>Undo Changes</h3>
-                            <ul>
-                                <li><code>git reset --soft HEAD~1</code> - Undo last commit (keep changes)</li>
-                                <li><code>git reset --hard HEAD~1</code> - Undo last commit (discard changes)</li>
-                                <li><code>git checkout -- file</code> - Discard file changes</li>
-                            </ul>
-                        `
-                    },
-                    {
-                        id: 4,
-                        icon: '🐧',
-                        title: 'Linux Shell Commands',
-                        tags: ['bash', 'shell', 'linux'],
-                        pinned: false,
-                        preview: 'Essential Linux command line operations',
-                        content: `
-                            <h2>🐧 Linux Shell</h2>
-                            
-                            <h3>File Operations</h3>
-                            <ul>
-                                <li><code>ls -la</code> - List files (detailed)</li>
-                                <li><code>cd path</code> - Change directory</li>
-                                <li><code>cp source dest</code> - Copy</li>
-                                <li><code>mv source dest</code> - Move/Rename</li>
-                                <li><code>rm file</code> - Delete file</li>
-                                <li><code>mkdir dir</code> - Create directory</li>
-                            </ul>
-
-                            <h3>File Content</h3>
-                            <ul>
-                                <li><code>cat file</code> - Display file</li>
-                                <li><code>less file</code> - View file (paginated)</li>
-                                <li><code>head -n 10 file</code> - First 10 lines</li>
-                                <li><code>tail -f file</code> - Follow file updates</li>
-                                <li><code>grep "text" file</code> - Search in file</li>
-                            </ul>
-
-                            <h3>System</h3>
-                            <ul>
-                                <li><code>ps aux</code> - List processes</li>
-                                <li><code>top</code> - System monitor</li>
-                                <li><code>df -h</code> - Disk usage</li>
-                                <li><code>free -h</code> - Memory usage</li>
-                            </ul>
-                        `
-                    },
-                    {
-                        id: 5,
-                        icon: '🚀',
-                        title: 'Docker Quick Reference',
-                        tags: ['docker', 'containers', 'devops'],
-                        pinned: false,
-                        preview: 'Common Docker commands for container management',
-                        content: `
-                            <h2>🚀 Docker Commands</h2>
-                            
-                            <h3>Container Management</h3>
-                            <ul>
-                                <li><code>docker ps</code> - List running containers</li>
-                                <li><code>docker ps -a</code> - List all containers</li>
-                                <li><code>docker start name</code> - Start container</li>
-                                <li><code>docker stop name</code> - Stop container</li>
-                                <li><code>docker rm name</code> - Remove container</li>
-                            </ul>
-
-                            <h3>Images</h3>
-                            <ul>
-                                <li><code>docker images</code> - List images</li>
-                                <li><code>docker pull image</code> - Download image</li>
-                                <li><code>docker rmi image</code> - Remove image</li>
-                                <li><code>docker build -t name .</code> - Build image</li>
-                            </ul>
-
-                            <h3>Run Container</h3>
-                            <ul>
-                                <li><code>docker run -d image</code> - Run detached</li>
-                                <li><code>docker run -p 8080:80 image</code> - Port mapping</li>
-                                <li><code>docker exec -it name bash</code> - Enter container shell</li>
+                                <li><code>git add .</code> - Stage all</li>
+                                <li><code>git commit -m "msg"</code> - Commit</li>
+                                <li><code>git push</code> - Push</li>
                             </ul>
                         `
                     }
@@ -663,7 +636,6 @@
                 closeBtn: 'Fermer',
                 emptyState: 'Aucune fiche trouvée',
                 pinned: '★ ÉPINGLÉ',
-                copySuccess: 'Copié dans le presse-papier !',
                 cheatsheets: [
                     {
                         id: 1,
@@ -674,31 +646,26 @@
                         preview: 'Commandes essentielles tmux pour gérer sessions et fenêtres',
                         content: `
                             <h2>🖥️ Commandes Tmux</h2>
-                            
                             <h3>Sessions</h3>
                             <ul>
-                                <li><code>tmux new -s nom</code> - Créer nouvelle session</li>
-                                <li><code>tmux attach -t nom</code> - Attacher à une session</li>
-                                <li><code>Ctrl+B d</code> - Détacher de la session</li>
-                                <li><code>tmux ls</code> - Lister toutes les sessions</li>
+                                <li><code>tmux new -s nom</code> - Créer session</li>
+                                <li><code>tmux attach -t nom</code> - Attacher session</li>
+                                <li><code>Ctrl+B d</code> - Détacher session</li>
+                                <li><code>tmux ls</code> - Lister sessions</li>
                             </ul>
-
                             <h3>Fenêtres</h3>
                             <ul>
-                                <li><code>Ctrl+B c</code> - Créer nouvelle fenêtre</li>
+                                <li><code>Ctrl+B c</code> - Nouvelle fenêtre</li>
                                 <li><code>Ctrl+B n</code> - Fenêtre suivante</li>
                                 <li><code>Ctrl+B p</code> - Fenêtre précédente</li>
                                 <li><code>Ctrl+B ,</code> - Renommer fenêtre</li>
-                                <li><code>Ctrl+B &</code> - Fermer fenêtre</li>
                             </ul>
-
                             <h3>Panneaux</h3>
                             <ul>
-                                <li><code>Ctrl+B %</code> - Division verticale</li>
-                                <li><code>Ctrl+B "</code> - Division horizontale</li>
-                                <li><code>Ctrl+B ←→↑↓</code> - Naviguer entre panneaux</li>
-                                <li><code>Ctrl+B z</code> - Plein écran panneau</li>
-                                <li><code>Ctrl+B x</code> - Fermer panneau</li>
+                                <li><code>Ctrl+B %</code> - Diviser vertical</li>
+                                <li><code>Ctrl+B "</code> - Diviser horizontal</li>
+                                <li><code>Ctrl+B ←→↑↓</code> - Naviguer panneaux</li>
+                                <li><code>Ctrl+B z</code> - Plein écran</li>
                             </ul>
                         `
                     },
@@ -711,41 +678,20 @@
                         preview: 'Commandes essentielles Neovim pour navigation et édition',
                         content: `
                             <h2>⚡ Commandes Neovim</h2>
-                            
                             <h3>Navigation</h3>
                             <ul>
                                 <li><code>h j k l</code> - Gauche, Bas, Haut, Droite</li>
                                 <li><code>w</code> - Mot suivant</li>
                                 <li><code>b</code> - Mot précédent</li>
-                                <li><code>gg</code> - Début du fichier</li>
-                                <li><code>G</code> - Fin du fichier</li>
-                                <li><code>0</code> - Début de ligne</li>
-                                <li><code>$</code> - Fin de ligne</li>
+                                <li><code>gg</code> - Début fichier</li>
+                                <li><code>G</code> - Fin fichier</li>
                             </ul>
-
-                            <h3>Modes</h3>
-                            <ul>
-                                <li><code>i</code> - Mode insertion</li>
-                                <li><code>ESC</code> - Mode normal</li>
-                                <li><code>v</code> - Mode visuel</li>
-                                <li><code>V</code> - Mode visuel ligne</li>
-                            </ul>
-
                             <h3>Édition</h3>
                             <ul>
                                 <li><code>dd</code> - Supprimer ligne</li>
                                 <li><code>yy</code> - Copier ligne</li>
                                 <li><code>p</code> - Coller</li>
                                 <li><code>u</code> - Annuler</li>
-                                <li><code>Ctrl+R</code> - Rétablir</li>
-                            </ul>
-
-                            <h3>Commandes</h3>
-                            <ul>
-                                <li><code>:w</code> - Sauvegarder</li>
-                                <li><code>:q</code> - Quitter</li>
-                                <li><code>:wq</code> - Sauvegarder et quitter</li>
-                                <li><code>:q!</code> - Quitter sans sauvegarder</li>
                             </ul>
                         `
                     },
@@ -753,107 +699,17 @@
                         id: 3,
                         icon: '🔧',
                         title: 'Workflow Git',
-                        tags: ['git', 'contrôle-version'],
+                        tags: ['git', 'version'],
                         pinned: false,
-                        preview: 'Commandes Git courantes pour le workflow quotidien',
+                        preview: 'Commandes Git courantes pour le quotidien',
                         content: `
                             <h2>🔧 Commandes Git</h2>
-                            
-                            <h3>Workflow de base</h3>
+                            <h3>Base</h3>
                             <ul>
-                                <li><code>git status</code> - Vérifier le statut</li>
-                                <li><code>git add .</code> - Indexer tous les changements</li>
-                                <li><code>git commit -m "message"</code> - Valider les changements</li>
-                                <li><code>git push</code> - Pousser vers distant</li>
-                                <li><code>git pull</code> - Récupérer depuis distant</li>
-                            </ul>
-
-                            <h3>Branches</h3>
-                            <ul>
-                                <li><code>git branch</code> - Lister les branches</li>
-                                <li><code>git checkout -b nom</code> - Créer nouvelle branche</li>
-                                <li><code>git checkout nom</code> - Changer de branche</li>
-                                <li><code>git merge nom</code> - Fusionner branche</li>
-                            </ul>
-
-                            <h3>Annuler changements</h3>
-                            <ul>
-                                <li><code>git reset --soft HEAD~1</code> - Annuler dernier commit (garder changements)</li>
-                                <li><code>git reset --hard HEAD~1</code> - Annuler dernier commit (supprimer changements)</li>
-                                <li><code>git checkout -- fichier</code> - Annuler modifications fichier</li>
-                            </ul>
-                        `
-                    },
-                    {
-                        id: 4,
-                        icon: '🐧',
-                        title: 'Commandes Shell Linux',
-                        tags: ['bash', 'shell', 'linux'],
-                        pinned: false,
-                        preview: 'Opérations essentielles en ligne de commande Linux',
-                        content: `
-                            <h2>🐧 Shell Linux</h2>
-                            
-                            <h3>Opérations fichiers</h3>
-                            <ul>
-                                <li><code>ls -la</code> - Lister fichiers (détaillé)</li>
-                                <li><code>cd chemin</code> - Changer de répertoire</li>
-                                <li><code>cp source dest</code> - Copier</li>
-                                <li><code>mv source dest</code> - Déplacer/Renommer</li>
-                                <li><code>rm fichier</code> - Supprimer fichier</li>
-                                <li><code>mkdir dossier</code> - Créer répertoire</li>
-                            </ul>
-
-                            <h3>Contenu fichiers</h3>
-                            <ul>
-                                <li><code>cat fichier</code> - Afficher fichier</li>
-                                <li><code>less fichier</code> - Voir fichier (paginé)</li>
-                                <li><code>head -n 10 fichier</code> - 10 premières lignes</li>
-                                <li><code>tail -f fichier</code> - Suivre mises à jour fichier</li>
-                                <li><code>grep "texte" fichier</code> - Rechercher dans fichier</li>
-                            </ul>
-
-                            <h3>Système</h3>
-                            <ul>
-                                <li><code>ps aux</code> - Lister processus</li>
-                                <li><code>top</code> - Moniteur système</li>
-                                <li><code>df -h</code> - Usage disque</li>
-                                <li><code>free -h</code> - Usage mémoire</li>
-                            </ul>
-                        `
-                    },
-                    {
-                        id: 5,
-                        icon: '🚀',
-                        title: 'Référence Docker',
-                        tags: ['docker', 'conteneurs', 'devops'],
-                        pinned: false,
-                        preview: 'Commandes Docker courantes pour la gestion des conteneurs',
-                        content: `
-                            <h2>🚀 Commandes Docker</h2>
-                            
-                            <h3>Gestion conteneurs</h3>
-                            <ul>
-                                <li><code>docker ps</code> - Lister conteneurs actifs</li>
-                                <li><code>docker ps -a</code> - Lister tous les conteneurs</li>
-                                <li><code>docker start nom</code> - Démarrer conteneur</li>
-                                <li><code>docker stop nom</code> - Arrêter conteneur</li>
-                                <li><code>docker rm nom</code> - Supprimer conteneur</li>
-                            </ul>
-
-                            <h3>Images</h3>
-                            <ul>
-                                <li><code>docker images</code> - Lister images</li>
-                                <li><code>docker pull image</code> - Télécharger image</li>
-                                <li><code>docker rmi image</code> - Supprimer image</li>
-                                <li><code>docker build -t nom .</code> - Construire image</li>
-                            </ul>
-
-                            <h3>Exécuter conteneur</h3>
-                            <ul>
-                                <li><code>docker run -d image</code> - Exécuter en arrière-plan</li>
-                                <li><code>docker run -p 8080:80 image</code> - Mapping de port</li>
-                                <li><code>docker exec -it nom bash</code> - Entrer dans shell conteneur</li>
+                                <li><code>git status</code> - Voir statut</li>
+                                <li><code>git add .</code> - Tout ajouter</li>
+                                <li><code>git commit -m "msg"</code> - Valider</li>
+                                <li><code>git push</code> - Pousser</li>
                             </ul>
                         `
                     }
@@ -861,18 +717,28 @@
             }
         };
 
-        let currentLang = 'en';
+        let currentLang = localStorage.getItem('pkm-lang') || 'en';
+        let currentTheme = localStorage.getItem('pkm-theme') || 'mac';
         let currentCheatsheet = null;
 
-        const searchInput = document.getElementById('searchInput');
-        const cheatsheetsList = document.getElementById('cheatsheetsList');
-        const itemCount = document.getElementById('itemCount');
-        const detailView = document.getElementById('detailView');
-        const detailTitle = document.getElementById('detailTitle');
-        const detailBody = document.getElementById('detailBody');
+        // Apply theme
+        function applyTheme() {
+            const container = document.getElementById('overlayContainer');
+            const detailContent = document.getElementById('detailContent');
+            
+            container.className = `overlay-container theme-${currentTheme}`;
+            if (detailContent) {
+                detailContent.className = `detail-content`;
+            }
+            
+            document.getElementById('themeToggle').textContent = 
+                currentTheme === 'mac' ? '🪟 Win' : '🍎 Mac';
+        }
 
-        function updateUI() {
+        // Apply language
+        function applyLanguage() {
             const t = translations[currentLang];
+            
             document.getElementById('titleText').textContent = t.title;
             document.getElementById('searchInput').placeholder = t.searchPlaceholder;
             document.getElementById('toggleText').textContent = t.toggleText;
@@ -880,31 +746,44 @@
             document.getElementById('cheatsheetsText').textContent = t.cheatsheetsText;
             document.getElementById('copyBtn').textContent = t.copyBtn;
             document.getElementById('closeBtn').textContent = t.closeBtn;
-            document.getElementById('langToggle').textContent = currentLang === 'en' ? '🇫🇷 FR' : '🇬🇧 EN';
-        }
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'fr' : 'en';
-            updateUI();
+            document.getElementById('langToggle').textContent = 
+                currentLang === 'en' ? '🇫🇷 FR' : '🇬🇧 EN';
+            
             renderCheatsheets();
         }
 
+        // Toggle theme
+        function toggleTheme() {
+            currentTheme = currentTheme === 'mac' ? 'windows' : 'mac';
+            localStorage.setItem('pkm-theme', currentTheme);
+            applyTheme();
+        }
+
+        // Toggle language
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'fr' : 'en';
+            localStorage.setItem('pkm-lang', currentLang);
+            applyLanguage();
+        }
+
+        // Render cheatsheets
         function renderCheatsheets(items = null) {
             const t = translations[currentLang];
             const cheatsheets = items || t.cheatsheets;
+            const list = document.getElementById('cheatsheetsList');
             
             if (cheatsheets.length === 0) {
-                cheatsheetsList.innerHTML = `
+                list.innerHTML = `
                     <div class="empty-state">
                         <div class="empty-state-icon">🔍</div>
                         <div>${t.emptyState}</div>
                     </div>
                 `;
-                itemCount.textContent = '0';
+                document.getElementById('itemCount').textContent = '0';
                 return;
             }
 
-            cheatsheetsList.innerHTML = cheatsheets.map(item => `
+            list.innerHTML = cheatsheets.map(item => `
                 <div class="cheatsheet-item" onclick="openDetail(${item.id})">
                     <div class="cheatsheet-icon">${item.icon}</div>
                     <div class="cheatsheet-content">
@@ -920,10 +799,11 @@
                 </div>
             `).join('');
 
-            itemCount.textContent = cheatsheets.length;
+            document.getElementById('itemCount').textContent = cheatsheets.length;
         }
 
-        searchInput.addEventListener('input', (e) => {
+        // Search
+        document.getElementById('searchInput').addEventListener('input', (e) => {
             const t = translations[currentLang];
             const searchTerm = e.target.value.toLowerCase();
             const filtered = t.cheatsheets.filter(item => {
@@ -934,22 +814,25 @@
             renderCheatsheets(filtered);
         });
 
+        // Open detail
         function openDetail(id) {
             const t = translations[currentLang];
             const cheatsheet = t.cheatsheets.find(c => c.id === id);
             if (!cheatsheet) return;
 
             currentCheatsheet = cheatsheet;
-            detailTitle.innerHTML = `${cheatsheet.icon} ${cheatsheet.title}`;
-            detailBody.innerHTML = cheatsheet.content;
-            detailView.classList.add('show');
+            document.getElementById('detailTitle').innerHTML = `${cheatsheet.icon} ${cheatsheet.title}`;
+            document.getElementById('detailBody').innerHTML = cheatsheet.content;
+            document.getElementById('detailView').classList.add('show');
         }
 
+        // Close detail
         function closeDetail() {
-            detailView.classList.remove('show');
+            document.getElementById('detailView').classList.remove('show');
             currentCheatsheet = null;
         }
 
+        // Hide overlay
         function hideOverlay() {
             document.querySelector('.overlay-container').style.opacity = '0';
             setTimeout(() => {
@@ -958,42 +841,46 @@
             }, 300);
         }
 
+        // Copy to clipboard
         function copyToClipboard() {
             if (!currentCheatsheet) return;
             
-            const text = detailBody.innerText;
-            const t = translations[currentLang];
+            const text = document.getElementById('detailBody').innerText;
             navigator.clipboard.writeText(text).then(() => {
-                alert(t.copySuccess);
+                const t = translations[currentLang];
+                alert(currentLang === 'en' ? 'Copied to clipboard!' : 'Copié dans le presse-papier !');
             });
         }
 
+        // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                if (detailView.classList.contains('show')) {
+                if (document.getElementById('detailView').classList.contains('show')) {
                     closeDetail();
                 } else {
                     hideOverlay();
                 }
             }
-            
-            // Ctrl+Shift+F to toggle
-            if (e.ctrlKey && e.shiftKey && e.key === 'f') {
+
+            if ((e.ctrlKey || e.metaKey) && e.key === 'q') {
                 e.preventDefault();
-                console.log('Ctrl+Shift+F pressed - would toggle overlay');
+                console.log('Ctrl+Q pressed - would toggle overlay');
             }
         });
-        
-        detailView.addEventListener('click', (e) => {
-            if (e.target === detailView) {
+
+        // Close detail when clicking outside
+        document.getElementById('detailView').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('detailView')) {
                 closeDetail();
             }
         });
 
-        updateUI();
-        renderCheatsheets();
+        // Initialize
+        applyTheme();
+        applyLanguage();
 
-        console.log('⚡ PKM Quick Reference V4 loaded!');
+        console.log('⚡ Quick Reference loaded!');
+        console.log(`Language: ${currentLang}, Theme: ${currentTheme}`);
     </script>
 </body>
 </html>

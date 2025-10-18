@@ -357,11 +357,9 @@ Write your thoughts here. Markdown is supported!
                 <span>Press Esc to hide</span>
             </div>
             <div class="footer-actions">
-                <button class="btn-secondary" onclick="downloadNote()">Download</button>
-                <button class="btn-primary" onclick="saveNote()">Save to Vault</button>
+                <button class="btn-secondary" onclick="downloadNote()">📥 Save Note</button>
             </div>
         </div>
-    </div>
 
     <script>
         const editor = document.getElementById('editor');
@@ -434,7 +432,39 @@ Write your thoughts here. Markdown is supported!
             }
         }
 
-        // Save note
+        // Vault directory handle (stored globally)
+        let vaultDirHandle = null;
+
+        // Initialize vault directory
+        async function initVault() {
+            try {
+                // Check if File System Access API is supported
+                if (!('showDirectoryPicker' in window)) {
+                    alert('File System Access API not supported. Please use Chrome/Edge or download notes manually.');
+                    return false;
+                }
+
+                // Ask user to select vault directory
+                vaultDirHandle = await window.showDirectoryPicker({
+                    mode: 'readwrite',
+                    startIn: 'documents'
+                });
+
+                // Store handle reference (can't persist it directly due to security)
+                localStorage.setItem('pkm-vault-configured', 'true');
+                
+                showNotification('Vault configured! You can now save notes.');
+                return true;
+            } catch (err) {
+                if (err.name !== 'AbortError') {
+                    console.error('Error selecting vault:', err);
+                    alert('Error configuring vault. You can still download notes manually.');
+                }
+                return false;
+            }
+        }
+
+        // Save note (simplified download)
         function saveNote() {
             const content = editor.value;
             if (!content.trim()) {
@@ -442,26 +472,48 @@ Write your thoughts here. Markdown is supported!
                 return;
             }
 
-            // Create filename with timestamp
             const now = new Date();
-            const timestamp = now.toISOString().slice(0, 19).replace('T', '-').replace(/:/g, '');
-            const filename = `note-${timestamp}.md`;
+            const timestamp = now.toISOString().slice(0, 19).replace('T', '_').replace(/:/g, '-');
+            
+            // Extract title from first heading
+            const firstLine = content.split('\n')[0];
+            let title = 'note';
+            if (firstLine.startsWith('#')) {
+                title = firstLine.replace(/^#+\s*/, '').trim()
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .substring(0, 50);
+            }
+            
+            const filename = `${timestamp}_${title}.md`;
 
-            // Save to localStorage (in real app, would save to file system)
-            const notes = JSON.parse(localStorage.getItem('pkm-notes') || '[]');
-            notes.push({
-                filename,
-                content,
-                timestamp: now.toISOString()
-            });
-            localStorage.setItem('pkm-notes', JSON.stringify(notes));
+            // Download file
+            const blob = new Blob([content], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
 
-            // Clear autosave
             localStorage.removeItem('pkm-autosave');
-
-            // Show notification
-            showNotification('Note saved to vault!');
+            showNotification(`✅ Note saved: ${filename}`);
             lastSaved.textContent = `Saved at ${now.toLocaleTimeString()}`;
+
+            if (confirm('Note saved! Clear editor for new note?')) {
+                clearEditor();
+            }
+        }
+
+
+        // Add configure vault button functionality
+        async function configureVault() {
+            const configured = await initVault();
+            if (configured) {
+                alert('Vault configured successfully! Your notes will be saved to the selected folder.');
+            }
         }
 
         // Download note as file

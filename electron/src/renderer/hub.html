@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PKM System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .hub-container {
+            background: rgba(20, 20, 30, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 500px;
+            max-width: 95vw;
+            backdrop-filter: blur(20px);
+            overflow: hidden;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hub-header {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .hub-title {
+            color: #fff;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .hub-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        .widgets-grid {
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .widget-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .widget-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #667eea;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+        }
+
+        .widget-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .widget-name {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .widget-desc {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .widget-hotkey {
+            margin-top: 12px;
+            padding: 6px 12px;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 6px;
+            font-size: 11px;
+            color: #a5b4fc;
+            font-weight: 600;
+        }
+
+        .hub-footer {
+            padding: 16px 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: #667eea;
+        }
+
+        .current-widget {
+            display: none;
+        }
+
+        .current-widget.active {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+        }
+
+        .widget-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .widget-overlay {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(20, 20, 30, 0.95);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 16px;
+            display: none;
+            gap: 12px;
+            align-items: center;
+            z-index: 1001;
+            backdrop-filter: blur(20px);
+        }
+
+        .widget-overlay.show {
+            display: flex;
+        }
+
+        .overlay-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .overlay-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #667eea;
+        }
+
+        .overlay-btn.active {
+            background: rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .info-section {
+            padding: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-title {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-list li::before {
+            content: '→';
+            color: #667eea;
+        }
+
+        .status-bar {
+            padding: 8px 24px;
+            background: rgba(102, 126, 234, 0.1);
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            color: #a5b4fc;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #27c93f;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hub View -->
+    <div class="hub-container" id="hubView">
+        <div class="hub-header">
+            <div class="hub-title">
+                🧠 PKM System
+            </div>
+            <div class="hub-subtitle">
+                Your Personal Knowledge Management
+            </div>
+        </div>
+
+        <div class="widgets-grid">
+            <div class="widget-card" onclick="openWidget('capture')">
+                <div class="widget-icon">✍️</div>
+                <div class="widget-name">Quick Capture</div>
+                <div class="widget-desc">Capture thoughts instantly with markdown support</div>
+                <div class="widget-hotkey">Ctrl+Shift+Space</div>
+            </div>
+
+            <div class="widget-card" onclick="openWidget('reference')">
+                <div class="widget-icon">⚡</div>
+                <div class="widget-name">Quick Reference</div>
+                <div class="widget-desc">Access cheatsheets and commands instantly</div>
+                <div class="widget-hotkey">Ctrl+Shift+F</div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-title">🎯 Quick Start</div>
+            <ul class="info-list">
+                <li>Click any widget to open it</li>
+                <li>Use hotkeys for instant access</li>
+                <li>Switch between widgets with navigation bar</li>
+                <li>Press Esc to return to hub</li>
+            </ul>
+        </div>
+
+        <div class="status-bar">
+            <div class="status-dot"></div>
+            <span>System Ready</span>
+        </div>
+
+        <div class="hub-footer">
+            <a href="https://github.com/LyonMoncef/pkm-system" target="_blank" class="footer-link">
+                GitHub Repository
+            </a>
+            <span class="footer-link">v0.1.0 MVP</span>
+        </div>
+    </div>
+
+    <!-- Widget Overlay Navigation -->
+    <div class="widget-overlay" id="widgetOverlay">
+        <button class="overlay-btn" onclick="switchWidget('capture')" id="btnCapture">
+            ✍️ Capture
+        </button>
+        <button class="overlay-btn" onclick="switchWidget('reference')" id="btnReference">
+            ⚡ Reference
+        </button>
+        <button class="overlay-btn" onclick="closeWidget()">
+            🏠 Hub
+        </button>
+    </div>
+
+    <!-- Widget Views -->
+    <div class="current-widget" id="captureView">
+        <iframe src="index.html" class="widget-frame" id="captureFrame"></iframe>
+    </div>
+
+    <div class="current-widget" id="referenceView">
+        <iframe src="quick-reference.html" class="widget-frame" id="referenceFrame"></iframe>
+    </div>
+
+    <script>
+        let currentWidget = null;
+
+        // Open widget
+        function openWidget(widget) {
+            currentWidget = widget;
+            
+            // Hide hub
+            document.getElementById('hubView').style.display = 'none';
+            
+            // Show overlay navigation
+            document.getElementById('widgetOverlay').classList.add('show');
+            
+            // Show widget
+            if (widget === 'capture') {
+                document.getElementById('captureView').classList.add('active');
+                document.getElementById('btnCapture').classList.add('active');
+                document.getElementById('btnReference').classList.remove('active');
+            } else if (widget === 'reference') {
+                document.getElementById('referenceView').classList.add('active');
+                document.getElementById('btnReference').classList.add('active');
+                document.getElementById('btnCapture').classList.remove('active');
+            }
+        }
+
+        // Switch widget
+        function switchWidget(widget) {
+            // Hide all widgets
+            document.getElementById('captureView').classList.remove('active');
+            document.getElementById('referenceView').classList.remove('active');
+            
+            // Open new widget
+            openWidget(widget);
+        }
+
+        // Close widget
+        function closeWidget() {
+            currentWidget = null;
+            
+            // Hide all widgets
+            document.getElementById('captureView').classList.remove('active');
+            document.getElementById('referenceView').classList.remove('active');
+            
+            // Hide overlay
+            document.getElementById('widgetOverlay').classList.remove('show');
+            
+            // Show hub
+            document.getElementById('hubView').style.display = 'block';
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Esc to close widget
+            if (e.key === 'Escape' && currentWidget) {
+                closeWidget();
+            }
+            
+            // Ctrl+Shift+Space for Quick Capture
+            if (e.ctrlKey && e.shiftKey && e.code === 'Space') {
+                e.preventDefault();
+                if (currentWidget === 'capture') {
+                    closeWidget();
+                } else {
+                    openWidget('capture');
+                }
+            }
+            
+            // Ctrl+Shift+Q for Quick Reference
+            if (e.ctrlKey && e.shiftKey && e.key === 'f') {
+                e.preventDefault();
+                if (currentWidget === 'reference') {
+                    closeWidget();
+                } else {
+                    openWidget('reference');
+                }
+            }
+        });
+
+        console.log('🧠 PKM System Hub loaded!');
+        console.log('Shortcuts:');
+        console.log('  - Ctrl+Shift+Space: Toggle Quick Capture');
+        console.log('  - Ctrl+Shift+F: Toggle Quick Reference');
+        console.log('  - Esc: Return to hub');
+    </script>
+</body>
+</html>

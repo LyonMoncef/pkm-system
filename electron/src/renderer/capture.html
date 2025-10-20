@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PKM Widget - Quick Capture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .widget-container {
+            background: rgba(20, 20, 30, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 800px;
+            max-width: 95vw;
+            backdrop-filter: blur(20px);
+            overflow: hidden;
+        }
+
+        .widget-header {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .widget-title {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #27c93f;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .widget-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .control-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .control-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .control-btn.close { background: #ff5f56; }
+        .control-btn.minimize { background: #ffbd2e; }
+        .control-btn.maximize { background: #27c93f; }
+
+        .widget-toolbar {
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .toolbar-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .toolbar-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #667eea;
+        }
+
+        .toolbar-btn.active {
+            background: rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .widget-content {
+            display: flex;
+            height: 500px;
+        }
+
+        .editor-pane, .preview-pane {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pane-header {
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .editor-pane {
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #editor {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.2);
+            color: #fff;
+            border: none;
+            padding: 20px;
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: none;
+            outline: none;
+        }
+
+        #editor::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        #preview {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            color: #eee;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        #preview h1 { font-size: 2em; margin: 0.67em 0; color: #fff; }
+        #preview h2 { font-size: 1.5em; margin: 0.75em 0; color: #fff; }
+        #preview h3 { font-size: 1.17em; margin: 0.83em 0; color: #fff; }
+        #preview p { margin: 1em 0; }
+        #preview code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: inherit;
+        }
+        #preview pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1em 0;
+        }
+        #preview pre code {
+            background: none;
+            padding: 0;
+        }
+        #preview ul, #preview ol {
+            margin: 1em 0;
+            padding-left: 2em;
+        }
+        #preview blockquote {
+            border-left: 4px solid #667eea;
+            padding-left: 16px;
+            margin: 1em 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        #preview a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        #preview a:hover {
+            text-decoration: underline;
+        }
+
+        .widget-footer {
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-info {
+            display: flex;
+            gap: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 11px;
+        }
+
+        .footer-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(39, 201, 63, 0.9);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .word-count {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 11px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="notification" id="notification">✓ Note saved!</div>
+
+    <div class="widget-container">
+        <div class="widget-header">
+            <div class="widget-title">
+                <span class="status-indicator"></span>
+                🧠 PKM Quick Capture
+            </div>
+            <div class="widget-controls">
+                <div class="control-btn close" onclick="hideWidget()"></div>
+                <div class="control-btn minimize"></div>
+                <div class="control-btn maximize" onclick="toggleFullscreen()"></div>
+            </div>
+        </div>
+
+        <div class="widget-toolbar">
+            <button class="toolbar-btn active" onclick="toggleMode('split')" id="btn-split">Split View</button>
+            <button class="toolbar-btn" onclick="toggleMode('editor')" id="btn-editor">Editor Only</button>
+            <button class="toolbar-btn" onclick="toggleMode('preview')" id="btn-preview">Preview Only</button>
+            <div style="flex: 1"></div>
+            <button class="toolbar-btn" onclick="clearEditor()">Clear</button>
+        </div>
+
+        <div class="widget-content">
+            <div class="editor-pane" id="editor-pane">
+                <div class="pane-header">Markdown Editor</div>
+                <textarea id="editor" placeholder="# Start typing...
+
+Write your thoughts here. Markdown is supported!
+
+**Bold text**, *italic*, `code`, and more..."></textarea>
+            </div>
+            <div class="preview-pane" id="preview-pane">
+                <div class="pane-header">Live Preview</div>
+                <div id="preview"></div>
+            </div>
+        </div>
+
+        <div class="widget-footer">
+            <div class="footer-info">
+                <span class="word-count" id="word-count">0 words</span>
+                <span>•</span>
+                <span id="last-saved">Not saved yet</span>
+                <span>•</span>
+                <span>Press Esc to hide</span>
+            </div>
+            <div class="footer-actions">
+                <button class="btn-secondary" onclick="downloadNote()">📥 Save Note</button>
+            </div>
+        </div>
+
+    <script>
+        const editor = document.getElementById('editor');
+        const preview = document.getElementById('preview');
+        const wordCount = document.getElementById('word-count');
+        const lastSaved = document.getElementById('last-saved');
+        const notification = document.getElementById('notification');
+
+        let autosaveTimer;
+        let currentMode = 'split';
+
+        // Simple markdown parser
+        function parseMarkdown(text) {
+            return text
+                // Headers
+                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                // Bold
+                .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                // Italic
+                .replace(/\*(.+?)\*/g, '<em>$1</em>')
+                // Code inline
+                .replace(/`(.+?)`/g, '<code>$1</code>')
+                // Code blocks
+                .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+                // Links
+                .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+                // Line breaks
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/\n/g, '<br>')
+                // Blockquotes
+                .replace(/^&gt; (.*$)/gim, '<blockquote>$1</blockquote>')
+                // Lists
+                .replace(/^\- (.*$)/gim, '<li>$1</li>')
+                // Wrap in paragraphs
+                .replace(/^(?!<[h|l|b|p])(.*$)/gim, '<p>$1</p>');
+        }
+
+        // Update preview
+        function updatePreview() {
+            const text = editor.value;
+            preview.innerHTML = parseMarkdown(text);
+            
+            // Update word count
+            const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
+            wordCount.textContent = `${words} word${words !== 1 ? 's' : ''}`;
+        }
+
+        // Editor input handler
+        editor.addEventListener('input', () => {
+            updatePreview();
+            
+            // Clear existing timer
+            clearTimeout(autosaveTimer);
+            
+            // Set new autosave timer (5 seconds)
+            autosaveTimer = setTimeout(() => {
+                autosave();
+            }, 5000);
+        });
+
+        // Autosave to localStorage
+        function autosave() {
+            const content = editor.value;
+            if (content.trim()) {
+                localStorage.setItem('pkm-autosave', content);
+                const now = new Date().toLocaleTimeString();
+                lastSaved.textContent = `Auto-saved at ${now}`;
+            }
+        }
+
+        // Vault directory handle (stored globally)
+        let vaultDirHandle = null;
+
+        // Initialize vault directory
+        async function initVault() {
+            try {
+                // Check if File System Access API is supported
+                if (!('showDirectoryPicker' in window)) {
+                    alert('File System Access API not supported. Please use Chrome/Edge or download notes manually.');
+                    return false;
+                }
+
+                // Ask user to select vault directory
+                vaultDirHandle = await window.showDirectoryPicker({
+                    mode: 'readwrite',
+                    startIn: 'documents'
+                });
+
+                // Store handle reference (can't persist it directly due to security)
+                localStorage.setItem('pkm-vault-configured', 'true');
+                
+                showNotification('Vault configured! You can now save notes.');
+                return true;
+            } catch (err) {
+                if (err.name !== 'AbortError') {
+                    console.error('Error selecting vault:', err);
+                    alert('Error configuring vault. You can still download notes manually.');
+                }
+                return false;
+            }
+        }
+
+        // Save note (simplified download)
+        function saveNote() {
+            const content = editor.value;
+            if (!content.trim()) {
+                alert('Nothing to save!');
+                return;
+            }
+
+            const now = new Date();
+            const timestamp = now.toISOString().slice(0, 19).replace('T', '_').replace(/:/g, '-');
+            
+            // Extract title from first heading
+            const firstLine = content.split('\n')[0];
+            let title = 'note';
+            if (firstLine.startsWith('#')) {
+                title = firstLine.replace(/^#+\s*/, '').trim()
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .substring(0, 50);
+            }
+            
+            const filename = `${timestamp}_${title}.md`;
+
+            // Download file
+            const blob = new Blob([content], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            localStorage.removeItem('pkm-autosave');
+            showNotification(`✅ Note saved: ${filename}`);
+            lastSaved.textContent = `Saved at ${now.toLocaleTimeString()}`;
+
+            if (confirm('Note saved! Clear editor for new note?')) {
+                clearEditor();
+            }
+        }
+
+
+        // Add configure vault button functionality
+        async function configureVault() {
+            const configured = await initVault();
+            if (configured) {
+                alert('Vault configured successfully! Your notes will be saved to the selected folder.');
+            }
+        }
+
+        // Download note as file
+        function downloadNote() {
+            const content = editor.value;
+            if (!content.trim()) {
+                alert('Nothing to download!');
+                return;
+            }
+
+            const blob = new Blob([content], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `note-${new Date().toISOString().slice(0, 10)}.md`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            showNotification('Note downloaded!');
+        }
+
+        // Clear editor
+        function clearEditor() {
+            if (editor.value.trim() && !confirm('Clear all content?')) {
+                return;
+            }
+            editor.value = '';
+            updatePreview();
+            localStorage.removeItem('pkm-autosave');
+            lastSaved.textContent = 'Not saved yet';
+        }
+
+        // Toggle view mode
+        function toggleMode(mode) {
+            currentMode = mode;
+            const editorPane = document.getElementById('editor-pane');
+            const previewPane = document.getElementById('preview-pane');
+            const btnSplit = document.getElementById('btn-split');
+            const btnEditor = document.getElementById('btn-editor');
+            const btnPreview = document.getElementById('btn-preview');
+
+            // Remove active class from all
+            [btnSplit, btnEditor, btnPreview].forEach(btn => btn.classList.remove('active'));
+
+            if (mode === 'split') {
+                editorPane.classList.remove('hidden');
+                previewPane.classList.remove('hidden');
+                btnSplit.classList.add('active');
+            } else if (mode === 'editor') {
+                editorPane.classList.remove('hidden');
+                previewPane.classList.add('hidden');
+                btnEditor.classList.add('active');
+            } else if (mode === 'preview') {
+                editorPane.classList.add('hidden');
+                previewPane.classList.remove('hidden');
+                btnPreview.classList.add('active');
+            }
+        }
+
+        // Show notification
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+
+        // Hide widget
+        function hideWidget() {
+            if (confirm('Hide widget? (Progress will be saved)')) {
+                autosave();
+                document.querySelector('.widget-container').style.opacity = '0';
+                setTimeout(() => {
+                    alert('Widget hidden! (In real app, this would minimize to tray)');
+                    document.querySelector('.widget-container').style.opacity = '1';
+                }, 300);
+            }
+        }
+
+        // Toggle fullscreen
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Esc to hide
+            if (e.key === 'Escape') {
+                hideWidget();
+            }
+            
+            // Ctrl/Cmd + S to save
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                saveNote();
+            }
+
+            // Ctrl/Cmd + K to clear
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                clearEditor();
+            }
+        });
+
+        // Load autosaved content on startup
+        window.addEventListener('load', () => {
+            const autosaved = localStorage.getItem('pkm-autosave');
+            if (autosaved) {
+                editor.value = autosaved;
+                updatePreview();
+                lastSaved.textContent = 'Restored from autosave';
+            }
+        });
+
+        // Initial preview update
+        updatePreview();
+
+        console.log('🧠 PKM Widget loaded!');
+        console.log('Shortcuts:');
+        console.log('  - Esc: Hide widget');
+        console.log('  - Ctrl+S: Save note');
+        console.log('  - Ctrl+K: Clear editor');
+    </script>
+</body>
+</html>

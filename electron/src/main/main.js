@@ -2,38 +2,12 @@ const { app, BrowserWindow, globalShortcut, ipcMain, Menu, Tray } = require('ele
 const path = require('path');
 
 let mainWindow = null;
-let captureWindow = null;
-let referenceWindow = null;
 let tray = null;
+let currentPage = 'capture'; // Track current page for smart toggle
 
-// Create main hub window
+// Create main window (single window architecture)
 function createMainWindow() {
     mainWindow = new BrowserWindow({
-        width: 600,
-        height: 700,
-        webPreferences: {
-            nodeIntegration: false,
-            contextIsolation: true,
-            preload: path.join(__dirname, '../preload/preload.js')
-        },
-        frame: true
-    });
-
-    mainWindow.loadFile(path.join(__dirname, '../renderer/hub.html'));
-
-    mainWindow.on('closed', () => {
-        mainWindow = null;
-    });
-}
-
-// Create Quick Capture window
-function createCaptureWindow() {
-    if (captureWindow) {
-        captureWindow.focus();
-        return;
-    }
-
-    captureWindow = new BrowserWindow({
         width: 900,
         height: 700,
         webPreferences: {
@@ -44,54 +18,73 @@ function createCaptureWindow() {
         frame: true
     });
 
-    captureWindow.loadFile(path.join(__dirname, '../renderer/capture.html'));
+    mainWindow.loadFile(path.join(__dirname, '../renderer/app.html'));
 
-    captureWindow.on('closed', () => {
-        captureWindow = null;
+    mainWindow.on('closed', () => {
+        mainWindow = null;
     });
 }
 
-// Create Quick Reference window
-function createReferenceWindow() {
-    if (referenceWindow) {
-        referenceWindow.focus();
-        return;
+// Smart toggle: show/hide window based on state and target page
+function smartToggle(targetPage) {
+    if (!mainWindow) {
+        // Window doesn't exist → Create + navigate
+        createMainWindow();
+        setTimeout(() => {
+            mainWindow.webContents.send('navigate-to', targetPage);
+            currentPage = targetPage;
+        }, 500);
+    } else if (!mainWindow.isVisible()) {
+        // Window hidden → Show + navigate
+        mainWindow.show();
+        mainWindow.webContents.send('navigate-to', targetPage);
+        currentPage = targetPage;
+    } else {
+        // Window visible → Smart behavior
+        if (currentPage === targetPage) {
+            // Already on target page → Hide (toggle off)
+            mainWindow.hide();
+        } else {
+            // Different page → Navigate
+            mainWindow.webContents.send('navigate-to', targetPage);
+            currentPage = targetPage;
+        }
     }
-
-    referenceWindow = new BrowserWindow({
-        width: 700,
-        height: 800,
-        webPreferences: {
-            nodeIntegration: false,
-            contextIsolation: true,
-            preload: path.join(__dirname, '../preload/preload.js')
-        },
-        frame: true
-    });
-
-    referenceWindow.loadFile(path.join(__dirname, '../renderer/reference.html'));
-
-    referenceWindow.on('closed', () => {
-        referenceWindow = null;
-    });
 }
 
 // Create system tray
 function createTray() {
     const iconPath = path.join(__dirname, '../../build/icon.png');
     
-    // Skip tray if icon doesn't exist (we'll add it later)
     try {
         tray = new Tray(iconPath);
         
         const contextMenu = Menu.buildFromTemplate([
             { label: '🧠 PKM System', enabled: false },
             { type: 'separator' },
-            { label: '🏠 Hub', click: () => mainWindow ? mainWindow.show() : createMainWindow() },
-            { label: '✍️ Quick Capture', click: createCaptureWindow },
-            { label: '⚡ Quick Reference', click: createReferenceWindow },
+            { 
+                label: '🏠 Hub', 
+                click: () => smartToggle('hub')
+            },
+            { 
+                label: '✍️ Quick Capture', 
+                click: () => smartToggle('capture')
+            },
+            { 
+                label: '⚡ Quick Reference', 
+                click: () => smartToggle('reference')
+            },
             { type: 'separator' },
-            { label: 'Quit', click: () => app.quit() }
+            { 
+                label: 'Quit',
+                click: () => {
+                    if (tray) {
+                        tray.destroy();
+                        tray = null;
+                    }
+                    app.quit();
+                }
+            }
         ]);
 
         tray.setToolTip('PKM System');
@@ -101,25 +94,99 @@ function createTray() {
     }
 }
 
-// Register global shortcuts
-function registerShortcuts() {
+// Register GLOBAL OS shortcuts (work when app closed)
+function registerGlobalShortcuts() {
+    // Ctrl+Shift+Space - Toggle Capture
     globalShortcut.register('CommandOrControl+Shift+Space', () => {
-        if (captureWindow) {
-            captureWindow.isVisible() ? captureWindow.hide() : captureWindow.show();
-        } else {
-            createCaptureWindow();
-        }
+        smartToggle('capture');
     });
 
+    // Ctrl+Shift+F - Toggle Reference
     globalShortcut.register('CommandOrControl+Shift+F', () => {
-        if (referenceWindow) {
-            referenceWindow.isVisible() ? referenceWindow.hide() : referenceWindow.show();
-        } else {
-            createReferenceWindow();
+        smartToggle('reference');
+    });
+
+    // Ctrl+Shift+H - Toggle Hub (NEW)
+    globalShortcut.register('CommandOrControl+Shift+H', () => {
+        smartToggle('hub');
+    });
+
+    // Ctrl+W - Quick save + hide window (GLOBAL)
+    globalShortcut.register('CommandOrControl+W', () => {
+        if (mainWindow && mainWindow.isVisible()) {
+            // Send signal to save before hiding
+            mainWindow.webContents.send('quick-save-and-hide');
         }
     });
 
-    console.log('✅ Global shortcuts registered!');
+    // === TEST SHORTCUTS HELP (3 raccourcis pour debug) ===
+    
+    // F1 - Show keyboard shortcuts
+    globalShortcut.register('F1', () => {
+        console.log('🔑 F1 pressed!');
+        if (mainWindow && mainWindow.isVisible()) {
+            mainWindow.webContents.send('show-shortcuts');
+        } else if (mainWindow) {
+            mainWindow.show();
+            setTimeout(() => {
+                mainWindow.webContents.send('show-shortcuts');
+            }, 300);
+        } else {
+            createMainWindow();
+            setTimeout(() => {
+                mainWindow.webContents.send('show-shortcuts');
+            }, 800);
+        }
+    });
+
+    // Ctrl+/ - Show keyboard shortcuts
+    globalShortcut.register('CommandOrControl+/', () => {
+        console.log('🔑 Ctrl+/ pressed!');
+        if (mainWindow && mainWindow.isVisible()) {
+            mainWindow.webContents.send('show-shortcuts');
+        } else if (mainWindow) {
+            mainWindow.show();
+            setTimeout(() => {
+                mainWindow.webContents.send('show-shortcuts');
+            }, 300);
+        } else {
+            createMainWindow();
+            setTimeout(() => {
+                mainWindow.webContents.send('show-shortcuts');
+            }, 800);
+        }
+    });
+
+    // Ctrl+Shift+L - Show keyboard shortcuts (test)
+    globalShortcut.register('CommandOrControl+Shift+L', () => {
+        console.log('🔑 Ctrl+Shift+L pressed!');
+        if (mainWindow && mainWindow.isVisible()) {
+            mainWindow.webContents.send('show-shortcuts');
+        } else if (mainWindow) {
+            mainWindow.show();
+            setTimeout(() => {
+                mainWindow.webContents.send('show-shortcuts');
+            }, 300);
+        } else {
+            createMainWindow();
+            setTimeout(() => {
+                mainWindow.webContents.send('show-shortcuts');
+            }, 800);
+        }
+    });
+
+    // Ctrl+Shift+W - Quit app completely (kill process)
+    globalShortcut.register('CommandOrControl+Shift+W', () => {
+        console.log('🔴 Force quit requested');
+        if (tray) {
+            tray.destroy();
+            tray = null;
+        }
+        app.quit();
+        process.exit(0); // Force kill
+    });
+
+    console.log('✅ Global OS shortcuts registered!');
 }
 
 // IPC handler for saving notes
@@ -147,18 +214,47 @@ ipcMain.handle('save-note', async (event, { filename, content }) => {
     }
 });
 
+// IPC handler for tracking current page
+ipcMain.on('current-page-changed', (event, page) => {
+    currentPage = page;
+    console.log(`📄 Current page: ${page}`);
+});
+
+// IPC handler for hiding window
+ipcMain.on('hide-window', () => {
+    if (mainWindow) {
+        mainWindow.hide();
+    }
+});
+
+// App lifecycle
 app.whenReady().then(() => {
     createMainWindow();
     createTray();
-    registerShortcuts();
+    registerGlobalShortcuts();
+});
+
+app.on('before-quit', () => {
+    // Unregister shortcuts
+    globalShortcut.unregisterAll();
+    
+    // Destroy tray
+    if (tray) {
+        tray.destroy();
+        tray = null;
+    }
+});
+
+app.on('will-quit', () => {
+    // Double cleanup
+    if (tray) {
+        tray.destroy();
+        tray = null;
+    }
 });
 
 app.on('window-all-closed', () => {
     // Keep running on Windows/Linux
-});
-
-app.on('will-quit', () => {
-    globalShortcut.unregisterAll();
 });
 
 console.log('🧠 PKM System Starting...');

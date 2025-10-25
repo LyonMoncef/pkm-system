@@ -4,7 +4,7 @@
   "description": "Personal Knowledge Management System - Desktop App",
   "main": "src/main/main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron . --trace-warnings",
     "dev": "electron . --trace-warnings",
     "build": "electron-builder",
     "build:win": "electron-builder --win",

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PKM System</title>
+</head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        /* SIDEBAR */
+        #sidebar {
+            width: 250px;
+            min-width: 250px;
+            background: rgba(20, 20, 30, 0.95);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        #sidebar.collapsed {
+            width: 0;
+            min-width: 0;
+            border-right: none;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .app-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .nav-section {
+            flex: 1;
+            padding: 20px 0;
+            overflow-y: auto;
+        }
+
+        .nav-item {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: rgba(255, 255, 255, 0.6);
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        .nav-item.active {
+            background: rgba(102, 126, 234, 0.2);
+            color: white;
+            border-left-color: #667eea;
+        }
+
+        .nav-icon {
+            font-size: 20px;
+        }
+
+        .nav-content {
+            flex: 1;
+        }
+
+        .nav-label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-shortcut {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 2px;
+        }
+
+        .sidebar-footer {
+            padding: 16px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-item {
+            padding: 8px 0;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-item:hover {
+            color: #667eea;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            min-width: 0; /* Important pour le flex shrink */
+        }
+
+        .content-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: rgba(20, 20, 30, 0.9);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+
+        .toggle-sidebar-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+
+        .toggle-sidebar-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #667eea;
+        }
+
+        .content-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            flex: 1;
+            text-align: center;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .header-btn {
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid rgba(102, 126, 234, 0.4);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-btn:hover {
+            background: rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .view-container {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .view-page {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .view-page.active {
+            display: block;
+        }
+
+        .view-page iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* NOTIFICATIONS */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            background: rgba(20, 20, 30, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            backdrop-filter: blur(20px);
+            color: white;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s;
+            z-index: 10000;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* KEYBOARD HINTS */
+        .keyboard-hint {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            max-width: 700px;
+            width: 90%;
+            color: white;
+        }
+
+        .keyboard-hint.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hint-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 24px;
+            text-align: center;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hint-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .hint-section {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hint-section strong {
+            display: block;
+            margin-bottom: 12px;
+            color: #ffd700;
+            font-size: 17px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .keyboard-hint kbd {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 3px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        /* STATUS BAR */
+        .status-bar {
+            padding: 12px 24px;
+            background: rgba(102, 126, 234, 0.1);
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #a5b4fc;
+        }
+
+        .status-left {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #27c93f;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .status-right {
+            color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">🧠</div>
+                <div class="sidebar-title">PKM System</div>
+            </div>
+
+            <div class="sidebar-nav">
+                <div class="nav-item active" data-page="capture">
+                    <div class="nav-icon">✍️</div>
+                    <div class="nav-content">
+                        <div class="nav-label">Quick Capture</div>
+                        <div class="nav-shortcut">Ctrl+1</div>
+                    </div>
+                </div>
+
+                <div class="nav-item" data-page="hub">
+                    <div class="nav-icon">🏠</div>
+                    <div class="nav-content">
+                        <div class="nav-label">Hub</div>
+                        <div class="nav-shortcut">Ctrl+2</div>
+                    </div>
+                </div>
+
+                <div class="nav-item" data-page="reference">
+                    <div class="nav-icon">⚡</div>
+                    <div class="nav-content">
+                        <div class="nav-label">Quick Reference</div>
+                        <div class="nav-shortcut">Ctrl+3</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="footer-item" onclick="openSettings()">
+                    <span>⚙️</span>
+                    <span>Settings</span>
+                </div>
+                <div class="footer-item" onclick="showKeyboardHints()">
+                    <span>⌨️</span>
+                    <span>Shortcuts</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="content-header">
+                <button class="toggle-sidebar-btn" onclick="toggleSidebar()">☰</button>
+                <div class="content-title" id="pageTitle">Quick Capture</div>
+                <div class="header-actions">
+                    <button class="header-btn" onclick="showKeyboardHints()">⌨️ Shortcuts</button>
+                </div>
+            </div>
+
+            <div class="view-container">
+                <!-- Quick Capture View -->
+                <div class="view-page active" id="page-capture">
+                    <iframe src="capture.html" style="width: 100%; height: 100%; border: none;"></iframe>
+                </div>
+
+                <!-- Hub View -->
+                <div class="view-page" id="page-hub">
+                    <iframe src="hub.html" style="width: 100%; height: 100%; border: none;"></iframe>
+                </div>
+
+                <!-- Quick Reference View -->
+                <div class="view-page" id="page-reference">
+                    <iframe src="reference.html" style="width: 100%; height: 100%; border: none;"></iframe>
+                </div>
+            </div>
+            <div class="status-bar">
+                <div class="status-left">
+                    <div class="status-item">
+                        <div class="status-dot"></div>
+                        <span>Ready</span>
+                    </div>
+                    <div class="status-item">
+                        <span>Vault: Configured</span>
+                    </div>
+                </div>
+                <div class="status-right">
+                    Press Ctrl+Shift+I for shortcuts
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Keyboard Shortcuts Hint -->
+        <div id="keyboardHint" class="keyboard-hint">
+            <div class="hint-title">⌨️ Keyboard Shortcuts</div>
+            <div class="hint-content">
+                <div class="hint-section">
+                    <strong>🌍 Global (work when app closed):</strong><br>
+                    <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Space</kbd> Toggle Capture<br>
+                    <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd> Toggle Reference<br>
+                    <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd> Toggle Hub
+                </div>
+                <div class="hint-section">
+                    <strong>🏠 Internal Navigation:</strong><br>
+                    <kbd>Ctrl</kbd>+<kbd>1/2/3</kbd> Quick navigate pages<br>
+                    <kbd>Ctrl</kbd>+<kbd>B</kbd> Toggle sidebar<br>
+                    <kbd>Shift</kbd>+<kbd>?</kbd> Show this help
+                </div>
+                <div class="hint-section">
+                    <strong>✍️ Capture Page:</strong><br>
+                    <kbd>Esc</kbd> Normal mode | <kbd>Ctrl</kbd>+<kbd>I</kbd> Insert mode<br>
+                    <kbd>Ctrl</kbd>+<kbd>S</kbd> Save | <kbd>Ctrl</kbd>+<kbd>K</kbd> Clear<br>
+                    <kbd>Ctrl</kbd>+<kbd>W</kbd> Quick save + hide
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // === IPC LISTENERS ===
+        if (window.electronAPI) {
+            // Écoute les commandes de navigation depuis main process
+            window.electronAPI.onNavigate((page) => {
+                navigateToPage(page);
+            });
+            
+            window.electronAPI.onToggleSidebar(() => {
+                toggleSidebar();
+            });
+            
+            // Listen for show shortcuts command
+            window.electronAPI.onShowShortcuts(() => {
+                console.log('📨 IPC received: show-shortcuts');
+                console.log('🔍 keyboardHint element:', document.getElementById('keyboardHint'));
+                showKeyboardHints();
+            });
+            
+            // NEW: Listen for quick save and hide
+            window.electronAPI.onQuickSaveAndHide(() => {
+                // Forward to active iframe (capture page)
+                const activeIframe = document.querySelector('.view-page.active iframe');
+                if (activeIframe && activeIframe.contentWindow) {
+                    activeIframe.contentWindow.postMessage({ type: 'quick-save-and-hide' }, '*');
+                }
+                
+                // Hide window after short delay
+                setTimeout(() => {
+                    if (window.electronAPI && window.electronAPI.hideWindow) {
+                        window.electronAPI.hideWindow();
+                    }
+                }, 300);
+            });
+        }
+
+        // === FOCUS MANAGEMENT SYSTEM ===
+        // Écoute les events clavier des iframes
+        window.addEventListener('message', (event) => {
+            if (event.data.type === 'show-shortcuts-test') {
+                console.log('🧪 app.html received: show-shortcuts-test');
+                console.log('🧪 Calling showKeyboardHints()');
+                showKeyboardHints();
+            }
+
+            if (event.data.type === 'keyboard-event') {
+                const keyEvent = event.data.event;
+                
+                // Ctrl+1/2/3 - Navigate pages (INTERNAL ONLY)
+                if (keyEvent.ctrlKey && ['1', '2', '3'].includes(keyEvent.key)) {
+                    const pages = ['capture', 'hub', 'reference'];
+                    const pageIndex = parseInt(keyEvent.key) - 1;
+                    if (pages[pageIndex]) {
+                        navigateToPage(pages[pageIndex]);
+                    }
+                }
+                
+                // Ctrl+B - Toggle sidebar (INTERNAL ONLY)
+                if (keyEvent.ctrlKey && keyEvent.key === 'b') {
+                    toggleSidebar();
+                }
+            }
+        });
+
+        // === STATE ===
+        let currentPage = 'capture';
+        let selectedNavIndex = 0;
+        const navItems = document.querySelectorAll('.nav-item');
+
+        // === INITIALIZE ===
+        document.addEventListener('DOMContentLoaded', () => {
+            updateNavSelection();
+        });
+
+        // === NAVIGATE TO PAGE ===
+        function navigateToPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.view-page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show target page
+            const targetPage = document.getElementById(`page-${pageName}`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                currentPage = pageName;
+
+                // Notify main process of page change (for smart toggle tracking)
+                if (window.electronAPI && window.electronAPI.notifyPageChange) {
+                    window.electronAPI.notifyPageChange(pageName);
+                }
+
+                // Update title
+                const titles = {
+                    'capture': 'Quick Capture',
+                    'hub': 'Hub',
+                    'reference': 'Quick Reference'
+                };
+                document.getElementById('pageTitle').textContent = titles[pageName] || pageName;
+
+                // Update nav active state
+                navItems.forEach(item => item.classList.remove('active'));
+                const activeNav = document.querySelector(`[data-page="${pageName}"]`);
+                if (activeNav) {
+                    activeNav.classList.add('active');
+                    selectedNavIndex = Array.from(navItems).indexOf(activeNav);
+                }
+            }
+        }
+
+        // === TOGGLE SIDEBAR ===
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+        }
+
+        // === SHOW KEYBOARD HINTS ===
+        function showKeyboardHints() {
+            const hint = document.getElementById('keyboardHint');
+            hint.classList.add('show');
+            setTimeout(() => {
+                hint.classList.remove('show');
+            }, 5000);
+        }
+
+        // === SHOW NOTIFICATION ===
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // === SETTINGS (placeholder) ===
+        function openSettings() {
+            showNotification('Settings coming soon!');
+        }
+
+        // === ARROW KEY NAVIGATION ===
+        function updateNavSelection() {
+            navItems.forEach((item, index) => {
+                if (index === selectedNavIndex) {
+                    item.style.outline = '2px solid #667eea';
+                    item.style.outlineOffset = '-2px';
+                } else {
+                    item.style.outline = 'none';
+                }
+            });
+        }
+
+        // === CLICK NAVIGATION ===
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const page = item.getAttribute('data-page');
+                navigateToPage(page);
+            });
+        });
+
+        // === TEST RACCOURCIS VIERGES (Layer 2 internal) ===
+        document.addEventListener('keydown', (e) => {
+            // Ctrl+Shift+K - Test 1
+            if (e.ctrlKey && e.shiftKey && e.key === 'K') {
+                e.preventDefault();
+                console.log('🧪 TEST: Ctrl+Shift+K caught in app.html');
+                showKeyboardHints();
+            }
+            
+            // Ctrl+Shift+P - Test 2
+            if (e.ctrlKey && e.shiftKey && e.key === 'P') {
+                e.preventDefault();
+                console.log('🧪 TEST: Ctrl+Shift+P caught in app.html');
+                showKeyboardHints();
+            }
+            
+            // F12 - Test 3
+            if (e.key === 'F12') {
+                e.preventDefault();
+                console.log('🧪 TEST: F12 caught in app.html');
+                showKeyboardHints();
+            }
+        });
+
+
+        console.log('🥷 Ninja Mode Activated!');
+        console.log('Global: Ctrl+Shift+Space/F/H | Internal: Ctrl+1/2/3, Ctrl+B, Shift+?');
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+🎯 Le Pari PKM System
+=====================
+
+**Date de création** : 2025-10-16  
+**Statut** : 🚀 En cours  
+**Tags** : #projet #pkm #pari #meta
+
+* * *
+
+🔥 L'Origine
+------------
+
+Aujourd'hui, j'ai eu une idée de dingue : créer un système nerveux numérique pour gérer TOUTE ma vie. Notes, projets, santé, finance, ressources... TOUT.
+
+L'assistant IA m'a sorti une roadmap de malade, et j'ai relevé le défi :
+
+> **Transformer une vision ambitieuse en système fonctionnel en suivant un plan précis et chronométré.**
+
+* * *
+
+⏱️ Le Pari - Timings
+--------------------
+
+### Phase 1 : MVP (4-8h)
+
+**Deadline** : 48h max  
+**Objectif** : Widget basique + Obsidian configuré
+
+* [x] Setup Obsidian (30 min) -- Le 16/10/2025 à 19:24
+* [x] Config plugins de base (1h)  -- Le 16/10/2025 à 19:24
+* [x] Structure de dossiers (30 min) -- Le 16/10/2025 à 19:24
+* [ ] Widget capture HTML/JS (2-4h)
+* [ ] Tests & ajustements (1-2h)
+
+**Date cible** : 2025-10-17 23h59  
+**Date réelle** : [À REMPLIR]
+
+* * *
+
+### Phase 2 : Version Fonctionnelle (20-40h)
+
+**Deadline** : 2-5 semaines  
+**Objectif** : Système utilisable au quotidien
+
+* [ ] Obsidian avancé (8-12h)
+* [ ] Widget Electron (6-10h)
+* [ ] Intégrations NAS (4-8h)
+* [ ] Premiers dashboards (4-6h)
+* [ ] Automation (4-8h)
+* [ ] Tests & itérations (4-6h)
+
+**Date cible** : [À REMPLIR]  
+**Date réelle** : [À REMPLIR]
+
+* * *
+
+### Phase 3 : Prod-Ready (60-120h)
+
+**Deadline** : 3-6 mois  
+**Objectif** : Vision complète réalisée
+
+* [ ] Intégrations multi-outils (20-40h)
+* [ ] Dashboards avancés (15-25h)
+* [ ] Scripts automation complexes (10-20h)
+* [ ] AI integration (10-15h)
+* [ ] Polish UI/UX (10-15h)
+* [ ] Documentation (5-10h)
+* [ ] Itération finale (15-30h)
+
+**Date cible** : [À REMPLIR]  
+**Date réelle** : [À REMPLIR]
+
+* * *
+
+📊 Suivi Toggl
+--------------
+
+**Projet Toggl** : `PKM System`  
+**Tags utilisés** :
+
+* `#mvp` - Phase 1
+* `#v2` - Phase 2
+* `#v3` - Phase 3
+* `#setup` / `#dev` / `#config` / `#test` / `#doc` / `#integration` / `#dashboard` / `#ai` / `#ux` / `#analytics` / `#infra` / `#perf`
+
+* * *
+
+🎯 Règles du Jeu
+----------------
+
+1. **Deep Work only** - Pas de multitâche, Toggl tourne uniquement sur des sessions focus
+2. **Documentation en continu** - Chaque milestone = une note
+3. **Itération > Perfection** - Mieux vaut un MVP qui tourne qu'un projet parfait qui n'existe pas
+4. **Usage quotidien** - Dès la Phase 1, je capture dedans TOUS LES JOURS
+5. **Feedback loop** - Chaque semaine, je note ce qui marche et ce qui coince
+
+* * *
+
+🔗 Liens
+--------
+
+* [[00_Inbox]] - Mes captures rapides
+* [[02_Projects/PKM-System]] - Dossier projet principal
+* [[06_Meta/Toggl-Import]] - Fichier CSV des tâches
+
+* * *
+
+📈 Journal de Bord
+------------------
+
+### 2025-10-16 - Jour 0
+
+**Temps passé** : 0h  
+**Réalisations** :
+
+* Brainstorming avec IA
+* Roadmap complète établie
+* Import Toggl préparé
+* Cette note créée 🎉
+
+**Next steps** :
+
+* [ ] Installer Obsidian
+* [ ] Créer la structure de dossiers
+* [ ] Importer les tâches dans Toggl
+
+**État d'esprit** : 🔥 MOTIVÉ À FOND !
+
+* * *
+
+### [DATE] - Jour X
+
+**Temps passé** : Xh  
+**Réalisations** :
+
+* ...
+
+**Blocages** :
+
+* ...
+
+**Apprentissages** :
+
+* ...
+
+**Next steps** :
+
+* [ ] ...
+
+* * *
+
+🏆 Victoires
+------------
+
+* [ ] MVP fonctionnel en 48h
+* [ ] Utilisation quotidienne pendant 1 semaine
+* [ ] Première intégration externe réussie
+* [ ] Dashboards opérationnels
+* [ ] IA intégrée pour synthèse
+* [ ] Système complet en production
+
+* * *
+
+💡 Insights & Learnings
+-----------------------
+
+_Cette section sera remplie au fur et à mesure..._
+
+* * *
+
+**Dernière mise à jour** : 2025-10-16  
+**Prochaine review** : [À DÉFINIR]

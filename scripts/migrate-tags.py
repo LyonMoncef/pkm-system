@@ -21,7 +21,7 @@ REPO_ROOT = SCRIPT_DIR.parent
 VAULT_PATH = REPO_ROOT / "vault"
 
 BACKUP_SUFFIX = ".backup"
-DRY_RUN = True  # True = simulation, False = vraie migration
+DRY_RUN = False  # True = simulation, False = vraie migration
 
 # ============================================================================
 # MAPPING DE MIGRATION
@@ -403,3 +403,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+VAULT_PATH = Path.home() / "vault"  # Ajuste si nécessaire

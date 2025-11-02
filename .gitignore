@@ -19,9 +19,24 @@ api-keys/
 # ====================
 # PERSONAL NOTES & VAULT
 # ====================
-vault/
+
+# Ignorer tout le vault par défaut
+vault/*
 notes/
 *.md.backup
+
+# EXCEPTIONS: Fichiers système critiques à versionner
+!vault/06_Meta/
+vault/06_Meta/*
+!vault/06_Meta/TAG_REGISTRY.md
+!vault/06_Meta/Claude-Instructions.md
+
+!vault/04_Resources/
+vault/04_Resources/*
+!vault/04_Resources/Templates/
+!vault/04_Resources/Templates/**
+
+# Obsidian workspace (personnel)
 .obsidian/workspace*
 .obsidian/workspace.json
 .obsidian/workspaces.json

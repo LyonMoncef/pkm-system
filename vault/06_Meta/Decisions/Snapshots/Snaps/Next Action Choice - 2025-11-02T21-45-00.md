@@ -1,0 +1,93 @@
+---
+created: 2025-11-02T21:45:00
+updated: 2025-11-02T21:45:00
+type: decision-point
+tags:
+  - decision
+  - choice-point
+  - meta
+  - pkm-system
+status: pending
+context: Après sync Git, on reprend le travail
+options:
+  - "[[A - Finaliser TAG_REGISTRY]]"
+  - "[[B - Structure Toggl]]"
+  - "[[C - Fix IPC Communication]]"
+  - "[[D - Structure Git Miroir]]"
+  - "[[E - Continuer Cartes Shortcuts]]"
+  - "[[F - Refacto Notes Restantes]]"
+chosen: "[[A - Finaliser TAG_REGISTRY]]"
+---
+
+# 🎯 Point de Décision - Prochaine Action
+
+> **Contexte:** Après sync Git réussi, on détermine la prochaine tâche
+
+**Date:** 2025-11-02T21:45:00  
+**Session:** Refacto + Organisation  
+**État projet:** Phase 1.5
+
+---
+
+## 📊 Options Disponibles
+
+### 🔴 URGENT
+
+**[[A - Finaliser TAG_REGISTRY]]**
+- Priorité: URGENT
+- Temps: 30-45min
+- Bloque: Création de toutes nouvelles notes
+
+**[[C - Fix IPC Communication]]**
+- Priorité: URGENT
+- Temps: 2-3h
+- Bloque: Raccourcis Layer 1
+
+---
+
+### 🟠 HIGH
+
+**[[B - Structure Toggl]]**
+- Priorité: HIGH
+- Temps: 1h
+- Impact: Organisation tâches
+
+**[[D - Structure Git Miroir]]**
+- Priorité: HIGH
+- Temps: 1h
+- Impact: Traçabilité commits
+
+---
+
+### 🟡 MEDIUM
+
+**[[E - Continuer Cartes Shortcuts]]**
+- Priorité: MEDIUM
+- Temps: 30min
+- Impact: Documentation
+
+**[[F - Refacto Notes Restantes]]**
+- Priorité: MEDIUM
+- Temps: 1-2h
+- Impact: Cohérence vault
+
+---
+
+## 🌿 Branche Recommandée
+
+Si choix A, B ou D → Nouvelle branche suggérée
+
+---
+
+## 📝 Décision
+
+**Choix:** [À remplir]  
+**Justification:** [À remplir]  
+**Date décision:** [À remplir]
+
+---
+
+## 🔗 Liens
+
+- [[TODO]] - Master TODO list
+- [[Backlog]] - Backlog général

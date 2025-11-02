@@ -90,4 +90,4 @@ Si choix A, B ou D → Nouvelle branche suggérée
 ## 🔗 Liens
 
 - [[TODO]] - Master TODO list
-- [[Backlog]] - Backlog général
+- [[02_Projects/PKM-SYSTEM/BackLog/Backlog]] - Backlog général

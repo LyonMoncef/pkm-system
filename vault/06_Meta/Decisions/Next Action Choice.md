@@ -1,16 +1,12 @@
 ---
 created: 2025-11-02T21:45:00
-updated: 2025-11-02T23:30:00
+updated: 2025-11-02T11:50:00
 type: decision-point
-version: 2
-tags:
-  - decision
-  - choice-point
-  - meta
-  - pkm-system
+version: "2.0"
+tags: [decision, choice-point, meta, pkm-system]
 status: in-progress
 snapshots:
-  - "[[Next Action Choice - Snap 2025-11-02T21-45-00]]"
+  - "[[2025-11-02T21-45-00 - Next Action Choice v1.0]]"
 ---
 
 # 🎯 Point de Décision - Prochaine Action

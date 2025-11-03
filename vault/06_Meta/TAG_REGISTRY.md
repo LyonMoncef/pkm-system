@@ -1,13 +1,6 @@
 ---
 created: 2025-11-01T20:45:00
-updated: 2025-11-01T20:45:00
-type: registry
-tags: [meta, registry, tags, reference]
-pinned: true
----
----
-created: 2025-11-02T22:00:00
-updated: 2025-11-02T22:00:00
+updated: 2025-11-03T16:30:00
 type: registry
 tags: [meta, registry, tags, reference]
 pinned: true
@@ -23,7 +16,7 @@ pinned: true
 
 ### Règles Strictes
 
-1. **Tout en minuscules** : `#electron` ✅ pas `#electron` ❌
+1. **Tout en minuscules** : `#electron` ✅ pas `#Electron` ❌
 2. **Tirets pour séparation** : `#pkm-system` ✅ pas `#pkm_system` ❌
 3. **Pas d'espaces** : `#layer-1` ✅ pas `#layer 1` ❌
 4. **Singulier préféré** : `#shortcut` ✅ sauf si vraiment pluriel nécessaire
@@ -52,10 +45,12 @@ pinned: true
 | `choice-card` | decision-card | Carte de choix | 0 |
 | `decision-point` | - | Point de décision | 0 |
 | `git-commit` | - | Carte commit Git | 0 |
+| `export` | exported | Export de données | 0 |
+| `raw` | brut, original | Données brutes | 0 |
 
 ---
 
-### 🏗️ Projets
+### 🗃️ Projets
 
 | Tag Canonique | Synonymes Interdits | Description | Occurrences |
 |---------------|---------------------|-------------|-------------|
@@ -149,6 +144,7 @@ pinned: true
 | `doc` | documentation | Documentation | 1 |
 | `refactor` | - | Refactoring | 1 |
 | `folders` | - | Structure dossiers | 1 |
+| `migration` | migrate | Migration données | 0 |
 
 ---
 
@@ -200,6 +196,19 @@ pinned: true
 
 ---
 
+### 💰 Finance & Budget
+
+| Tag Canonique | Synonymes Interdits | Description | Occurrences |
+|---------------|---------------------|-------------|-------------|
+| `finance` | finances, financial | Finance personnelle | 0 |
+| `compta` | comptabilité, accounting | Comptabilité | 0 |
+| `budget` | budgeting | Budget/budgétisation | 0 |
+| `expense` | expenses, dépense, spending | Dépenses | 0 |
+| `income` | revenue, revenu | Revenus | 0 |
+| `receipt` | ticket, reçu | Ticket/reçu | 0 |
+
+---
+
 ### 🌐 Communication & Partage
 
 | Tag Canonique | Synonymes Interdits | Description | Occurrences |
@@ -236,7 +245,7 @@ pinned: true
 
 ---
 
-## 🔄 MAPPING DE MIGRATION
+## 📄 MAPPING DE MIGRATION
 
 **À appliquer lors de la migration des tags existants:**
 ```yaml
@@ -267,7 +276,7 @@ projet → project (1 note)
 
 ---
 
-## 🔍 COMMENT UTILISER CE REGISTRY
+## 📝 COMMENT UTILISER CE REGISTRY
 
 ### Pour Claude
 
@@ -313,9 +322,9 @@ projet → project (1 note)
 
 ## 📊 STATS
 
-**Tags canoniques définis:** 100+  
+**Tags canoniques définis:** 110+  
 **Tags à migrer:** 15  
-**Dernière révision:** 2025-11-02T22:00:00  
+**Dernière révision:** 2025-11-03T16:30:00  
 **Prochaine review:** Hebdomadaire
 
 ---

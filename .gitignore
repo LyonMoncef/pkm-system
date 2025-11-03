@@ -31,10 +31,21 @@ vault/06_Meta/*
 !vault/06_Meta/TAG_REGISTRY.md
 !vault/06_Meta/Claude-Instructions.md
 
+# Projects - PKM-SYSTEM complet (doc projet + Toggl tasks)
+!vault/02_Projects/
+vault/02_Projects/*
+!vault/02_Projects/PKM-SYSTEM/
+!vault/02_Projects/PKM-SYSTEM/**
+
+# Resources - Templates
 !vault/04_Resources/
 vault/04_Resources/*
 !vault/04_Resources/Templates/
 !vault/04_Resources/Templates/**
+
+# Decisions & Snapshots (documentation système)
+!vault/06_Meta/Decisions/
+!vault/06_Meta/Decisions/**
 
 # Obsidian workspace (personnel)
 .obsidian/workspace*

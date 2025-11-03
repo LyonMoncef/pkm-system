@@ -1,0 +1,17 @@
+🚀 Nouveau projet open source : PKM System
+
+Après des années à jongler entre Notion, Obsidian et autres outils, j'ai décidé de construire MON système de gestion des connaissances. En public.
+
+🧠 L'objectif :
+- Capture ultra-rapide des idées (widget desktop)
+- Quick reference overlay (accès instant aux cheatsheets)
+- Local-first (mes données = mon NAS)
+- Évolutif vers du collaboratif
+
+Premier commit fait il y a 5 minutes 💪
+
+Repo GitHub : https://github.com/LyonMoncef/pkm-system
+
+#build-in-public #open-source #pkm #productivity-tools #knowledge-management
+
+PS: Si ça vous parle, n'hésitez pas à follow le projet ou proposer des idées !

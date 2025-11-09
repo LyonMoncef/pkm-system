@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02_Projects/ChatToCards/export_conv.md",
+                "file": "02_Projects/ChatToCards/README-CHAT-EXPORTER.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "export_conv"
+              "title": "README-CHAT-EXPORTER"
             }
           }
         ]
@@ -182,9 +182,16 @@
   },
   "active": "24a380d3290540d5",
   "lastOpenFiles": [
-    "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction/Cards/Card-103-R103-Reponse-Assistant.md",
-    "02_Projects/ChatToCards/export_conv.md",
     "02_Projects/ChatToCards/Guide generateur cartes.md",
+    "02_Projects/ChatToCards/README-CHAT-EXPORTER.md",
+    "04_Resources/Templates/template-chat-export-raw.md",
+    "02_Projects/PKM-SYSTEM/Tasks/TASK-atomize-chat-script.md",
+    "06_Meta/TAG_REGISTRY.md",
+    "02_Projects/PKM-SYSTEM/Tasks",
+    "04_Resources/Claude-Chat-Exports/export_conv.md",
+    "04_Resources/Claude-Chat-Exports/Untitled.md",
+    "04_Resources/Claude-Chat-Exports",
+    "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction/Cards/Card-103-R103-Reponse-Assistant.md",
     "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction/Cards/Card-021-Q021-Question-User.md",
     "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction/Cards/Card-023-Q023-Question-User.md",
     "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction/Cards/Card-022-Q022-Question-User.md",
@@ -203,11 +210,6 @@
     "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction/Cards/Card-008-R008-Reponse-Structure-JSON.md",
     "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction/Cards/Card-007-Q007-Question-User.md",
     "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction/Cards/Card-006-Q006-Question-User.md",
-    "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction/Cards/Card-005-Q005-Question-Format-Donnees.md",
-    "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction/Cards/Card-004-R004-Reponse-Structure-JSON.md",
-    "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction/Cards/Card-003-R003-Reponse-Structure-JSON.md",
-    "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction/Cards/Card-002-Q002-Question-Extraction-Tickets.md",
-    "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction/Cards/Card-001-Q001-Question-Extraction-Tickets.md",
     "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction/Cards",
     "02_Projects/ChatToCards/02_Projects/Chats/Sessions/Ticket receipt data extraction",
     "02_Projects/ChatToCards/02_Projects/Chats/Sessions",
@@ -216,8 +218,6 @@
     "02_Projects/ChatToCards",
     "06_Meta/Decisions/Options/E - Continuer Cartes Shortcuts.md.backup",
     "06_Meta/Decisions/Snapshots/Meta",
-    "06_Meta/Decisions/Snapshots/Full",
-    "06_Meta/Decisions/Snapshots",
     "02_Projects/NDFs/20251014 Ticket 10.JPG",
     "02_Projects/NDFs/20251014 Ticket 9.JPG",
     "02_Projects/NDFs/20251014 Ticket 8.JPG",

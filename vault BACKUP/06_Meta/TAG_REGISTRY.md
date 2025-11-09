@@ -310,6 +310,56 @@ projet → project (1 note)
 | `nouveau-tag` | ancien-nom, autre-nom | Description claire | 0 |
 ```
 
+
+# NOUVEAUX TAGS À AJOUTER AU TAG_REGISTRY.md
+
+## Section: 🎯 Types de Contenu (après ligne 50)
+
+Ajouter ces lignes après `| \`chat-card` | conversation-card | Carte de chat | 0 |` :
+
+```markdown
+| `chat-export` | conversation-export | Export complet conversation | 0 |
+| `export` | - | Export de données | 0 |
+| `raw` | unprocessed | Données brutes non traitées | 0 |
+```
+
+## Section: 📊 Data & Finance (NOUVELLE SECTION à ajouter après "🎯 Contextes Spécifiques")
+
+```markdown
+---
+
+### 📊 Data & Finance
+
+| Tag Canonique | Synonymes Interdits | Description | Occurrences |
+|---------------|---------------------|-------------|-------------|
+| `power-bi` | powerbi, pbi | Microsoft Power BI | 0 |
+| `excel` | xlsx | Microsoft Excel | 0 |
+| `data-analysis` | analytics, analysis | Analyse de données | 0 |
+| `data-modeling` | data-model | Modélisation données | 0 |
+| `finance` | financial, money | Finance/comptabilité | 0 |
+| `star-schema` | - | Schéma en étoile (BI) | 0 |
+| `dax` | dax-measures | DAX (Power BI) | 0 |
+| `rfm-analysis` | rfm | Analyse RFM | 0 |
+```
+
+## Instructions d'ajout
+
+1. Ouvrir `/mnt/project/TAG_REGISTRY.md`
+2. Trouver la ligne `| \`chat-card` | conversation-card | Carte de chat | 0 |`
+3. Ajouter les 3 nouvelles lignes juste après
+4. Aller à la section "🎯 Contextes Spécifiques" (ligne ~191)
+5. Ajouter la nouvelle section "📊 Data & Finance" après
+6. Mettre à jour le compteur "Tags canoniques définis" en bas du fichier
+7. Commit avec message: `docs: add chat-export and data/finance tags to registry`
+
+## Justification
+
+Ces tags sont nécessaires pour:
+
+- ✅ Supporter le workflow d'export de conversations Claude.ai
+- ✅ Documenter les discussions sur Power BI / Excel
+- ✅ Maintenir la cohérence du système de tags
+- ✅ Respecter les conventions du TAG_REGISTRY
 ---
 
 ## 🔗 LIENS

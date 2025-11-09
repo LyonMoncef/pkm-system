@@ -1,0 +1,29 @@
+User,Email,Client,Client External Reference,Project,Project External Reference,Task,Description,Billable,Start date,Start time,Duration,Tags
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Setup Obsidian - Installation,"Télécharger et installer Obsidian, créer le vault",No,2025-10-16,09:00:00,00:30:00,setup;mvp
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Setup Obsidian - Plugins essentiels,"Installer : Dataview, Templater, Calendar, QuickAdd",No,2025-10-16,10:00:00,01:00:00,setup;mvp
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Setup Obsidian - Structure dossiers,"Créer arbo : Inbox, Journal, Projects, Areas, Resources, Archives, Meta",No,2025-10-16,11:00:00,00:30:00,setup;mvp
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Widget - Prototype HTML/JS,"Créer widget de capture en HTML/JS standalone",No,2025-10-17,09:00:00,02:00:00,dev;mvp
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Widget - Style & UX,"Améliorer le design, markdown preview, autosave",No,2025-10-17,11:00:00,01:00:00,dev;mvp
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Widget - Hotkey integration,"Tester différentes solutions pour show/hide rapide",No,2025-10-17,12:00:00,01:00:00,dev;mvp
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Tests & Ajustements MVP,"Tester le workflow complet, ajuster ce qui coince",No,2025-10-18,09:00:00,01:30:00,test;mvp
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Note inaugurale - Le Pari,"Créer la première note qui documente ce projet",No,2025-10-18,11:00:00,00:30:00,doc;mvp
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Templates Obsidian,"Créer templates pour : daily notes, projets, idées, ressources",No,2025-10-19,09:00:00,02:00:00,config;v2
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Dataview queries,"Setup des queries pour dashboards dynamiques",No,2025-10-19,11:00:00,03:00:00,config;v2
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Widget Electron - Migration,"Passer du proto HTML à vraie app Electron",No,2025-10-20,09:00:00,04:00:00,dev;v2
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Widget Electron - Hotkeys globaux,"Implémenter hotkeys système (Ctrl+Shift+Space)",No,2025-10-20,13:00:00,02:00:00,dev;v2
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Intégration NAS,"Configurer accès et sync avec le NAS",No,2025-10-21,09:00:00,03:00:00,integration;v2
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Export automation,"Scripts pour exporter notes vers formats externes",No,2025-10-21,12:00:00,02:00:00,integration;v2
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Dashboard Santé,"Setup tracking santé : sommeil, sport, alimentation",No,2025-10-22,09:00:00,04:00:00,dashboard;v2
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Dashboard Finance,"Setup suivi finance et budget",No,2025-10-22,13:00:00,04:00:00,dashboard;v2
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Dashboard Projets,"Vue d'ensemble des projets actifs",No,2025-10-23,09:00:00,03:00:00,dashboard;v2
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Tests V2 fonctionnelle,"Validation usage quotidien sur 1 semaine",No,2025-10-23,12:00:00,03:00:00,test;v2
+Tats,tats@datasaillance.fr,Internal,,PKM System,,AI Integration - API Setup,"Connecter API OpenAI/Claude pour synthèse",No,2025-10-24,09:00:00,03:00:00,ai;v3
+Tats,tats@datasaillance.fr,Internal,,PKM System,,AI Integration - Prompts,"Créer prompts pour restructuration/analyse notes",No,2025-10-24,12:00:00,02:00:00,ai;v3
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Zapier/Make workflows,"Automatiser captures depuis Gmail, LinkedIn, etc",No,2025-10-25,09:00:00,06:00:00,integration;v3
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Graph View customization,"Optimiser la vue graph pour navigation fluide",No,2025-10-25,15:00:00,04:00:00,ux;v3
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Advanced Analytics,"Scripts pour analyse patterns, insights, tendances",No,2025-10-26,09:00:00,08:00:00,analytics;v3
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Multi-device sync,"Setup sync cloud ou self-hosted (Syncthing)",No,2025-10-26,17:00:00,04:00:00,infra;v3
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Documentation complète,"Guide utilisateur, troubleshooting, best practices",No,2025-10-27,09:00:00,06:00:00,doc;v3
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Polish UI/UX final,"Peaufiner l'expérience utilisateur globale",No,2025-10-27,15:00:00,08:00:00,ux;v3
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Optimisation performance,"Améliorer vitesse, indexation, recherche",No,2025-10-28,09:00:00,05:00:00,perf;v3
+Tats,tats@datasaillance.fr,Internal,,PKM System,,Tests Prod-Ready,"Validation stabilité sur 1 mois d'usage intensif",No,2025-10-28,14:00:00,06:00:00,test;v3

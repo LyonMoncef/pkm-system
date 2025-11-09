@@ -185,6 +185,22 @@ class ChatExport:
         assistant_count = sum(1 for m in self.messages if m.role == 'assistant')
         total_attachments = sum(len(m.attachments) for m in self.messages)
         
+        # Extraire dates de conversation
+        conversation_start = self.frontmatter.get('conversation_start') or \
+                           self.frontmatter.get('date_start') or \
+                           self.frontmatter.get('created', 'unknown')
+        
+        conversation_end = self.frontmatter.get('conversation_end') or \
+                         self.frontmatter.get('date_end') or \
+                         self.frontmatter.get('exported', 'unknown')
+        
+        # Si timestamps dans messages, les utiliser
+        if self.messages:
+            if self.messages[0].timestamp:
+                conversation_start = self.messages[0].timestamp
+            if self.messages[-1].timestamp:
+                conversation_end = self.messages[-1].timestamp
+        
         return {
             'total_messages': len(self.messages),
             'user_messages': user_count,
@@ -193,7 +209,9 @@ class ChatExport:
             'chat_id': self.frontmatter.get('chat_id', 'unknown'),
             'title': self.frontmatter.get('title', 'Untitled'),
             'exported': self.frontmatter.get('exported', ''),
-            'platform': self.frontmatter.get('platform', 'unknown')
+            'platform': self.frontmatter.get('platform', 'unknown'),
+            'conversation_start': conversation_start,
+            'conversation_end': conversation_end
         }
 
 
@@ -250,7 +268,6 @@ class CodeExtractor:
             })
         
         return code_blocks
-
 
 
 class AtomicCardGenerator:
@@ -407,6 +424,8 @@ class MOCGenerator:
 | 🤖 Messages Assistant | {stats['assistant_messages']} |
 | 📎 Attachments | {stats['total_attachments']} |
 | 🎴 Cartes générées | {len(self.cards)} |
+| 📅 Début conversation | {stats.get('conversation_start', 'Unknown')} |
+| 📅 Fin conversation | {stats.get('conversation_end', 'Unknown')} |
 | 📅 Export date | {stats['exported']} |
 | 🌐 Platform | {stats['platform']} |
 
@@ -517,6 +536,7 @@ SORT order ASC
         
         return moc_path
 
+
 def main():
     """Point d'entrée principal."""
     parser = argparse.ArgumentParser(
@@ -597,11 +617,3 @@ Examples:
 
 if __name__ == '__main__':
     exit(main())
-
-
-
-
-
-
-
-

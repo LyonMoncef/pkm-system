@@ -143,3 +143,8 @@ coverage/
 .env.test
 .vercel
 .turbo
+
+# Python
+venv/
+__pycache__/
+*.pyc

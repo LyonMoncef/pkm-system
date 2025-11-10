@@ -30,6 +30,7 @@ import shutil
 import subprocess
 
 # Import nos modules
+from clean_cards import CardCleaner
 from atomize_chat import ChatExport, AtomicCardGenerator, MOCGenerator
 from postprocess_cards import (
     Card, 
@@ -182,6 +183,12 @@ class ChatToCardsOrchestrator:
             print("\n  Generating atomic cards...")
             card_gen = AtomicCardGenerator(export, self.session_dir)
             card_paths = card_gen.generate_all_cards()
+
+            # Nettoyage automatique
+            print("\n🧹 Cleaning generated cards...")
+            cleaner = CardCleaner(self.output_dir / 'cards', dry_run=False)
+            cleaner.clean_all()
+            cleaner.print_summary()
             
             # Générer MOC basique
             print("  Generating basic MOC...")

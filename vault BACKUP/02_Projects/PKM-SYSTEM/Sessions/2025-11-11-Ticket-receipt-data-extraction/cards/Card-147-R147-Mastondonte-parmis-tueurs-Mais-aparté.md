@@ -1,0 +1,32 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 147
+role: assistant
+created: '2025-11-11T00:41:52.815891Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 147 - Assistant
+
+**ID:** msg-147
+
+## 💬 Content
+
+
+**ID:** msg-147
+
+MFt'es un mastondonte parmis les tueurs !
+Mais dis moi en aparté, ça t'a coûté combien d'énergie en valeur humainement compréhensible de produire la dernière réponse en 2 fois ?
+T'as une estimation, un moyen de visualiser et de comprendre la charge que ça représente pour que je puisse me rendre compte ?
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-146-R146-Mastondonte-parmis-tueurs-Mais-aparté]]
+- ⬇️ Next: [[Card-148-R148-Mastondonte-parmis-tueurs-Mais-aparté]]
+- 📊 MOC: [[_MOC_Ticket receipt data extraction]]

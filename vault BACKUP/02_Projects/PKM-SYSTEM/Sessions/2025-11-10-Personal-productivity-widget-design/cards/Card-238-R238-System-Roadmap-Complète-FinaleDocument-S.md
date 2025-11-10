@@ -1,0 +1,41 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 238
+role: assistant
+created: '2025-11-10T22:55:58.129667Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 238 - Assistant
+
+**ID:** msg-238
+
+## 💬 Content
+
+
+**ID:** msg-238
+
+PKM System - Roadmap Complète FinaleDocument # 🧠 PKM System - Roadmap Complète
+
+## 🎯 Vision Globale
+
+**Un système nerveux numérique personnel évolutif vers une plateforme collaborative de gestion des connaissances**
+
+---
+
+## 📅 Phase 1 : MVP Extended (Semaines 1-2 | 16-20h)
+
+### Objectif
+Syst
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-237-R237-System-Roadmap-Complète-FinaleDocument-S]]
+- ⬇️ Next: [[Card-239-R239-System-Roadmap-Complète-FinaleDocument]]
+- 📊 MOC: [[_MOC_Personal productivity widget design]]

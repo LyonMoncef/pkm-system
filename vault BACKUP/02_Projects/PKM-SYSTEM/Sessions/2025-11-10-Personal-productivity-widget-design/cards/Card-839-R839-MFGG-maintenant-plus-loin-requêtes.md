@@ -1,0 +1,40 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 839
+role: assistant
+created: '2025-11-10T22:56:04.120477Z'
+tags:
+- chat-card
+- obsidian
+attachments_count: 0
+---
+
+# 🤖 Message 839 - Assistant
+
+**ID:** msg-839
+
+## 💬 Content
+
+
+**ID:** msg-839
+
+MFGG, maintenant plus loin,
+Les requêtes devront être formulés via IA en langage courant comme je te parle, le champ de recherche sera une textbox comme ici
+La traduction vers une requête intelligible pour Obsidian devra être gérée.Maintenant par contre j'ai une question qui me chagrine un peu
+Tu vois l'ampleur que ça prends, et si on mixe tous les formats de données on va toucher à une infinité de sujets personnels.
+Si c'est un vrai outil du quotidien, qui se généralise pour une utilisation par des millions d'utilisateurs, on peut pas se reposer uniquement sur des modèles de données en ligneFaut que la partie lecture / analyse du contenu se fasse hors ligne
+Faut qu'on puisse faire tourner l'IA localement, que la solution ne soit jamais susceptible de transmettre ces données aux IA classiquesJ'exprime mal le truc mais t'as captéT'en penses quoi ?Afficher plus
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-838-R838-MFGG-maintenant-plus-loin-requêtes]]
+- ⬇️ Next: [[Card-840-R840-MFGG-maintenant-plus-loin-requêtes]]
+- 📊 MOC: [[_MOC_Personal productivity widget design]]
+
+## 🏷️ Topics
+
+- #obsidian

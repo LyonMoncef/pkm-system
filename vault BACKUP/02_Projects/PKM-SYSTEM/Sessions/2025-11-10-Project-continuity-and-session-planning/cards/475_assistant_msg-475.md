@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 475
+role: assistant
+created: '2025-11-10T23:13:25.699158Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 475 - Assistant
+
+**ID:** msg-475
+
+## 💬 Content
+
+
+**ID:** msg-475
+
+Deploy manualDocument · MD
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[474_assistant_msg-474]]
+- ⬇️ Next: [[476_assistant_msg-476]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]

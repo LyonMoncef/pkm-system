@@ -1,0 +1,100 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 439
+role: assistant
+created: '2025-11-10T22:56:00.213784Z'
+tags:
+- chat-card
+- git
+attachments_count: 0
+---
+
+# 🤖 Message 439 - Assistant
+
+**ID:** msg-439
+
+## 💬 Content
+
+
+**ID:** msg-439
+
+🎯 INSTALLATION DU HUB
+bashcd ~/Projects/pkm-system/widget/src
+
+# Crée le fichier hub
+touch hub.html
+
+# Copie le contenu de l'artifact dedans
+# Puis ouvre-le
+firefox hub.html
+
+✨ FEATURES DU HUB
+Navigation complète :
+
+🏠 Hub central - Point d'entrée avec 2 cartes
+✍️ Quick Capture - Accessible via hub ou Ctrl+Shift+Space
+⚡ Quick Reference - Accessible via hub ou Ctrl+Shift+Q
+🔄 Barre de navigation - Switcher entre widgets en 1 click
+⌨️ Hotkeys globaux - Navigation au clavier
+
+Flow utilisateur :
+
+Ouvre hub.html
+Click sur widget OU utilise hotkey
+Widget s'ouvre en fullscreen
+Barre nav en haut à droite pour switcher
+Esc pour retourner au hub
+
+
+🧪 TESTE-LE !
+Scénario 1 :
+
+Ouvre hub.html
+Click sur \"Quick Capture\"
+Écris une note
+Click \"⚡ Reference\" dans la barre
+Cherche une cheatsheet
+Click \"🏠 Hub\" pour revenir
+
+Scénario 2 (Hotkeys) :
+
+Depuis hub : Ctrl+Shift+Space → Quick Capture
+Ctrl+Shift+Q → Quick Reference
+Esc → Retour hub
+
+
+💾 VALIDATION ?
+Ça fonctionne bien ?
+Si OUI → On commit tout ! 🚀
+bashgit add widget/src/hub.html
+git commit -m \"🔗 Add PKM Widget Hub - Connect all widgets
+
+Features:
+- Central hub with widget cards
+- Navigation bar for switching widgets
+- Global hotkeys (Ctrl+Shift+Space, Ctrl+Shift+Q)
+- Fullscreen widget views with iframes
+- Smooth transitions and animations
+
+Navigation flow:
+- Hub → Widget → Switch → Hub
+- Keyboard-first experience
+- One-click access to all tools
+
+#BuildInPublic\"
+git push
+Prêt à commit ? 😎💪
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-438-R438-Widget-Index-Principal]]
+- ⬇️ Next: [[Card-440-R440-Bashcd-Projects-system-widget-Crée]]
+- 📊 MOC: [[_MOC_Personal productivity widget design]]
+
+## 🏷️ Topics
+
+- #git

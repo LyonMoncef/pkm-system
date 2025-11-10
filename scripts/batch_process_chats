@@ -1,0 +1,94 @@
+#!/usr/bin/env python3
+"""
+Batch Chat Processor v1.3 - FAST MODE
+======================================
+
+Traite tous les chats SANS détection de doublons.
+Les doublons seront traités manuellement après si besoin.
+"""
+
+from pathlib import Path
+import subprocess
+import sys
+
+
+def extract_title(chat_file: Path) -> str:
+    """Extrait le titre d'un fichier de chat."""
+    parent_name = chat_file.parent.name
+    file_stem = chat_file.stem
+    
+    if parent_name != "Sessions" and not parent_name.startswith("20"):
+        return parent_name
+    return file_stem
+
+
+def batch_process(input_dir: Path, output_base: Path):
+    """Traite tous les chats (mode rapide)."""
+    
+    # Trouver tous les .md et .txt
+    chat_files = []
+    for ext in ['*.md', '*.txt']:
+        chat_files.extend(input_dir.rglob(ext))
+    
+    total = len(chat_files)
+    
+    print(f"🎯 BATCH PROCESSING CHATS (FAST MODE)")
+    print(f"=" * 60)
+    print(f"📊 Found {total} chat files")
+    print(f"⚡ No duplicate detection (fast)")
+    print()
+    
+    success = 0
+    failed = 0
+    
+    for idx, chat_file in enumerate(chat_files, 1):
+        title = extract_title(chat_file)
+        
+        print(f"\n[{idx}/{total}] {title}")
+        print("-" * 60)
+        
+        try:
+            # Appel simple sans capture pour voir output
+            result = subprocess.run([
+                sys.executable,
+                'scripts/chat-atomizer/chat_to_cards.py',
+                '--input', str(chat_file),
+                '--output', str(output_base),
+                '--title', title
+            ], check=False)
+            
+            if result.returncode == 0:
+                success += 1
+                print("✅ Success")
+            else:
+                failed += 1
+                print("❌ Failed")
+        
+        except Exception as e:
+            failed += 1
+            print(f"❌ Error: {e}")
+    
+    # Résumé
+    print(f"\n{'=' * 60}")
+    print(f"📊 SUMMARY")
+    print(f"{'=' * 60}")
+    print(f"Total: {total}")
+    print(f"Success: {success}")
+    print(f"Failed: {failed}")
+    print(f"\n📂 Output: {output_base}\n")
+    
+    return success, failed
+
+
+if __name__ == '__main__':
+    input_dir = Path("vault BACKUP/04_Resources/Chat-Exports/Sessions")
+    output_base = Path("vault BACKUP/02_Projects/PKM-SYSTEM/Sessions")
+    
+    if not input_dir.exists():
+        print(f"❌ Input not found: {input_dir}")
+        sys.exit(1)
+    
+    output_base.mkdir(parents=True, exist_ok=True)
+    
+    success, failed = batch_process(input_dir, output_base)
+    sys.exit(0 if failed == 0 else 1)

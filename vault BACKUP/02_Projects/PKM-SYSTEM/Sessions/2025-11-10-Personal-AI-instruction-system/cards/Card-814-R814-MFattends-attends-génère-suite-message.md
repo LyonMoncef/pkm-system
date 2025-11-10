@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 814
+role: assistant
+created: '2025-11-10T21:46:17.041343Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 814 - Assistant
+
+**ID:** msg-814
+
+## 💬 Content
+
+
+**ID:** msg-814
+
+MFattends attends, génère moi a la suite de ce message un long champ de texte l'air d'afficher une flèche vertical sur au moins un ecran de hauteurJe veux revenir rapidement à ce point de la conversation en scrollant pour reprendreMais avant ça, on va mettre à jour un doc vite faitC'est une compilation de tes instructions que j'avais sur d'autres chatsMais c'est pas forcément à jour vu cette longue conversationCe que je te propose, regénère un document sur la même structure mais avec tes paramètres à toi dans ce chatEnsuite fais moi une diff entre les deux fichiers et on arbitre ensemble ce qu'on garde pour les futures convs
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-813-R813-INSTRUCTIONS-CLAUDE-SYSTEM-Version-Derni]]
+- ⬇️ Next: [[Card-815-R815-MFattends-attends-génère-suite-message]]
+- 📊 MOC: [[_MOC_Personal AI instruction system]]

@@ -1,0 +1,148 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 395
+role: assistant
+created: '2025-11-10T21:46:11.286467Z'
+tags:
+- chat-card
+- python
+- obsidian
+- receipts
+- code
+- automation
+attachments_count: 0
+---
+
+# 🤖 Message 395 - Assistant
+
+**ID:** msg-395
+
+## 💬 Content
+
+
+**ID:** msg-395
+
+markdown---
+created: 2025-10-24T15:45:00
+updated: 2025-11-01T15:00:00
+type: feature
+status: broken
+tags: [feature, shortcut, pkm-system, global, layer-1, toggle-window]
+related: [[MOC Raccourcis]], [[Ctrl+Shift+Space - Toggle Capture]], [[Ctrl+Shift+H - Toggle Hub]]
+source: \"développement pkm-system phase 1.5\"
+---
+
+# Ctrl+Shift+F - Toggle Reference - BROKEN
+
+## Description
+
+Raccourci global pour afficher/masquer la fenêtre Reference depuis n'importe où dans l'OS.
+
+## Spécifications
+
+**Raccourci:** `Ctrl+Shift+F`
+**Layer:** Global (Layer 1 - OS Level)
+**Contexte:** Fonctionne même quand app cachée
+**Comportement attendu:**
+- App fermée → Créer fenêtre + naviguer Reference
+- App cachée → Afficher + naviguer Reference
+- App visible sur Reference → Masquer (toggle off)
+- App visible sur autre page → Naviguer Reference
+
+## Implémentation
+
+**Fichier:** main.js (fonction `registerGlobalShortcuts()`)
+**Chemin:** `C:\\Users\\idsmf\\Projects\\pkm-system\\electron\\src\\main\\main.js`
+**Ligne approximative:** ~50
+```javascript
+globalShortcut.register('CommandOrControl+Shift+F', () => {
+    smartToggle('reference');
+});
+```
+
+**Dépendances conceptuelles:**
+- [[smartToggle Function]] - Logique de toggle
+- [[IPC Communication]] - Communication main↔renderer
+- [[currentPage Variable]] - Tracking état
+
+## Problème Actuel
+
+❌ **Status: BROKEN**
+
+**Symptômes:**
+- Raccourci défini mais ne répond pas
+- IPC entre main process et renderer cassé
+- Communication postMessage non configurée
+
+**Causes identifiées:**
+- preload.js manque handlers IPC appropriés
+- Relay mechanism postMessage incomplet
+- Event listeners non synchronisés
+
+**Solution en cours:**
+Voir [[Backlog]] - Fix IPC communication architecture
+
+## Historique
+
+| Date | Heure | Action | Status |
+|------|-------|--------|--------|
+| 2025-10-20 | 10:00:00 | Design initial | planned |
+| 2025-10-24 | 15:45:00 | Implémentation code | dev |
+| 2025-10-24 | 18:30:00 | IPC cassé détecté | broken |
+| 2025-10-26 | 12:00:00 | Ajouté au backlog | broken |
+
+## Tests à Effectuer
+
+- [ ] **Test 1:** App fermée → Lance app + affiche Reference
+- [ ] **Test 2:** App cachée → Affiche fenêtre sur Reference
+- [ ] **Test 3:** Sur page Reference → Cache fenêtre
+- [ ] **Test 4:** Sur page Capture → Navigate vers Reference
+- [ ] **Test 5:** Sur page Hub → Navigate vers Reference
+
+## Notes Techniques
+
+**Architecture visée:**
+```
+User presse Ctrl+Shift+F
+    ↓
+OS détecte (Electron globalShortcut)
+    ↓
+main.js → smartToggle('reference')
+    ↓
+IPC send → renderer
+    ↓
+app.html reçoit event
+    ↓
+Navigation + show/hide window
+```
+
+## Liens
+
+- [[MOC Raccourcis]] - Index principal
+- [[Ctrl+Shift+Space - Toggle Capture]] - Raccourci similaire (même pattern)
+- [[Ctrl+Shift+H - Toggle Hub]] - Raccourci similaire (même pattern)
+- [[smartToggle Function]] - Implémentation technique
+- [[Phase 1.5 - Refactor]] - Contexte refactoring
+- [[Backlog]] - Tâche de fix
+
+---
+**Dernière mise à jour:** 2025-11-01T15:00:00
+**Priorité:** 🟡 MEDIUM - Raccourci d'accès rapide à la référence
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-394-R394-CRÉATION-CARTES-SUIVANTES-CARTE-Ctrl]]
+- ⬇️ Next: [[Card-396-R396-Markdown-created-updated-type-feature]]
+- 📊 MOC: [[_MOC_Personal AI instruction system]]
+
+## 🏷️ Topics
+
+- #python
+- #obsidian
+- #receipts
+- #code
+- #automation

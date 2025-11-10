@@ -1,0 +1,35 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 927
+role: assistant
+created: '2025-11-10T21:12:18.014295Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 927 - Assistant
+
+**ID:** msg-927
+
+## 💬 Content
+
+
+**ID:** msg-927
+
+ok là on change un peu de nommage dans les tâches sur toggl
+Je peux juste ajouter un nom de tâche et des étiquettes dans le projet pkm system
+Je peux découper le projet en plusieurs sous projets pour chacune de ses étapes ?
+Exemple ici un projet REFACTOR PLAN
+Avec des sous projets pour chaque phases
+Et des taches dans chaque phase qu'on suit dans le temps ?
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-926-R926-MFok-change-nommage-dans-tâches]]
+- ⬇️ Next: [[Card-928-S928-ID-msg-928]]
+- 📊 MOC: [[_MOC_French chat message instructions]]

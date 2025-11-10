@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 71
+role: assistant
+created: '2025-11-10T22:55:56.285572Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 71 - Assistant
+
+**ID:** msg-71
+
+## 💬 Content
+
+
+**ID:** msg-71
+
+Personal productivity widget design
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-070-R070-Personal-productivity-widget-design]]
+- ⬇️ Next: [[Card-072-R072-Personal-productivity-widget-design]]
+- 📊 MOC: [[_MOC_Personal productivity widget design]]

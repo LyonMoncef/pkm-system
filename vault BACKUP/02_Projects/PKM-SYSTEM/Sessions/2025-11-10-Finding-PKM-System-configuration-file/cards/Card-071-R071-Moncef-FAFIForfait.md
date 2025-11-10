@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 71
+role: assistant
+created: '2025-11-10T21:11:14.930525Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 71 - Assistant
+
+**ID:** msg-71
+
+## 💬 Content
+
+
+**ID:** msg-71
+
+Moncef FAFIForfait Pro
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-070-R070-Moncef-FAFIForfait]]
+- ⬇️ Next: [[Card-072-R072-Finding-System-configuration-fileMFtu-ra]]
+- 📊 MOC: [[_MOC_Finding PKM System configuration file]]

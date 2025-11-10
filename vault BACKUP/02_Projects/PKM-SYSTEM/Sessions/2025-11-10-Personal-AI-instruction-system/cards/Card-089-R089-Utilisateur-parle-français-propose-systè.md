@@ -1,0 +1,50 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 89
+role: assistant
+created: '2025-11-10T21:46:06.662319Z'
+tags:
+- chat-card
+- excel
+attachments_count: 0
+---
+
+# 🤖 Message 89 - Assistant
+
+**ID:** msg-89
+
+## 💬 Content
+
+
+**ID:** msg-89
+
+L'utilisateur me parle en français et propose un système de \"presets\" ou de consignes paramétrables avec une notation @ (comme @metacarte, @metadata, @newconsigne).
+Il veut pouvoir me donner des instructions standardisées pour :
+
+Créer des notes dans un format spécifique pour son système PKM (Personal Knowledge Management)
+Inclure les métadonnées appropriées
+Définir des comportements/consignes réutilisables
+
+C'est une excellente idée pour optimiser notre collaboration. Il me demande comment on pourrait mettre en place ce système.
+Je devrais :
+
+Confirmer que je comprends bien son idée
+Proposer une structure pour ce système de presets
+Lui demander de définir les premiers presets qu'il souhaite utiliser
+Expliquer comment cela fonctionnerait en pratique
+
+Je ne dois pas chercher dans les conversations passées pour l'instant, car il me présente juste le concept. Il mentionne \"qu'on développe ailleurs dans une autre discussion\" - si j'ai besoin de contexte sur ce PKM-system, je pourrai chercher après.
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-088-R088-Utilisateur-parle-français-propose-systè]]
+- ⬇️ Next: [[Card-090-R090-Utilisateur-parle-français-propose-systè]]
+- 📊 MOC: [[_MOC_Personal AI instruction system]]
+
+## 🏷️ Topics
+
+- #excel

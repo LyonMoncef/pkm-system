@@ -1,0 +1,40 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 489
+role: assistant
+created: '2025-11-10T21:46:12.567729Z'
+tags:
+- chat-card
+- python
+- obsidian
+- automation
+attachments_count: 0
+---
+
+# 🤖 Message 489 - Assistant
+
+**ID:** msg-489
+
+## 💬 Content
+
+
+**ID:** msg-489
+
+Global Shortcuts SystemOn fait cette note avec tous les raccourcis globaux,
+Un dataview en table avec le raccourci, une description en quelques mots (ie ajouter dans les metadata un quicksummary inline)
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-488-R488-MFGlobal-Shortcuts-SystemOn-fait-cette]]
+- ⬇️ Next: [[Card-490-S490-ID-msg-490]]
+- 📊 MOC: [[_MOC_Personal AI instruction system]]
+
+## 🏷️ Topics
+
+- #python
+- #obsidian
+- #automation

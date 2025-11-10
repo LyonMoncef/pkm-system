@@ -4,31 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "b20edfe42905722f",
+        "id": "833d20b3269e52b0",
         "type": "tabs",
         "children": [
           {
-            "id": "24a380d3290540d5",
+            "id": "482c75f66c4b366f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/_MOC_Accessing-Media-Files-on-Synology-NAS.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "_MOC_Accessing-Media-Files-on-Synology-NAS"
+              "title": "New tab"
             }
           }
         ]
@@ -88,7 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 373.5
+    "width": 655.5
   },
   "right": {
     "id": "0488cd3ddba19f41",
@@ -180,44 +166,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "24a380d3290540d5",
+  "active": "1f7f4d5defc2157d",
   "lastOpenFiles": [
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/_MOC_Accessing-Media-Files-on-Synology-NAS.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-090-R090-MFcat-fstab-UNCONFIGURED-FSTAB-BASE.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-089-R089-MFcat-fstab-UNCONFIGURED-FSTAB-BASE.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-088-R088-MFcat-fstab-UNCONFIGURED-FSTAB-BASE.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-087-R087-MFcat-fstab-UNCONFIGURED-FSTAB-BASE.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-086-R086-MFcat-fstab-UNCONFIGURED-FSTAB-BASE.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-085-R085-MFcat-fstab-UNCONFIGURED-FSTAB-BASE.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-084-R084-Accessing-Media-Files-Synology.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-083-R083-Accessing-Media-Files-Synology.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-082-R082-Accessing-Media-Files-Synology.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-081-R081-Accessing-Media-Files-Synology.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-080-R080-Accessing-Media-Files-Synology.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-079-R079-Accessing-Media-Files-Synology.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-078-R078-Accessing-Media-Files-Synology-NASMFcat.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-077-R077-Accessing-Media-Files-Synology-NASMFcat.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-092-R092-Fstab-UNCONFIGURED-FSTAB-BASE-SYSTEM.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-093-S093-ID-msg-93.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-097-R097-MFError-detected-while-processing-Cursor.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-094-R094-This-appears-content-fstab-file.md",
     "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-076-R076-Accessing-Media-Files-Synology-NASMFcat.md",
     "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-075-R075-Moncef-FAFIForfait.md",
     "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-074-R074-Moncef-FAFIForfait.md",
     "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-073-R073-MFMoncef-FAFIForfait.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-110-R110-Keyframes-intercom-lightweight-launcher-.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-109-R109-PersonnaliserPersonnaliser-paramètres-co.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-108-R108-Paramètres-cookiesNous-utilisons-cookies.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-107-R107-Claude-peut-faire-erreurs-Assurez.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-106-R106-Claude-peut-faire-erreurs-Assurez.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-105-R105-Attempt-index-field-value.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-104-R104-This-error-from-Neovim-related.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files/cards",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files",
-    "04_Resources/Chat-Exports/Sessions/Obtaining an API Key for Claude/Obtaining an API Key for Claude.txt",
-    "04_Resources/Chat-Exports/Sessions/Obtaining an API Key for Claude/Nouveau Document texte.txt",
-    "04_Resources/Chat-Exports/Sessions/Obtaining an API Key for Claude",
-    "04_Resources/Chat-Exports/Sessions/Nouveau dossier",
-    "04_Resources/Chat-Exports/Sessions/Diagnosing Timing Belt Pulley Issues/Diagnosing Timing Belt Pulley Issues.txt",
-    "04_Resources/Chat-Exports/Sessions/Diagnosing Timing Belt Pulley Issues/Nouveau Document texte.txt",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-072-R072-Toutes-conversations.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-071-R071-Toutes-conversations.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-070-R070-Configuring-Harpoon-Neovim-Plugin.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-045-R045-Personal-productivity-widget-design.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-038-R038-Music-composition-tools.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-034-R034-Finding-System-configuration-file.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-031-R031-Browser-memory-dump-files-explained.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-030-R030-Personal-instruction-system.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-029-R029-Personal-instruction-system.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-028-R028-Recovery-RAID-rebuild-troubleshooting.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-027-R027-Recovery-RAID-rebuild-troubleshooting.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-026-R026-Resuming-project-continuity-planning-dis.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-025-R025-Resuming-project-continuity-planning-dis.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-023-R023-Parsing-large-files-with-internal.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-022-R022-Ticket-receipt-data-extraction.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-021-R021-Ticket-receipt-data-extraction.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-020-R020-Accessing-shared-chat-summary.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Accessing-Media-Files-on-Synology-NAS/cards/Card-019-R019-Accessing-shared-chat-summary.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Personal-AI-instruction-system/cards",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Personal-AI-instruction-system",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Parsing-large-files-with-internal-scripts/cards",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Parsing-large-files-with-internal-scripts",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Obtaining-an-API-Key-for-Claude/cards",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Obtaining-an-API-Key-for-Claude",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Neovim-file-comparison-techniques/cards",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Neovim-file-comparison-techniques",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Neovim-Error-with-null-ls-Plugin/cards",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-10-Neovim-Error-with-null-ls-Plugin",
     "02_Projects/NDFs/20251014 Ticket 10.JPG",
     "02_Projects/NDFs/20251014 Ticket 9.JPG",
     "02_Projects/NDFs/20251014 Ticket 8.JPG",

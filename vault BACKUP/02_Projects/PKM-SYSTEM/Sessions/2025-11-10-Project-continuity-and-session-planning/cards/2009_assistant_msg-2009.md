@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 2009
+role: assistant
+created: '2025-11-10T23:13:44.694903Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 2009 - Assistant
+
+**ID:** msg-2009
+
+## 💬 Content
+
+
+**ID:** msg-2009
+
+Test guide v1.1Document · MD
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[2008_assistant_msg-2008]]
+- ⬇️ Next: [[2010_assistant_msg-2010]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]

@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 1347
+role: assistant
+created: '2025-11-10T23:13:35.032362Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 1347 - Assistant
+
+**ID:** msg-1347
+
+## 💬 Content
+
+
+**ID:** msg-1347
+
+Readme atomizerDocument · MD Télécharger
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[1346_assistant_msg-1346]]
+- ⬇️ Next: [[1348_assistant_msg-1348]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]

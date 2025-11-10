@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 104
+role: assistant
+created: '2025-11-10T21:08:34.510667Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 104 - Assistant
+
+**ID:** msg-104
+
+## 💬 Content
+
+
+**ID:** msg-104
+
+PersonnaliserPersonnaliser les paramètres des cookiesRefuserRefuser tous les cookiesAccepterAccepter tous les cookies
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-103-R103-Paramètres-cookiesNous-utilisons-cookies]]
+- ⬇️ Next: [[Card-105-R105-Keyframes-intercom-lightweight-launcher-]]
+- 📊 MOC: [[_MOC_Browser memory dump files explained]]

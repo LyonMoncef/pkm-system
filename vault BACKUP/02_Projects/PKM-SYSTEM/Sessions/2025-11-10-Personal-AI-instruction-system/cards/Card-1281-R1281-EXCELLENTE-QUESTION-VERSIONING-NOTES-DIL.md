@@ -1,0 +1,327 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 1281
+role: assistant
+created: '2025-11-10T21:46:22.967466Z'
+tags:
+- chat-card
+- excel
+- python
+- obsidian
+- receipts
+- code
+- git
+- automation
+attachments_count: 0
+---
+
+# 🤖 Message 1281 - Assistant
+
+**ID:** msg-1281
+
+## 💬 Content
+
+
+**ID:** msg-1281
+
+🤔 EXCELLENTE QUESTION - VERSIONING NOTES PKM
+📊 LE DILEMME
+Single Source of Truth vs Historical Context
+Problèmes identifiés:
+
+❌ Note qui évolue → Perd le raisonnement initial
+❌ Multiples versions → Quelle est la vérité ?
+❌ Git historique → Pas accessible facilement
+❌ Duplication → Maintenance complexe
+
+
+🎯 SOLUTION HYBRIDE - \"LIVING DOCUMENTS\"
+📝 Principe: Note Vivante + Traces
+Une note = État actuel + Historique intégré
+Structure Recommandée
+markdown---
+created: [première date]
+updated: [dernière modif]
+version: 2.0
+previous_versions:
+ - \"[[Note v1.0 - 2025-11-02]]\"
+changelog:
+ - \"2025-11-02T23:30: Ajout Dataviews\"
+ - \"2025-11-02T21:45: Création initiale\"
+---
+
+# 🎯 Titre Note (État Actuel)
+
+[Contenu à jour - source de vérité]
+
+---
+
+## 📜 ÉVOLUTION
+
+### v2.0 - 2025-11-02T23:30
+**Changements:**
+- ✅ Ajout vues Dataview dynamiques
+- ✅ Section statistiques
+- 🔗 Voir snapshot: [[Note v1.0 - 2025-11-02]]
+
+**Justification:**
+Besoin de vues dynamiques pour suivre options multiples.
+
+### v1.0 - 2025-11-02T21:45
+**État initial:**
+- Liste manuelle options
+- Pas de queries Dataview
+- 🔗 Voir snapshot: [[Note v1.0 - 2025-11-02]]
+
+---
+
+## 🔗 Liens
+[...]
+
+🗂️ SYSTÈME PROPOSÉ
+1. Note Principale = Living Document
+Fichier: 06_Meta/Decisions/2025-11-02T21-45-00 - Next Action Choice.md
+markdown---
+created: 2025-11-02T21:45:00
+updated: 2025-11-02T23:30:00
+type: decision-point
+version: 2.0
+tags: [decision, choice-point, meta, pkm-system]
+status: in-progress
+snapshots:
+ - \"[[2025-11-02T21-45-00 - Next Action Choice v1.0]]\"
+---
+
+# 🎯 Point de Décision - Prochaine Action
+
+> **Living Document** - État actuel du point de décision
+
+[Contenu avec Dataviews - version 2.0]
+
+---
+
+## 📜 CHANGELOG
+
+### v2.0 - 2025-11-02T23:30:00
+
+**Ajouts:**
+- ✅ Vues Dataview dynamiques (options restantes/complétées)
+- ✅ Section statistiques
+- ✅ Vue complète avec émojis priorité
+- ✅ Liens vers snapshots
+
+**Justification:**
+Besoin de tracking automatique des options. La liste manuelle était
+trop statique et pas scalable pour multiples décisions futures.
+
+**Snapshot v1.0:** [[2025-11-02T21-45-00 - Next Action Choice v1.0]]
+
+---
+
+### v1.0 - 2025-11-02T21:45:00
+
+**État initial:**
+- Liste manuelle des 6 options
+- Organisation par priorité (URGENT/HIGH/MEDIUM)
+- Pas de queries dynamiques
+
+**Snapshot:** [[2025-11-02T21-45-00 - Next Action Choice v1.0]]
+
+2. Snapshots Archivés (Moments Clés)
+Fichier: 06_Meta/Decisions/Snapshots/2025-11-02T21-45-00 - Next Action Choice v1.0.md
+markdown---
+created: 2025-11-02T21:45:00
+archived: 2025-11-02T23:30:00
+type: decision-snapshot
+tags: [snapshot, archived, decision]
+snapshot_of: \"[[2025-11-02T21-45-00 - Next Action Choice]]\"
+version: 1.0
+---
+
+# 📸 Snapshot v1.0 - Point de Décision
+
+> **État archivé** - Conservé pour contexte historique
+
+**Snapshot date:** 2025-11-02T21:45:00
+**Archivé le:** 2025-11-02T23:30:00
+**Raison snapshot:** Évolution majeure avec ajout Dataviews
+
+---
+
+## 🎯 État Original
+
+[Copie exacte du contenu v1.0]
+
+**Choix fait:** A - Finaliser TAG_REGISTRY ✅
+
+---
+
+## 🔗 Retour
+
+**Note actuelle:** [[2025-11-02T21-45-00 - Next Action Choice]]
+**Version suivante:** v2.0 (Dataviews ajoutés)
+
+3. Cartes Options = Immuables une fois complétées
+Une fois une option complétée, elle ne change plus.
+markdown---
+status: completed
+completed_at: 2025-11-02T23:15:00
+---
+
+# ✅ Option A - Finaliser TAG_REGISTRY
+
+[Contenu original]
+
+---
+
+## ✅ RÉSULTAT FINAL
+
+[Ajouté une seule fois à la complétion]
+```
+
+**Pourquoi immuable ?**
+- ✅ Trace exacte de ce qui était prévu
+- ✅ Compare prévu vs réalisé
+- ✅ Historique décisions intact
+
+---
+
+## 🏗️ STRUCTURE COMPLÈTE
+```
+06_Meta/Decisions/
+│
+├── 2025-11-02T21-45-00 - Next Action Choice.md ← Living (v2.0)
+│
+├── Options/
+│ ├── A - Finaliser TAG_REGISTRY.md ← Immuable (completed)
+│ ├── B - Structure Toggl.md ← Immuable (à compléter)
+│ └── ...
+│
+└── Snapshots/
+ └── 2025-11-02T21-45-00 - Next Action Choice v1.0.md ← Archive
+
+📋 RÈGLES DE GESTION
+Quand créer un Snapshot ?
+OUI - Snapshot si:
+
+✅ Changement majeur de structure
+✅ Pivot décisionnel important
+✅ Refonte complète du contenu
+✅ Avant archivage définitif
+
+NON - Pas de snapshot si:
+
+❌ Typo fix
+❌ Ajout mineur (1-2 lignes)
+❌ Update timestamp
+❌ Reformulation mineure
+
+Fréquence: ~1 snapshot par version majeure (1.0 → 2.0)
+
+Template Note Living
+Fichier: vault/04_Resources/Templates/LivingDocument.md
+markdown---
+created: {{date:YYYY-MM-DD}}T{{time:HH:mm:ss}}
+updated: {{date:YYYY-MM-DD}}T{{time:HH:mm:ss}}
+type: living-document
+version: 1.0
+tags: []
+snapshots: []
+---
+
+# [Titre]
+
+> **Living Document** - Évolue avec le temps
+
+[Contenu principal - toujours à jour]
+
+---
+
+## 📜 CHANGELOG
+
+### v1.0 - {{date:YYYY-MM-DD}}T{{time:HH:mm:ss}}
+
+**État initial:**
+- [Description]
+
+**Snapshot:** (Aucun pour v1.0)
+
+---
+
+## 🔗 Liens
+
+[...]
+
+🎯 AVANTAGES SYSTÈME
+Pour la note Living:
+
+✅ Une seule source de vérité actuelle
+✅ Changelog intégré pour contexte
+✅ Liens vers snapshots si besoin détails
+
+Pour les Snapshots:
+
+✅ Conserve raisonnement initial
+✅ Compare versions majeures
+✅ Contexte historique accessible
+
+Pour Git:
+
+✅ Historique technique complet
+✅ Diff ligne par ligne
+✅ Rollback possible
+
+Combinaison:
+
+🎯 Note = État actuel (lecture rapide)
+📜 Changelog = Résumé évolutions
+📸 Snapshots = Moments clés détaillés
+🔧 Git = Historique technique exhaustif
+
+
+💡 PHILOSOPHIE
+\"Living Documents with Breadcrumbs\"
+
+Note principale = Organisme vivant (évolue)
+Changelog = Traçabilité (pourquoi ça change)
+Snapshots = Photos souvenirs (moments clés)
+Git = ADN (tout l'historique)
+
+Pas de duplication inutile, mais contexte préservé.
+
+⚠️ DÉCISION À PRENDRE
+🔴 POUR CETTE NOTE SPÉCIFIQUE
+Options:
+A. Garder v1.0 simple, archiver dans Snapshots, mettre v2.0 avec Dataviews
+B. Fusionner les deux (liste manuelle + Dataviews)
+C. Garder v1.0 comme principale, mettre Dataviews dans note séparée
+
+Mon recommandation: Option A
+Actions:
+
+Créer 06_Meta/Decisions/Snapshots/
+Copier état actuel → v1.0 snapshot
+Updater note principale → v2.0 avec Dataviews
+Ajouter section Changelog
+
+Ça te convient ? 🚀
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-1280-R1280-Excellente-question-philosophique-gestio]]
+- ⬇️ Next: [[Card-1282-R1282-Markdown-created-première-date-updated]]
+- 📊 MOC: [[_MOC_Personal AI instruction system]]
+
+## 🏷️ Topics
+
+- #excel
+- #python
+- #obsidian
+- #receipts
+- #code
+- #git
+- #automation

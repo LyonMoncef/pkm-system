@@ -1,0 +1,33 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 756
+role: user
+created: '2025-11-10T22:56:03.340162Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 👤 Message 756 - User
+
+**ID:** msg-756
+
+## 💬 Content
+
+
+**ID:** msg-756
+
+non gros tu m'as pas compris
+je veux rester dans les règles, et la loi
+Mais je veux créditer à 100% et mentionner l'auteur de ce chef d'oeuvre, Indila
+Je veux la mentionner, l'identifier si besoin, mais ne générer aucun profit surtout de ce partageJe veux travailler ces paroles là précisément, la seule originalité doit venir de mon interprétation et non pas d'une adaptation foireuse de tout ce qu'elle a pu exprimer, qu'elle soit bénie pour ça
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-755-R755-Gros-compris-veux-rester-dans]]
+- ⬇️ Next: [[Card-757-R757-Comprends-mieux-maintenant-veux-créer]]
+- 📊 MOC: [[_MOC_Personal productivity widget design]]

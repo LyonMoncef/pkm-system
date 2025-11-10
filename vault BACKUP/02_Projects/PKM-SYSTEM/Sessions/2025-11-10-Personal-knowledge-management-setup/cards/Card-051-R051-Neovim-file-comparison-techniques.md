@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 51
+role: assistant
+created: '2025-11-10T22:55:45.265611Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 51 - Assistant
+
+**ID:** msg-51
+
+## 💬 Content
+
+
+**ID:** msg-51
+
+Neovim file comparison techniques
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-050-R050-Music-inspired-visual-storytelling]]
+- ⬇️ Next: [[Card-052-R052-Neovim-file-comparison-techniques]]
+- 📊 MOC: [[_MOC_Personal knowledge management setup]]

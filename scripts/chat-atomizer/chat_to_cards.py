@@ -174,19 +174,38 @@ class ChatToCardsOrchestrator:
                 self.session_dir = Path(self.args.output)
             else:
                 # Ajouter la date automatiquement
-                session_name = f"{date_str}-{self.args.output.name}"
-                self.session_dir = self.args.output.parent / session_name
-            
+                sanitized_title = self.args.title.replace(' ', '-').replace('/', '-')
+                session_name = f"{date_str}-{sanitized_title}"
+                self.session_dir = self.args.output / session_name
+
+                print(f"  📁 Session dir: {session_name}")
+
+                self.session_dir.mkdir(parents=True, exist_ok=True)
+
             self.session_dir.mkdir(parents=True, exist_ok=True)
             
             # Générer cartes
             print("\n  Generating atomic cards...")
+            print(f"  🔍 DEBUG: self.session_dir = {self.session_dir}")
+            print(f"  🔍 DEBUG: Creating AtomicCardGenerator...")
             card_gen = AtomicCardGenerator(export, self.session_dir)
+            print(f"  🔍 DEBUG: Generator output_dir = {card_gen.output_dir if hasattr(card_gen, 'output_dir') else 'NO ATTR'}")
             card_paths = card_gen.generate_all_cards()
+            print(f"  🔍 DEBUG: Generated {len(card_paths)} cards")
+            if card_paths:
+                print(f"  🔍 DEBUG: First card path: {card_paths[0]}")
+                print(f"  🔍 DEBUG: Cards dir exists: {card_paths[0].parent.exists()}")
+                print(f"  🔍 DEBUG: Cards in dir: {len(list(card_paths[0].parent.glob('*.md')))}")
+            
+            print(f"  🔍 DEBUG: About to clean: {self.session_dir / 'cards'}")
+            print(f"  🔍 DEBUG: Clean dir exists: {(self.session_dir / 'cards').exists()}")
+            if (self.session_dir / 'cards').exists():
+                files_count = len(list((self.session_dir / 'cards').glob('*.md')))
+                print(f"  🔍 DEBUG: Files in clean dir: {files_count}")
 
             # Nettoyage automatique
             print("\n🧹 Cleaning generated cards...")
-            cleaner = CardCleaner(self.output_dir / 'cards', dry_run=False)
+            cleaner = CardCleaner(self.session_dir / 'cards', dry_run=False)
             cleaner.clean_all()
             cleaner.print_summary()
             

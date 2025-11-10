@@ -1,0 +1,177 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 475
+role: assistant
+created: '2025-11-10T03:56:34.692380Z'
+tags:
+- chat-card
+- python
+- obsidian
+- code
+- git
+- automation
+attachments_count: 0
+---
+
+# 🤖 Message 475 - Assistant
+
+**ID:** msg-475
+
+## 💬 Content
+
+
+**ID:** msg-475
+
+🔥 PARFAIT ! OPTION A
+
+🔧 CODE FINAL - capture.html
+Remplace toute la section save/load par :
+javascript // === AUTO-SAVE TO CACHE ===
+ // Auto-save to localStorage every 2 seconds while typing
+ let saveTimeout;
+ editor.addEventListener('input', () => {
+ clearTimeout(saveTimeout);
+ saveTimeout = setTimeout(() => {
+ const content = editor.value;
+ if (content.trim()) {
+ localStorage.setItem('pkm-quick-note', content);
+ localStorage.setItem('pkm-quick-note-timestamp', Date.now());
+ console.log('💾 Auto-saved to cache');
+ }
+ }, 2000);
+ });
+
+ // === LOAD FROM CACHE ON STARTUP ===
+ // Load from localStorage ONCE on page load
+ let hasLoadedFromCache = false;
+
+ function loadFromCache() {
+ if (!hasLoadedFromCache) {
+ const savedNote = localStorage.getItem('pkm-quick-note');
+ if (savedNote) {
+ editor.value = savedNote;
+ updatePreview();
+ console.log('📂 Loaded from cache');
+ }
+ hasLoadedFromCache = true;
+ }
+ }
+
+ // Load on DOMContentLoaded
+ if (document.readyState === 'loading') {
+ document.addEventListener('DOMContentLoaded', loadFromCache);
+ } else {
+ loadFromCache();
+ }
+
+ // === CTRL+S - SAVE TO VAULT (CLEAR AFTER) ===
+ async function saveNote() {
+ const content = editor.value.trim();
+
+ if (!content) {
+ showNotification('⚠️ Nothing to save');
+ return;
+ }
+
+ // Generate filename
+ const now = new Date();
+ const timestamp = now.toISOString().replace(/[:.]/g, '-').slice(0, -5);
+ const filename = `quick-capture-${timestamp}.md`;
+
+ try {
+ const result = await window.electronAPI.saveNote(filename, content);
+
+ if (result.success) {
+ showNotification('✅ Saved + Ready for new note');
+
+ // CLEAR editor after successful save
+ editor.value = '';
+ updatePreview();
+
+ // CLEAR localStorage
+ localStorage.removeItem('pkm-quick-note');
+ localStorage.removeItem('pkm-quick-note-timestamp');
+
+ console.log('🗑️ Cleared after save to vault');
+ } else {
+ showNotification('❌ Save failed', 'error');
+ }
+ } catch (error) {
+ console.error('Save error:', error);
+ showNotification('❌ Save error', 'error');
+ }
+ }
+
+ // === QUICK SAVE TO CACHE (KEEP CONTENT) ===
+ // Triggered by Ctrl+W global shortcut
+ function quickSaveToCache() {
+ const content = editor.value.trim();
+ if (content) {
+ localStorage.setItem('pkm-quick-note', content);
+ localStorage.setItem('pkm-quick-note-timestamp', Date.now());
+ showNotification('💾 Saved to cache');
+ console.log('💾 Quick saved to cache');
+ } else {
+ showNotification('📦 Window hidden');
+ }
+ }
+
+ // Listen for quick save command from parent (Ctrl+W)
+ window.addEventListener('message', (event) => {
+ if (event.data.type === 'quick-save-and-hide') {
+ quickSaveToCache();
+ }
+ });
+
+📊 COMPORTEMENTS FINAUX
+Ctrl+S (Save to Vault)
+
+✅ Save vers /00_Inbox/quick-capture-TIMESTAMP.md
+✅ CLEAR editor + preview
+✅ CLEAR localStorage
+✅ Notif \"✅ Saved + Ready for new note\"
+✅ Reste ouvert pour nouvelle capture
+
+Ctrl+W (Quick Save + Hide)
+
+✅ Save vers localStorage (cache)
+✅ GARDE le contenu
+✅ Hide la fenêtre
+✅ Notif \"💾 Saved to cache\"
+✅ Prochain open = reprend le contenu
+
+Auto-save (pendant la frappe)
+
+✅ Save en cache toutes les 2 secondes
+✅ Invisible, silencieux
+✅ Console log pour debug
+
+Load au démarrage
+
+✅ Charge depuis cache UNE SEULE FOIS
+✅ Pas de refresh intempestif
+✅ Flag hasLoadedFromCache empêche reload
+
+
+🚀 COMMIT TIME
+Applique le code, teste, puis commit :
+bashcomt \"Fix save behaviors: Ctrl+S clears, Ctrl+W keeps cache\"
+Teste ça et balance ton feedback ! 💪
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[474_assistant_msg-474]]
+- ⬇️ Next: [[476_assistant_msg-476]]
+- 📊 MOC: [[_MOC_French chat message instructions]]
+
+## 🏷️ Topics
+
+- #python
+- #obsidian
+- #code
+- #git
+- #automation

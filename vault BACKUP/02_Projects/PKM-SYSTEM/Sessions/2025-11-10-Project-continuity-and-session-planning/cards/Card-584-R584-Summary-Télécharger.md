@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 584
+role: assistant
+created: '2025-11-10T23:13:26.764905Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 584 - Assistant
+
+**ID:** msg-584
+
+## 💬 Content
+
+
+**ID:** msg-584
+
+Fix summary v1.1Document · MD Télécharger
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-583-R583-Chat-exporter]]
+- ⬇️ Next: [[Card-585-R585-Summary-Télécharger]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]

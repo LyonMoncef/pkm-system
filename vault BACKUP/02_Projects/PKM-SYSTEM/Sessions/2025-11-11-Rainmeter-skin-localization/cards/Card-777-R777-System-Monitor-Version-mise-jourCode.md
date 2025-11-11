@@ -1,0 +1,50 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 777
+role: assistant
+created: '2025-11-11T00:21:51.033796Z'
+tags:
+- chat-card
+- power-bi
+attachments_count: 0
+---
+
+# 🤖 Message 777 - Assistant
+
+**ID:** msg-777
+
+## 💬 Content
+
+
+**ID:** msg-777
+
+System Monitor - Version mise à jourCode ∙ Version 6 [measureRAM]
+Measure=PhysicalMemory
+UpdateDivider=20
+
+[measureRAMPercent]
+Measure=Calc
+Formula=(measureRAM / 4294967296) * 100
+DynamicVariables=1
+
+[measureSWAP]
+Measure=SwapMemory
+UpdateDivider=20
+
+[measureSWAPPercent]
+Measure=Calc
+Formula=(measureSW
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-776-R776-Problème-vient-probablement-measureRAM-r]]
+- ⬇️ Next: [[Card-778-R778-System-Monitor-Version-mise-jourCode]]
+- 📊 MOC: [[_MOC_Rainmeter skin localization]]
+
+## 🏷️ Topics
+
+- #power-bi

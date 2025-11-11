@@ -1,0 +1,37 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 248
+role: assistant
+created: '2025-11-11T00:21:46.130035Z'
+tags:
+- chat-card
+- python
+- git
+attachments_count: 0
+---
+
+# 🤖 Message 248 - Assistant
+
+**ID:** msg-248
+
+## 💬 Content
+
+
+**ID:** msg-248
+
+DSM Login Web API Guide Last Apr 19, 2023synology.comSynology File Station Official APIsynology.comDSM Login Web API Guide - Knowledge Center - Synologysynology.comSynology API, DSM 7 et double authentification - Monitoring - Communauté Jeedomjeedom.comSurveillance Station Technical Specifications | Synology Inc.synology.comSynology® Releases DiskStation Manager 7.3, Bringing Efficient Data Tiering, Enhanced Security, and AI-Powered Collaboration | Synology Inc.synology.comDSM Login Web API Guidesynology.comResource Monitor | DSM - Synology Knowledge Centersynology.comGitHub - N4S4/synology-api: A Python wrapper around Synology APIgithub.comKnowledge Centersynology.com
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-247-R247-Login-Guide-Last-comSynology-File]]
+- ⬇️ Next: [[Card-249-R249-Login-Guide-Last]]
+- 📊 MOC: [[_MOC_Rainmeter skin localization]]
+
+## 🏷️ Topics
+
+- #python
+- #git

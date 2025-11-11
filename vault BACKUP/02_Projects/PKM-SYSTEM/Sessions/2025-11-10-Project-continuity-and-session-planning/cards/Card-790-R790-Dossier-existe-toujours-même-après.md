@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 790
+role: assistant
+created: '2025-11-10T23:13:29.098155Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 790 - Assistant
+
+**ID:** msg-790
+
+## 💬 Content
+
+
+**ID:** msg-790
+
+Le dossier n'existe toujours pas, même après que l'utilisateur ait dit \"ok\". Il y a peut-être un problème avec le chemin WSL. Vérifions d'abord que le dossier existe vraiment.
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-789-R789-Dossier-existe-toujours-même-après]]
+- ⬇️ Next: [[Card-791-R791-Dossier-existe-toujours-même-après]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]

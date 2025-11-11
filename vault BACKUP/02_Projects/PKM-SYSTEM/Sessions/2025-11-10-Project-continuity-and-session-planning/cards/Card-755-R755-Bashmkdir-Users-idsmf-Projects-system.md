@@ -1,0 +1,37 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 755
+role: assistant
+created: '2025-11-10T23:13:28.701881Z'
+tags:
+- chat-card
+- python
+- automation
+attachments_count: 0
+---
+
+# 🤖 Message 755 - Assistant
+
+**ID:** msg-755
+
+## 💬 Content
+
+
+**ID:** msg-755
+
+bashmkdir -p /mnt/c/Users/idsmf/Projects/pkm-system/scripts/chat-exporter
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-754-R754-Merde-dossier-existe-encore-côté]]
+- ⬇️ Next: [[Card-756-R756-Orchestrated-file-creation-within-newly]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]
+
+## 🏷️ Topics
+
+- #python
+- #automation

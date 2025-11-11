@@ -1,0 +1,35 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 1846
+role: assistant
+created: '2025-11-10T23:13:42.779109Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 1846 - Assistant
+
+**ID:** msg-1846
+
+## 💬 Content
+
+
+**ID:** msg-1846
+
+├── Card-022-R022-NSelecting-current-line-Neovim-visual.md
+├── Card-023-R023-NPersonal-knowledge-management-setup.md
+├── Card-024-R024-NWindows-explorer-hotkey-shortcuts.md
+├── Card-025-R025-NRainmeter-skin-localization.md
+├── Card-026-R026-NCopying-text-Neovim-remote-machine.md
+├── Card-027-R027-NSpasted
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-1845-R1845-Card-NSelecting-current-line-Neovim]]
+- ⬇️ Next: [[Card-1847-R1847-Card-NSelecting-current-line-Neovim]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]

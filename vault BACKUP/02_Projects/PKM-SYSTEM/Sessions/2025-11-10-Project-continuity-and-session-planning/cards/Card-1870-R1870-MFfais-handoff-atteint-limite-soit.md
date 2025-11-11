@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 1870
+role: assistant
+created: '2025-11-10T23:13:43.029028Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 1870 - Assistant
+
+**ID:** msg-1870
+
+## 💬 Content
+
+
+**ID:** msg-1870
+
+MFfais moi un handoff stp on a atteint la limite, soit bref mais complet
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-1869-R1869-Claude-atteint-limite-maximale-pour]]
+- ⬇️ Next: [[Card-1871-R1871-MFfais-handoff-atteint-limite-soit]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]

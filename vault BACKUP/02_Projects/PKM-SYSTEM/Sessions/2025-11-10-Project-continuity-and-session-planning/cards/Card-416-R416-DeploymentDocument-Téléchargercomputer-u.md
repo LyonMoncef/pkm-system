@@ -1,0 +1,39 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 416
+role: assistant
+created: '2025-11-10T23:13:25.137361Z'
+tags:
+- chat-card
+- python
+- obsidian
+- automation
+attachments_count: 0
+---
+
+# 🤖 Message 416 - Assistant
+
+**ID:** msg-416
+
+## 💬 Content
+
+
+**ID:** msg-416
+
+DeploymentDocument · MD Téléchargercomputer:///mnt/user-data/outputs/scripts/ Téléchargercomputer:///mnt/user-data/outputs/vault/04_Resources/Tools/ TéléchargerTout télécharger
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-415-R415-Bashgit-scripts-vault-Tools-commit]]
+- ⬇️ Next: [[Card-417-R417-DeploymentDocument-Télécharger]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]
+
+## 🏷️ Topics
+
+- #python
+- #obsidian
+- #automation

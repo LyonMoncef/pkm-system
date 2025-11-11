@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 63
+role: assistant
+created: '2025-11-10T23:13:21.841599Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 63 - Assistant
+
+**ID:** msg-63
+
+## 💬 Content
+
+
+**ID:** msg-63
+
+Quarto setup issues in Neovim on Ubuntu
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-062-R062-Synology-Password-Authentication-Require]]
+- ⬇️ Next: [[Card-064-R064-Quarto-setup-issues-Neovim-Ubuntu]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]

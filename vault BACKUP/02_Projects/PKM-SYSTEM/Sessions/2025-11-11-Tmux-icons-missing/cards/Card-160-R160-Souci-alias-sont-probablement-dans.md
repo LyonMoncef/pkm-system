@@ -1,0 +1,64 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 160
+role: assistant
+created: '2025-11-11T00:45:56.713898Z'
+tags:
+- chat-card
+- git
+attachments_count: 0
+---
+
+# 🤖 Message 160 - Assistant
+
+**ID:** msg-160
+
+## 💬 Content
+
+
+**ID:** msg-160
+
+Pas de souci ! Tes alias ne sont probablement pas dans .zshrc directement. Selon ta config Oh My Zsh, ils devraient être dans un fichier séparé.
+Recherche des alias
+1. Cherche dans les fichiers custom Oh My Zsh :
+bash# Cherche tous les fichiers .zsh dans le dossier custom
+ls -la ~/.oh-my-zsh/custom/*.zsh
+
+# Affiche le contenu de chaque fichier
+cat ~/.oh-my-zsh/custom/*.zsh
+2. Cherche dans les fichiers de config courants :
+bash# Vérifie ces fichiers
+cat ~/.zsh_aliases 2>/dev/null
+cat ~/.aliases 2>/dev/null
+cat ~/.bash_aliases 2>/dev/null
+3. Recherche globale de tes alias :
+bash# Cherche tous les alias définis
+grep -r \"^alias\" ~ --include=\"*.zsh\" --include=\"*.sh\" 2>/dev/null | grep -v \".oh-my-zsh/plugins\"
+4. Vérifie les alias actuellement chargés :
+bash# Liste tous les alias actifs dans ta session
+alias
+Où les mettre ?
+Selon ta config, tu devrais les mettre dans :
+bash# Crée ou édite ce fichier
+nvim ~/.oh-my-zsh/custom/aliases.zsh
+Exemple :
+bashalias ll='ls -alh'
+alias v='nvim'
+alias gs='git status'
+Puis recharge :
+bashsource ~/.zshrc
+Dis-moi ce que tu trouves avec ces commandes ! On va les retrouver 👍Réessayer
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-159-Q159-Plus-mes-alias-dans-zshrcTu-maides-à-les]]
+- ⬇️ Next: [[Card-161-R161-Souci-alias-sont-probablement-dans]]
+- 📊 MOC: [[_MOC_Tmux icons missing]]
+
+## 🏷️ Topics
+
+- #git

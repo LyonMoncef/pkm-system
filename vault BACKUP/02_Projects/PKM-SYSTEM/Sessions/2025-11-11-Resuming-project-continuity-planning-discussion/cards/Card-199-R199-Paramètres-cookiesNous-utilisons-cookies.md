@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 199
+role: assistant
+created: '2025-11-11T00:40:30.855508Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 199 - Assistant
+
+**ID:** msg-199
+
+## 💬 Content
+
+
+**ID:** msg-199
+
+Paramètres des cookiesNous utilisons des cookies pour fournir et améliorer nos services, analyser l'utilisation du site et, si vous acceptez, personnaliser votre expérience et vous proposer nos services. Vous pouvez consulter notre Politique en matière de cookies ici.PersonnaliserPersonnaliser les paramètres des cookiesRefuserRefuser tous les cookiesAccepterAccepter tous les cookies
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-198-R198-Lignes]]
+- ⬇️ Next: [[Card-200-R200-PersonnaliserPersonnaliser-paramètres-co]]
+- 📊 MOC: [[_MOC_Resuming project continuity planning discussion]]

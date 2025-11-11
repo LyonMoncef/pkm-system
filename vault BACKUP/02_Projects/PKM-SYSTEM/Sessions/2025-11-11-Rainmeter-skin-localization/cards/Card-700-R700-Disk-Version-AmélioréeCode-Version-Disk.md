@@ -1,0 +1,41 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 700
+role: assistant
+created: '2025-11-11T00:21:50.252234Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 700 - Assistant
+
+**ID:** msg-700
+
+## 💬 Content
+
+
+**ID:** msg-700
+
+Disk.ini - Version AmélioréeCode ∙ Version 3 ; Disk monitor avec couleur par jour et jauge améliorée
+; ----------------------------------
+
+[Rainmeter]
+Update=1000
+Background=#@#Background.png
+BackgroundMode=3
+BackgroundMargins=0,50,0,30
+
+[Variables]
+; Couleurs des jours pour le texte
+color0=255
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-699-R699-Disk-Version-AmélioréeCode-Version-Disk]]
+- ⬇️ Next: [[Card-701-R701-Disk-Version-AmélioréeCode-Version-Disk]]
+- 📊 MOC: [[_MOC_Rainmeter skin localization]]

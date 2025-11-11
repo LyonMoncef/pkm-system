@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 1406
+role: assistant
+created: '2025-11-10T23:13:35.648660Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 1406 - Assistant
+
+**ID:** msg-1406
+
+## 💬 Content
+
+
+**ID:** msg-1406
+
+Activate venvSH Télécharger
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-1405-R1405-Activate-venvSH-Télécharger]]
+- ⬇️ Next: [[Card-1407-R1407-Gitignore-pythonGITIGNORE-PYTHON-Télécha]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]

@@ -1,0 +1,67 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 236
+role: assistant
+created: '2025-11-10T23:13:23.427110Z'
+tags:
+- chat-card
+- python
+- obsidian
+- code
+- automation
+attachments_count: 0
+---
+
+# 🤖 Message 236 - Assistant
+
+**ID:** msg-236
+
+## 💬 Content
+
+
+**ID:** msg-236
+
+javascript// ChatExporter - Générique multi-plateforme
+const ChatExporter = {
+
+ // Détection plateforme
+ detectPlatform() {
+ if (window.location.hostname.includes('claude.ai')) return 'claude';
+ if (window.location.hostname.includes('chatgpt.com')) return 'chatgpt';
+ if (window.location.hostname.includes('gemini.google.com')) return 'gemini';
+ return 'unknown';
+ },
+
+ // Extracteurs spécifiques
+ extractors: {
+ claude: { /* sélecteurs DOM Claude */ },
+ chatgpt: { /* sélecteurs DOM ChatGPT */ },
+ gemini: { /* sélecteurs DOM Gemini */ }
+ },
+
+ // Export markdown
+ generateMarkdown(messages, metadata) { /* ... */ },
+
+ // Copie clipboard
+ copyToClipboard(text) { /* ... */ },
+
+ // Main
+ run() { /* ... */ }
+}
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-235-R235-Yaml-Root-tags-chat-card]]
+- ⬇️ Next: [[Card-237-R237-Dataview-globale-sessions-LIST-FROM]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]
+
+## 🏷️ Topics
+
+- #python
+- #obsidian
+- #code
+- #automation

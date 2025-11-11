@@ -1,0 +1,39 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 282
+role: assistant
+created: '2025-11-11T00:47:15.563522Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 282 - Assistant
+
+**ID:** msg-282
+
+## 💬 Content
+
+
+**ID:** msg-282
+
+Widget Raccourcis ClavierCode ∙ Version 2 ; Widget Raccourcis Clavier PowerToys
+; ----------------------------------
+[Rainmeter]
+Update=1000
+Background=#@#Background.png
+BackgroundMode=3
+BackgroundMargins=0,50,0,30
+@include=#@#GlobalVariables.inc
+ZPos=[&Z_STATE]
+; Définir la taille du widget
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-281-R281-Widget-Raccourcis-ClavierCode-Version-Wi]]
+- ⬇️ Next: [[Card-283-R283-Widget-Raccourcis-ClavierCode-Version]]
+- 📊 MOC: [[_MOC_Windows explorer hotkey shortcuts]]

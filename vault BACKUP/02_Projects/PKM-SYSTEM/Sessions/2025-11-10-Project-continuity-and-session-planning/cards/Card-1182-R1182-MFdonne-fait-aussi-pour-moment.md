@@ -1,0 +1,37 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 1182
+role: assistant
+created: '2025-11-10T23:13:33.331761Z'
+tags:
+- chat-card
+- python
+- automation
+attachments_count: 0
+---
+
+# 🤖 Message 1182 - Assistant
+
+**ID:** msg-1182
+
+## 💬 Content
+
+
+**ID:** msg-1182
+
+MFdonne le A, on fait le B aussi pour le moment, ajoute le script à la todo ou au backlog
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-1181-R1181-MFdonne-fait-aussi-pour-moment]]
+- ⬇️ Next: [[Card-1183-R1183-Donne-fait-aussi-pour-moment]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]
+
+## 🏷️ Topics
+
+- #python
+- #automation

@@ -1,0 +1,30 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 848
+role: assistant
+created: '2025-11-10T23:13:29.747476Z'
+tags:
+- chat-card
+attachments_count: 0
+---
+
+# 🤖 Message 848 - Assistant
+
+**ID:** msg-848
+
+## 💬 Content
+
+
+**ID:** msg-848
+
+MFles 3 sont ok, on enchaine la suite
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-847-R847-Bashls-Users-idsmf-Projects-system]]
+- ⬇️ Next: [[Card-849-R849-MFles-sont-enchaine-suite]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]

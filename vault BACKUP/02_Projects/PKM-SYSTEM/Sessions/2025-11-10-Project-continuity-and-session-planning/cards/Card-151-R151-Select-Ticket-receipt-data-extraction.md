@@ -1,0 +1,37 @@
+---
+type: chat-card
+parent_export: '[[Export]]'
+order: 151
+role: assistant
+created: '2025-11-10T23:13:22.642823Z'
+tags:
+- chat-card
+- finance
+- receipts
+attachments_count: 0
+---
+
+# 🤖 Message 151 - Assistant
+
+**ID:** msg-151
+
+## 💬 Content
+
+
+**ID:** msg-151
+
+Select Ticket receipt data extraction
+
+---
+
+
+## 🔗 Navigation
+
+- ⬆️ Previous: [[Card-150-R150-Select-Ticket-receipt-data-extractionTic]]
+- ⬇️ Next: [[Card-152-R152-Select-Ticket-receipt-data-extraction]]
+- 📊 MOC: [[_MOC_Project continuity and session planning]]
+
+## 🏷️ Topics
+
+- #finance
+- #receipts

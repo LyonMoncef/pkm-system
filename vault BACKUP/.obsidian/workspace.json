@@ -4,17 +4,31 @@
     "type": "split",
     "children": [
       {
-        "id": "833d20b3269e52b0",
+        "id": "83fcdadacf230584",
         "type": "tabs",
         "children": [
           {
-            "id": "482c75f66c4b366f",
+            "id": "5ba669a26d2a99ff",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-125-R125-Challenge-accepté-Voici-extraction-compl.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Card-125-R125-Challenge-accepté-Voici-extraction-compl"
             }
           }
         ]
@@ -74,7 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 655.5
+    "width": 395.5
   },
   "right": {
     "id": "0488cd3ddba19f41",
@@ -166,34 +180,34 @@
       "bases:Create new base": false
     }
   },
-  "active": "1f7f4d5defc2157d",
+  "active": "5ba669a26d2a99ff",
   "lastOpenFiles": [
-    "02_Projects/PKM-SYSTEM/BackLog/Items/Power-BI-Direct-DuckDB-ODBC.md",
-    "02_Projects/PKM-SYSTEM/BackLog/Items/Power-BI-Directt-DuckDB-ODBC.md",
-    "00_Inbox/2025-11-11-NoteDebutCanvasLinkedIn.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-057-R057-Windows-explorer-hotkey-shortcuts.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-056-R056-Personal-knowledge-management-setup.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-055-R055-Personal-knowledge-management-setup.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-054-R054-Selecting-current-line-Neovim-visual.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-053-R053-Selecting-current-line-Neovim-visual.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-052-R052-Neovim-file-comparison-techniques.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-051-R051-Neovim-file-comparison-techniques.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-050-R050-Music-inspired-visual-storytelling.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-049-R049-Music-inspired-visual-storytelling.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-048-R048-Brave-browser-keyboard-shortcuts.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-047-R047-Brave-browser-keyboard-shortcuts.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-046-R046-Personal-productivity-widget-design.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-045-R045-Personal-productivity-widget-design.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-044-R044-French-chat-message-instructions.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-043-R043-French-chat-message-instructions.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-042-R042-Tmux-pane-session-renaming.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-041-R041-Tmux-pane-session-renaming.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-040-R040-Slow-copy-paste-terminal.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-039-R039-Slow-copy-paste-terminal.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-038-R038-Music-composition-tools.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-037-R037-Music-composition-tools.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-036-R036-Audio-trimming-Windows.md",
-    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards/Card-035-R035-Audio-trimming-Windows.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-124-S124-ID-msg-124.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-123-R123-Longue-liste-bonne-chance-espère.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-119-R119-Csvenseigne-magasin-date-heure-article.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-114-R114-Parfait-Voici-deux-tickets-Ticket.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-113-S113-ID-msg-113.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-112-R112-Facile-suivants.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-111-R111-MFfacile-suivants.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-110-R110-MFfacile-suivants.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-109-R109-MFfacile-suivants.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-108-R108-Csvenseigne-magasin-date-heure-article.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-106-R106-Merci-Voici-extraction-ticket-McDonald.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-099-R099-Excellent-challenge-Voici-extraction-tic.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-098-S098-ID-msg-98.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-096-R096-MFAh-plus-difficile-promo-remises.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-095-R095-MFAh-plus-difficile-promo-remises.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-094-R094-MFAh-plus-difficile-promo-remises.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-092-R092-Json-enseigne-TotalEnergies-magasin-MESS.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-089-R089-Voici-extraction-ticket-TotalEnergies-js.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-088-R088-MFMagnifique.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-086-R086-MFMagnifique.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-082-R082-Vais-extraire-informations-ticket-Lecler.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-081-R081-Vais-extraire-informations-ticket-Lecler.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-080-S080-ID-msg-80.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-079-R079-Photos-tickets-caisse-capable-extraire.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-078-R078-Photos-tickets-caisse-capable-extraire.md",
+    "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Ticket-receipt-data-extraction/cards/Card-077-R077-Photos-tickets-caisse-capable-extraire.md",
     "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming/cards",
     "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Tmux-pane-and-session-renaming",
     "02_Projects/PKM-SYSTEM/Sessions/2025-11-11-Slow-copy-paste-in-terminal/cards",

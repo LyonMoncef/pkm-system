@@ -1,0 +1,339 @@
+# ============================================================================
+# FINANCE SYSTEM - CATEGORY TAXONOMY
+# ============================================================================
+# Source of Truth pour toutes les catégories
+# 
+# RÈGLES:
+# - category_key: identifiant unique (snake_case, immuable)
+# - display_name: nom affiché (peut changer)
+# - Modifier ce fichier puis run: python3 scripts/taxonomy_sync.py
+#
+# Version: 1.0
+# Dernière mise à jour: 2025-11-14
+# ============================================================================
+
+version: "1.0"
+last_updated: "2025-11-14"
+
+# ============================================================================
+# CATÉGORIES PRINCIPALES
+# ============================================================================
+
+categories:
+  
+  # ──────────────────────────────────────────────────────────────────────────
+  alimentation:
+    display_name: "Alimentation"
+    icon: "🛒"
+    description: "Achats alimentaires et restauration"
+    color: "#4CAF50"
+    ordre: 1
+    
+    subcategories:
+      frais_fromage:
+        display: "Frais > Fromage"
+        keywords: [fromage, raclette, emmental, gruyere, chevre, brie, camembert]
+        
+      frais_viande:
+        display: "Frais > Viande"
+        keywords: [viande, poulet, boeuf, porc, cordon, jambon, saucisse, dinde, agneau]
+        
+      frais_poisson:
+        display: "Frais > Poisson"
+        keywords: [poisson, saumon, thon, truite, cabillaud, crevette]
+        
+      frais_fruits_legumes:
+        display: "Frais > Fruits & Légumes"
+        keywords: [pomme, banane, tomate, salade, carotte, fruit, legume, orange, raisin]
+        
+      frais_produits_laitiers:
+        display: "Frais > Produits Laitiers"
+        keywords: [lait, yaourt, creme, beurre, fromage blanc]
+        
+      epicerie_conserves:
+        display: "Épicerie > Conserves"
+        keywords: [conserve, boite, haricot, mais, pois, sauce tomate]
+        
+      epicerie_pates_riz:
+        display: "Épicerie > Pâtes & Riz"
+        keywords: [pate, riz, farine, cereale, semoule, quinoa]
+        
+      epicerie_sauces_condiments:
+        display: "Épicerie > Sauces & Condiments"
+        keywords: [sauce, ketchup, mayonnaise, moutarde, vinaigre, huile]
+        
+      epicerie_petit_dejeuner:
+        display: "Épicerie > Petit Déjeuner"
+        keywords: [cafe, the, confiture, miel, cereale, pain]
+        
+      boissons_alcool:
+        display: "Boissons > Alcool"
+        keywords: [biere, vin, alcool, champagne, spiritueux, whisky]
+        
+      boissons_non_alcool:
+        display: "Boissons > Non-alcoolisé"
+        keywords: [coca, eau, jus, soda, limonade, boisson]
+        
+      surgeles:
+        display: "Surgelés"
+        keywords: [surgele, glace, pizza, frites]
+        
+      restauration_fastfood:
+        display: "Restauration > Fast-food"
+        keywords: [mcdonald, burger, quick, kfc]
+        
+      restauration_restaurant:
+        display: "Restauration > Restaurant"
+        keywords: [restaurant]
+
+  # ──────────────────────────────────────────────────────────────────────────
+  transport:
+    display_name: "Transport"
+    icon: "🚗"
+    description: "Déplacements et carburant"
+    color: "#2196F3"
+    ordre: 2
+    
+    subcategories:
+      carburant_diesel:
+        display: "Carburant > Diesel"
+        keywords: [diesel, gasoil, gazole]
+        
+      carburant_essence:
+        display: "Carburant > Essence"
+        keywords: [essence, sp95, sp98, sans plomb]
+        
+      entretien_vehicule:
+        display: "Entretien > Véhicule"
+        keywords: [vidange, pneu, revision, reparation]
+        
+      parking:
+        display: "Parking"
+        keywords: [parking, stationnement]
+        
+      transports_publics:
+        display: "Transports Publics"
+        keywords: [metro, bus, train, ticket]
+
+  # ──────────────────────────────────────────────────────────────────────────
+  loisirs:
+    display_name: "Loisirs"
+    icon: "🎮"
+    description: "Divertissement et culture"
+    color: "#9C27B0"
+    ordre: 3
+    
+    subcategories:
+      gaming_consoles:
+        display: "Gaming > Consoles"
+        keywords: [console, switch, playstation, xbox, nintendo]
+        
+      gaming_jeux:
+        display: "Gaming > Jeux"
+        keywords: [jeu, mario, zelda, fifa]
+        
+      gaming_accessoires:
+        display: "Gaming > Accessoires"
+        keywords: [manette, casque, ecran]
+        
+      sorties_cinema:
+        display: "Sorties > Cinéma"
+        keywords: [cinema, film, cine]
+        
+      sorties_concert:
+        display: "Sorties > Concert"
+        keywords: [concert, spectacle, show]
+        
+      sorties_sport:
+        display: "Sorties > Sport"
+        keywords: [sport, match, stade]
+        
+      culture_livres:
+        display: "Culture > Livres"
+        keywords: [livre, roman, bd, manga]
+        
+      culture_musique:
+        display: "Culture > Musique"
+        keywords: [cd, vinyl, spotify, deezer]
+
+  # ──────────────────────────────────────────────────────────────────────────
+  logement:
+    display_name: "Logement"
+    icon: "🏠"
+    description: "Charges et équipement maison"
+    color: "#FF9800"
+    ordre: 4
+    
+    subcategories:
+      loyer:
+        display: "Loyer"
+        keywords: [loyer, rent]
+        
+      electricite:
+        display: "Électricité"
+        keywords: [electricite, edf]
+        
+      eau:
+        display: "Eau"
+        keywords: [eau, veolia]
+        
+      gaz:
+        display: "Gaz"
+        keywords: [gaz, chauffage]
+        
+      internet_telephone:
+        display: "Internet & Téléphone"
+        keywords: [internet, box, telephone, mobile, orange, free, sfr]
+        
+      meubles_decoration:
+        display: "Meubles & Décoration"
+        keywords: [meuble, ikea, decoration, canape, table]
+        
+      electromenager:
+        display: "Électroménager"
+        keywords: [electromenager, lave, frigo, four]
+
+  # ──────────────────────────────────────────────────────────────────────────
+  habillement:
+    display_name: "Habillement"
+    icon: "👕"
+    description: "Vêtements et accessoires"
+    color: "#E91E63"
+    ordre: 5
+    
+    subcategories:
+      vetements_homme:
+        display: "Vêtements > Homme"
+        keywords: [chemise, pantalon, costume, homme]
+        
+      vetements_femme:
+        display: "Vêtements > Femme"
+        keywords: [robe, jupe, femme]
+        
+      vetements_enfant:
+        display: "Vêtements > Enfant"
+        keywords: [enfant, bebe]
+        
+      chaussures:
+        display: "Chaussures"
+        keywords: [chaussure, basket, sneaker, botte]
+        
+      accessoires:
+        display: "Accessoires"
+        keywords: [sac, ceinture, montre, bijou]
+
+  # ──────────────────────────────────────────────────────────────────────────
+  sante:
+    display_name: "Santé"
+    icon: "💪"
+    description: "Santé et bien-être"
+    color: "#F44336"
+    ordre: 6
+    
+    subcategories:
+      medicaments:
+        display: "Médicaments"
+        keywords: [medicament, pharmacie, doliprane]
+        
+      medecin_generaliste:
+        display: "Médecin Généraliste"
+        keywords: [medecin, docteur, consultation]
+        
+      dentiste:
+        display: "Dentiste"
+        keywords: [dentiste, dent]
+        
+      opticien:
+        display: "Opticien"
+        keywords: [lunette, opticien, lentille]
+        
+      sport_fitness:
+        display: "Sport & Fitness"
+        keywords: [salle sport, fitness, gym, abonnement]
+
+  # ──────────────────────────────────────────────────────────────────────────
+  education:
+    display_name: "Éducation"
+    icon: "🎓"
+    description: "Formation et éducation"
+    color: "#00BCD4"
+    ordre: 7
+    
+    subcategories:
+      scolarite:
+        display: "Scolarité"
+        keywords: [ecole, universite, scolarite]
+        
+      fournitures:
+        display: "Fournitures"
+        keywords: [fourniture, stylo, cahier, classeur]
+        
+      formation:
+        display: "Formation"
+        keywords: [formation, cours, mooc]
+
+  # ──────────────────────────────────────────────────────────────────────────
+  finance:
+    display_name: "Finance"
+    icon: "💰"
+    description: "Opérations financières"
+    color: "#FFC107"
+    ordre: 8
+    
+    subcategories:
+      retrait_especes:
+        display: "Retrait Espèces"
+        keywords: [billet, retrait, espece, cash]
+        
+      frais_bancaires:
+        display: "Frais Bancaires"
+        keywords: [frais, banque, commission]
+        
+      epargne:
+        display: "Épargne"
+        keywords: [epargne, placement, livret]
+        
+      assurance:
+        display: "Assurance"
+        keywords: [assurance, mutuelle]
+
+  # ──────────────────────────────────────────────────────────────────────────
+  autres:
+    display_name: "Autres"
+    icon: "🔧"
+    description: "Catégorie fourre-tout"
+    color: "#9E9E9E"
+    ordre: 9
+    
+    subcategories:
+      divers:
+        display: "Divers"
+        keywords: []
+        
+      a_categoriser:
+        display: "À Catégoriser"
+        keywords: []
+
+# ============================================================================
+# RÈGLES AUTO-CATEGORISATION
+# ============================================================================
+
+auto_rules:
+  # Règles basées sur merchant
+  merchant:
+    "E.Leclerc": "alimentation"
+    "Carrefour": "alimentation"
+    "Action": "autres"
+    "TotalEnergies": "transport"
+    "McDonald": "alimentation.restauration_fastfood"
+    
+  # Règles basées sur patterns d'articles
+  patterns:
+    - keywords: [diesel, essence]
+      category: "transport"
+      subcategory: "carburant_diesel"
+      
+    - keywords: [console, switch, playstation]
+      category: "loisirs"
+      subcategory: "gaming_consoles"
+

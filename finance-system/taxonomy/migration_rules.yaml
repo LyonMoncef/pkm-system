@@ -1,0 +1,50 @@
+# ============================================================================
+# MIGRATION RULES - Mapping ancien → nouveau
+# ============================================================================
+# Pour renommer/fusionner catégories sans perdre données
+# ============================================================================
+
+version: "1.0"
+
+# Renommage catégories principales
+category_main_mapping:
+  "Loisirs": "loisirs"
+  "Alimentation": "alimentation"
+  "Transport": "transport"
+  "Logement": "logement"
+  "Habillement": "habillement"
+  "Santé": "sante"
+  "Autres": "autres"
+
+# Renommage sous-catégories
+category_sub_mapping:
+  "Frais > Fromage": "frais_fromage"
+  "Frais > Viande": "frais_viande"
+  "Frais > Poisson": "frais_poisson"
+  "Frais > Fruits & Légumes": "frais_fruits_legumes"
+  "Épicerie > Conserves": "epicerie_conserves"
+  "Épicerie > Pâtes & Riz": "epicerie_pates_riz"
+  "Boissons > Alcool": "boissons_alcool"
+  "Boissons > Non-alcoolisé": "boissons_non_alcool"
+  "Restauration > Fast-food": "restauration_fastfood"
+  "Surgelés": "surgeles"
+  "Carburant > Diesel": "carburant_diesel"
+  "Carburant > Essence": "carburant_essence"
+  "Entretien": "entretien_vehicule"
+  "Parking": "parking"
+  "Gaming > Consoles": "gaming_consoles"
+  "Gaming > Jeux": "gaming_jeux"
+
+# Fusion de catégories (plusieurs → une)
+merge_rules:
+  # Exemple: fusionner "Snacks" et "Grignotage" dans "epicerie_snacks"
+  # - source: ["Snacks", "Grignotage"]
+  #   target: "epicerie_snacks"
+
+# Séparation de catégories (une → plusieurs basé sur règles)
+split_rules:
+  # Exemple: séparer "Autres" selon keywords
+  # - source: "autres"
+  #   rules:
+  #     - keywords: [gaming, jeu]
+  #       target: "loisirs.gaming_jeux"

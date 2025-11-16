@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Statistiques - Finance System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4"><i class="bi bi-graph-up"></i> Statistiques Détaillées</h1>
+    </div>
+</div>
+
+<!-- Par Catégorie -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="bi bi-tags"></i> Par Catégorie</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Catégorie</th>
+                                <th>Articles</th>
+                                <th>Total</th>
+                                <th>Moyenne</th>
+                                <th>Min</th>
+                                <th>Max</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cat, count, total, avg, min, max in by_category %}
+                            <tr>
+                                <td><strong>{{ cat }}</strong></td>
+                                <td>{{ count }}</td>
+                                <td>{{ "%.2f"|format(total) }}€</td>
+                                <td>{{ "%.2f"|format(avg) }}€</td>
+                                <td>{{ "%.2f"|format(min) }}€</td>
+                                <td>{{ "%.2f"|format(max) }}€</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Par Enseigne -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="bi bi-shop"></i> Par Enseigne</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Enseigne</th>
+                                <th>Articles</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for merchant, count, total in by_merchant %}
+                            <tr>
+                                <td>{{ merchant }}</td>
+                                <td>{{ count }}</td>
+                                <td>{{ "%.2f"|format(total) }}€</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Timeline Mensuelle -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="bi bi-calendar3"></i> Évolution Mensuelle</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="monthlyChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+
+<script>
+// Monthly Chart
+const monthlyData = {{ monthly|tojson }};
+const labels = monthlyData.map(m => m[0]);
+const amounts = monthlyData.map(m => m[2]);
+
+const ctx = document.getElementById('monthlyChart');
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Dépenses (€)',
+            data: amounts,
+            borderColor: '#2196F3',
+            backgroundColor: 'rgba(33, 150, 243, 0.1)',
+            tension: 0.4,
+            fill: true
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    callback: function(value) {
+                        return value + '€';
+                    }
+                }
+            }
+        }
+    }
+});
+</script>
+{% endblock %}

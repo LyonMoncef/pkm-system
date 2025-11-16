@@ -1,0 +1,95 @@
+/* Finance System - Custom Styles */
+
+:root {
+    --primary-color: #2196F3;
+    --success-color: #4CAF50;
+    --danger-color: #F44336;
+    --warning-color: #FF9800;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.category-group {
+    transition: all 0.3s ease;
+}
+
+.category-group:hover {
+    transform: translateX(5px);
+}
+
+.badge {
+    font-weight: 500;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: none;
+    margin-bottom: 1rem;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+}
+
+.table thead {
+    background-color: #f8f9fa;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f3f5;
+    cursor: pointer;
+}
+
+.btn-group .btn {
+    margin-right: 0.25rem;
+}
+
+footer {
+    margin-top: auto;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert {
+    animation: slideIn 0.3s ease;
+}
+
+/* Loading State */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Custom Checkbox */
+.article-checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* Category Colors */
+.bg-category-alimentation { background-color: #4CAF50 !important; }
+.bg-category-transport { background-color: #2196F3 !important; }
+.bg-category-loisirs { background-color: #9C27B0 !important; }
+.bg-category-logement { background-color: #FF9800 !important; }
+.bg-category-habillement { background-color: #E91E63 !important; }
+.bg-category-sante { background-color: #F44336 !important; }

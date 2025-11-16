@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Finance System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4"><i class="bi bi-house"></i> Dashboard</h1>
+    </div>
+</div>
+
+<!-- Stats Cards -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+                <h5 class="card-title">Total Articles</h5>
+                <p class="card-text display-4">{{ stats.total_articles }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-success">
+            <div class="card-body">
+                <h5 class="card-title">Total Dépenses</h5>
+                <p class="card-text display-4">{{ "%.2f"|format(stats.total_amount) }}€</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-info">
+            <div class="card-body">
+                <h5 class="card-title">Catégories</h5>
+                <p class="card-text display-4">{{ stats.total_categories }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-warning">
+            <div class="card-body">
+                <h5 class="card-title">Non Catégorisé</h5>
+                <p class="card-text display-4">{{ stats.uncategorized }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Top Categories -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="bi bi-trophy"></i> Top 5 Catégories</h5>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Catégorie</th>
+                            <th>Articles</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cat, count, total in top_categories %}
+                        <tr>
+                            <td><strong>{{ cat }}</strong></td>
+                            <td>{{ count }}</td>
+                            <td>{{ "%.2f"|format(total) }}€</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Timeline -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="bi bi-calendar3"></i> Timeline (7 derniers jours)</h5>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Articles</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for date, count, total in timeline %}
+                        <tr>
+                            <td>{{ date }}</td>
+                            <td>{{ count }}</td>
+                            <td>{{ "%.2f"|format(total) }}€</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="bi bi-lightning"></i> Actions Rapides</h5>
+            </div>
+            <div class="card-body">
+                <a href="/categories" class="btn btn-primary me-2">
+                    <i class="bi bi-tags"></i> Gérer Catégories
+                </a>
+                <a href="/articles" class="btn btn-success me-2">
+                    <i class="bi bi-list-ul"></i> Voir Articles
+                </a>
+                <a href="/stats" class="btn btn-info">
+                    <i class="bi bi-graph-up"></i> Statistiques
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,409 @@
+# ============================================================================
+# PERSONAL FINANCE TAXONOMY - Detailed Classification
+# ============================================================================
+# Classification complète finances personnelles
+# 6 grandes catégories : Revenus, Dépenses Fixes, Dépenses Variables, 
+#                        Épargne, Impôts, Exceptionnel
+# ============================================================================
+
+version: "1.0"
+last_updated: "2025-11-15"
+
+taxonomy:
+  key: "finance_detailed"
+  display_name: "Finances Personnelles Détaillées"
+  icon: "💼"
+  description: "Classification complète revenus/dépenses/épargne/investissement"
+
+categories:
+  
+  # ══════════════════════════════════════════════════════════════════════════
+  # 1. REVENUS
+  # ══════════════════════════════════════════════════════════════════════════
+  revenus:
+    code: "REV"
+    display_name: "1. REVENUS"
+    icon: "💰"
+    color: "#4CAF50"
+    is_active: true
+    
+    subcategories:
+      revenus_travail:
+        display: "1.1 Revenus du Travail"
+        categories:
+          salaire_net:
+            display: "Salaire Net"
+            keywords: ["salaire", "paie", "virement employeur"]
+          primes:
+            display: "Primes et Bonus"
+            keywords: ["prime", "bonus", "13eme mois"]
+          freelance:
+            display: "Revenus Indépendant/Freelance"
+            keywords: ["freelance", "mission", "prestation"]
+      
+      revenus_capital:
+        display: "1.2 Revenus du Capital"
+        categories:
+          dividendes:
+            display: "Dividendes"
+            keywords: ["dividende", "action"]
+          interets:
+            display: "Intérêts (livrets, obligations)"
+            keywords: ["interet", "livret", "obligation"]
+          plus_values:
+            display: "Plus-values (actions, crypto)"
+            keywords: ["plus value", "gain", "crypto", "bourse"]
+      
+      revenus_immobiliers:
+        display: "1.3 Revenus Immobiliers"
+        categories:
+          loyers:
+            display: "Loyers Perçus"
+            keywords: ["loyer percu", "locataire"]
+      
+      revenus_sociaux:
+        display: "1.4 Revenus Sociaux"
+        categories:
+          allocations:
+            display: "Allocations Familiales"
+            keywords: ["caf", "allocation"]
+          aides_logement:
+            display: "Aides au Logement"
+            keywords: ["apl", "aide logement"]
+      
+      revenus_autres:
+        display: "1.5 Autres Revenus"
+        categories:
+          remboursements:
+            display: "Remboursements"
+            keywords: ["remboursement", "avoir"]
+          cadeaux:
+            display: "Cadeaux/Héritage"
+            keywords: ["cadeau", "heritage", "donation"]
+  
+  # ══════════════════════════════════════════════════════════════════════════
+  # 2. DÉPENSES FIXES
+  # ══════════════════════════════════════════════════════════════════════════
+  depenses_fixes:
+    code: "FIX"
+    display_name: "2. DÉPENSES FIXES (récurrentes)"
+    icon: "🏠"
+    color: "#F44336"
+    is_active: true
+    
+    subcategories:
+      logement:
+        display: "2.1 Logement"
+        categories:
+          loyer_credit:
+            display: "Loyer / Crédit Immobilier"
+            keywords: ["loyer", "credit immobilier", "pret"]
+          charges:
+            display: "Charges de Copropriété"
+            keywords: ["charges", "copropriete", "syndic"]
+          assurance_hab:
+            display: "Assurance Habitation"
+            keywords: ["assurance habitation", "maif", "macif"]
+          taxes:
+            display: "Taxe Foncière/Habitation"
+            keywords: ["taxe fonciere", "taxe habitation"]
+      
+      energie_com:
+        display: "2.2 Énergie & Communication"
+        categories:
+          electricite_gaz:
+            display: "Électricité / Gaz"
+            keywords: ["edf", "engie", "electricite", "gaz"]
+          eau:
+            display: "Eau"
+            keywords: ["eau", "veolia"]
+          internet_tel:
+            display: "Internet / Téléphone"
+            keywords: ["internet", "box", "mobile", "free", "orange", "sfr"]
+          streaming:
+            display: "Abonnements Streaming"
+            keywords: ["netflix", "spotify", "disney", "prime"]
+      
+      transport_fixe:
+        display: "2.3 Transport Fixe"
+        categories:
+          credit_auto:
+            display: "Crédit Auto"
+            keywords: ["credit auto", "pret voiture"]
+          assurance_auto:
+            display: "Assurance Auto"
+            keywords: ["assurance auto", "assurance voiture"]
+          abonnement_tc:
+            display: "Abonnement Transport en Commun"
+            keywords: ["navigo", "abonnement metro", "pass"]
+      
+      assurances_sante:
+        display: "2.4 Assurances & Santé"
+        categories:
+          mutuelle:
+            display: "Mutuelle Santé"
+            keywords: ["mutuelle", "complementaire sante"]
+          assurance_vie:
+            display: "Assurance Vie"
+            keywords: ["assurance vie", "contrat"]
+          prevoyance:
+            display: "Prévoyance"
+            keywords: ["prevoyance", "garantie"]
+      
+      credits:
+        display: "2.5 Crédits"
+        categories:
+          credit_conso:
+            display: "Crédit à la Consommation"
+            keywords: ["credit conso", "pret personnel"]
+          autres_prets:
+            display: "Autres Prêts"
+            keywords: ["pret", "emprunt"]
+  
+  # ══════════════════════════════════════════════════════════════════════════
+  # 3. DÉPENSES VARIABLES
+  # ══════════════════════════════════════════════════════════════════════════
+  depenses_variables:
+    code: "VAR"
+    display_name: "3. DÉPENSES VARIABLES (courantes)"
+    icon: "🛒"
+    color: "#FF9800"
+    is_active: true
+    
+    subcategories:
+      alimentation:
+        display: "3.1 Alimentation"
+        categories:
+          courses:
+            display: "Courses Alimentaires"
+            keywords: ["leclerc", "carrefour", "auchan", "courses"]
+          restaurants:
+            display: "Restaurants & Livraison"
+            keywords: ["restaurant", "mcdo", "deliveroo", "uber eats"]
+          cafe_snacks:
+            display: "Café / Snacks"
+            keywords: ["cafe", "boulangerie", "snack"]
+      
+      transport_variable:
+        display: "3.2 Transport Variable"
+        categories:
+          carburant:
+            display: "Essence / Recharges Électriques"
+            keywords: ["essence", "diesel", "total", "shell"]
+          peages:
+            display: "Péages / Parking"
+            keywords: ["peage", "parking", "stationnement"]
+          entretien:
+            display: "Entretien Véhicule"
+            keywords: ["garage", "revision", "reparation auto"]
+          taxi:
+            display: "Taxis / VTC"
+            keywords: ["taxi", "uber", "g7"]
+      
+      sante_bien_etre:
+        display: "3.3 Santé & Bien-être"
+        categories:
+          medicaments:
+            display: "Médicaments"
+            keywords: ["pharmacie", "medicament"]
+          medecins:
+            display: "Médecins / Spécialistes"
+            keywords: ["medecin", "docteur", "specialiste"]
+          sport:
+            display: "Sport & Fitness"
+            keywords: ["salle sport", "fitness", "yoga"]
+          beaute:
+            display: "Coiffeur / Beauté"
+            keywords: ["coiffeur", "esthetique", "soin"]
+      
+      shopping:
+        display: "3.4 Shopping & Équipement"
+        categories:
+          vetements:
+            display: "Vêtements / Chaussures"
+            keywords: ["vetement", "chaussure", "zara", "h&m"]
+          electronique:
+            display: "Électronique"
+            keywords: ["fnac", "darty", "ordinateur", "telephone"]
+          ameublement:
+            display: "Ameublement / Déco"
+            keywords: ["ikea", "meuble", "deco"]
+      
+      loisirs:
+        display: "3.5 Loisirs & Culture"
+        categories:
+          sorties:
+            display: "Sorties (cinéma, concerts)"
+            keywords: ["cinema", "concert", "spectacle"]
+          livres_musique:
+            display: "Livres / Musique"
+            keywords: ["livre", "cd", "fnac"]
+          hobbies:
+            display: "Hobbies"
+            keywords: ["hobby", "loisir creatif"]
+          vacances:
+            display: "Vacances / Voyages"
+            keywords: ["hotel", "airbnb", "voyage", "vol"]
+      
+      vie_sociale:
+        display: "3.6 Vie Sociale"
+        categories:
+          cadeaux:
+            display: "Cadeaux"
+            keywords: ["cadeau", "anniversaire"]
+          sorties_amis:
+            display: "Sorties entre Amis"
+            keywords: ["bar", "soiree"]
+          evenements:
+            display: "Événements (mariages, etc.)"
+            keywords: ["mariage", "bapteme", "evenement"]
+  
+  # ══════════════════════════════════════════════════════════════════════════
+  # 4. ÉPARGNE & INVESTISSEMENT
+  # ══════════════════════════════════════════════════════════════════════════
+  epargne:
+    code: "EPA"
+    display_name: "4. ÉPARGNE & INVESTISSEMENT"
+    icon: "💎"
+    color: "#2196F3"
+    is_active: true
+    
+    subcategories:
+      epargne_precaution:
+        display: "4.1 Épargne de Précaution"
+        categories:
+          livrets:
+            display: "Livret A / LDDS"
+            keywords: ["livret a", "ldds", "livret"]
+          compte_livret:
+            display: "Compte sur Livret"
+            keywords: ["compte livret"]
+      
+      epargne_projet:
+        display: "4.2 Épargne Projet"
+        categories:
+          pel:
+            display: "PEL"
+            keywords: ["pel", "plan epargne logement"]
+          comptes_dedies:
+            display: "Comptes Dédiés"
+            keywords: ["compte projet"]
+      
+      placements:
+        display: "4.3 Placements Financiers"
+        categories:
+          assurance_vie_plac:
+            display: "Assurance-Vie"
+            keywords: ["assurance vie placement"]
+          pea:
+            display: "PEA / Compte-Titres"
+            keywords: ["pea", "compte titres", "bourse"]
+          actions:
+            display: "Actions / ETF"
+            keywords: ["action", "etf", "trackers"]
+          crypto:
+            display: "Crypto-monnaies"
+            keywords: ["bitcoin", "crypto", "btc", "eth"]
+      
+      retraite:
+        display: "4.4 Retraite"
+        categories:
+          per:
+            display: "PER (Plan Épargne Retraite)"
+            keywords: ["per", "plan epargne retraite"]
+          perco:
+            display: "PERCO"
+            keywords: ["perco"]
+  
+  # ══════════════════════════════════════════════════════════════════════════
+  # 5. IMPÔTS & TAXES
+  # ══════════════════════════════════════════════════════════════════════════
+  impots:
+    code: "IMP"
+    display_name: "5. IMPÔTS & TAXES"
+    icon: "🏛️"
+    color: "#9C27B0"
+    is_active: true
+    
+    categories:
+      impot_revenu:
+        display: "Impôt sur le Revenu"
+        keywords: ["impot revenu", "tresor public"]
+      taxe_hab:
+        display: "Taxe d'Habitation"
+        keywords: ["taxe habitation"]
+      autres_taxes:
+        display: "Autres Taxes"
+        keywords: ["taxe"]
+  
+  # ══════════════════════════════════════════════════════════════════════════
+  # 6. DÉPENSES EXCEPTIONNELLES
+  # ══════════════════════════════════════════════════════════════════════════
+  exceptionnel:
+    code: "EXC"
+    display_name: "6. DÉPENSES EXCEPTIONNELLES"
+    icon: "⚡"
+    color: "#E91E63"
+    is_active: true
+    
+    categories:
+      travaux:
+        display: "Gros Travaux / Réparations"
+        keywords: ["travaux", "reparation importante"]
+      frais_medicaux:
+        display: "Frais Médicaux Importants"
+        keywords: ["hospitalisation", "operation"]
+      achats_majeurs:
+        display: "Achats Majeurs (voiture, etc.)"
+        keywords: ["voiture", "achat important"]
+      evenements_fam:
+        display: "Événements Familiaux"
+        keywords: ["mariage", "naissance"]
+
+# ══════════════════════════════════════════════════════════════════════════
+# SETUP WIZARD - Questions pertinentes
+# ══════════════════════════════════════════════════════════════════════════
+
+setup_wizard:
+  questions:
+    - id: "track_revenus"
+      question: "Suivez-vous vos revenus (salaires, dividendes, etc.) ?"
+      help: "Active catégories revenus pour vision trésorerie complète"
+      enables: ["revenus"]
+      default: false  # La plupart ne trackent que dépenses
+    
+    - id: "has_immobilier"
+      question: "Avez-vous un crédit immobilier ou des revenus locatifs ?"
+      help: "Active catégories spécifiques immobilier"
+      enables: ["revenus.revenus_immobiliers", "depenses_fixes.logement.loyer_credit"]
+      default: false
+    
+    - id: "has_credits"
+      question: "Avez-vous des crédits en cours (conso, auto) ?"
+      help: "Active suivi mensualités crédits"
+      enables: ["depenses_fixes.credits"]
+      default: false
+    
+    - id: "track_investments"
+      question: "Investissez-vous (PEA, crypto, assurance-vie) ?"
+      help: "Active catégories placements et investissements"
+      enables: ["epargne.placements"]
+      default: false
+    
+    - id: "track_epargne"
+      question: "Suivez-vous votre épargne mensuelle ?"
+      help: "Active livrets, PEL, comptes dédiés"
+      enables: ["epargne.epargne_precaution", "epargne.epargne_projet"]
+      default: true
+    
+    - id: "detailed_transport"
+      question: "Détailler vos dépenses transport (carburant, péages, etc.) ?"
+      help: "Sépare transport fixe et variable"
+      enables: ["depenses_variables.transport_variable"]
+      default: true
+    
+    - id: "detailed_alimentation"
+      question: "Distinguer courses / restaurants / cafés ?"
+      help: "Détaille dépenses alimentaires"
+      enables: ["depenses_variables.alimentation"]
+      default: true

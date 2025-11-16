@@ -1,0 +1,334 @@
+{% extends "base.html" %}
+
+{% block title %}Articles - Finance System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4"><i class="bi bi-list-ul"></i> Articles</h1>
+    </div>
+</div>
+
+<!-- Alert Zone -->
+<div id="alertZone"></div>
+
+<!-- Filters -->
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="GET" action="/articles" class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">Catégorie</label>
+                        <select name="category" class="form-select">
+                            <option value="">Toutes</option>
+                            {% for cat in categories %}
+                            <option value="{{ cat }}">{{ cat }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <label class="form-label">Enseigne</label>
+                        <select name="merchant" class="form-select">
+                            <option value="">Toutes</option>
+                            {% for merchant in merchants %}
+                            <option value="{{ merchant }}">{{ merchant }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label class="form-label">Recherche</label>
+                        <input type="text" name="search" class="form-control" placeholder="Nom article...">
+                    </div>
+                    
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="bi bi-search"></i> Filtrer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bulk Actions -->
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-primary" onclick="selectAll()">
+                <i class="bi bi-check-all"></i> Tout sélectionner
+            </button>
+            <button type="button" class="btn btn-outline-secondary" onclick="deselectAll()">
+                <i class="bi bi-x"></i> Tout désélectionner
+            </button>
+            <button type="button" class="btn btn-outline-success" onclick="bulkEdit()" disabled id="bulkEditBtn">
+                <i class="bi bi-pencil-square"></i> Modifier sélection (<span id="selectedCount">0</span>)
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Articles Table -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="bi bi-table"></i> Liste Articles ({{ articles|length }} résultats)</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAllCheckbox" onchange="toggleSelectAll()"></th>
+                                <th>Date</th>
+                                <th>Enseigne</th>
+                                <th>Article</th>
+                                <th>Prix</th>
+                                <th>Catégorie</th>
+                                <th>Sous-catégorie</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for article in articles %}
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="article-checkbox" 
+                                           value="{{ article[0] }}" onchange="updateBulkButton()">
+                                </td>
+                                <td>{{ article[2] }}</td>
+                                <td><span class="badge bg-secondary">{{ article[3] }}</span></td>
+                                <td>{{ article[4][:50] }}</td>
+                                <td><strong>{{ "%.2f"|format(article[5]) }}€</strong></td>
+                                <td>
+                                    {% if article[6] %}
+                                    <span class="badge bg-primary">{{ article[6] }}</span>
+                                    {% else %}
+                                    <span class="badge bg-warning">Non catégorisé</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if article[7] %}
+                                    <small class="text-muted">{{ article[7] }}</small>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" 
+                                            onclick="editArticle({{ article[0] }}, '{{ article[6] }}', '{{ article[7] }}')">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Edit Single Article -->
+<div class="modal fade" id="editArticleModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modifier Catégorie</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editArticleForm">
+                    <input type="hidden" id="editArticleId">
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Catégorie principale</label>
+                        <select class="form-select" id="editCategoryMain">
+                            {% for cat in categories %}
+                            <option value="{{ cat }}">{{ cat }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Sous-catégorie</label>
+                        <input type="text" class="form-control" id="editCategorySub">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" onclick="submitEditArticle()">
+                    <i class="bi bi-check"></i> Enregistrer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Bulk Edit -->
+<div class="modal fade" id="bulkEditModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modification en Masse</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Modifier <strong id="bulkCount"></strong> articles sélectionnés</p>
+                
+                <form id="bulkEditForm">
+                    <div class="mb-3">
+                        <label class="form-label">Catégorie principale</label>
+                        <select class="form-select" id="bulkCategoryMain">
+                            {% for cat in categories %}
+                            <option value="{{ cat }}">{{ cat }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Sous-catégorie</label>
+                        <input type="text" class="form-control" id="bulkCategorySub">
+                    </div>
+                </form>
+                
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle"></i>
+                    Ces catégories seront appliquées à tous les articles sélectionnés.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-success" onclick="submitBulkEdit()">
+                    <i class="bi bi-check-all"></i> Appliquer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Selection Management
+function toggleSelectAll() {
+    const checked = document.getElementById('selectAllCheckbox').checked;
+    document.querySelectorAll('.article-checkbox').forEach(cb => cb.checked = checked);
+    updateBulkButton();
+}
+
+function selectAll() {
+    document.querySelectorAll('.article-checkbox').forEach(cb => cb.checked = true);
+    document.getElementById('selectAllCheckbox').checked = true;
+    updateBulkButton();
+}
+
+function deselectAll() {
+    document.querySelectorAll('.article-checkbox').forEach(cb => cb.checked = false);
+    document.getElementById('selectAllCheckbox').checked = false;
+    updateBulkButton();
+}
+
+function updateBulkButton() {
+    const selected = document.querySelectorAll('.article-checkbox:checked');
+    const count = selected.length;
+    
+    document.getElementById('selectedCount').textContent = count;
+    document.getElementById('bulkEditBtn').disabled = count === 0;
+}
+
+// Edit Single Article
+function editArticle(id, catMain, catSub) {
+    document.getElementById('editArticleId').value = id;
+    document.getElementById('editCategoryMain').value = catMain || '';
+    document.getElementById('editCategorySub').value = catSub || '';
+    
+    const modal = new bootstrap.Modal(document.getElementById('editArticleModal'));
+    modal.show();
+}
+
+function submitEditArticle() {
+    const id = document.getElementById('editArticleId').value;
+    const catMain = document.getElementById('editCategoryMain').value;
+    const catSub = document.getElementById('editCategorySub').value;
+    
+    fetch('/articles/update', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            id: parseInt(id),
+            category_main: catMain,
+            category_sub: catSub
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showAlert('Article mis à jour', 'success');
+            setTimeout(() => location.reload(), 1000);
+        } else {
+            showAlert('Erreur: ' + (data.error || 'Échec'), 'danger');
+        }
+    })
+    .catch(error => showAlert('Erreur réseau: ' + error, 'danger'));
+    
+    bootstrap.Modal.getInstance(document.getElementById('editArticleModal')).hide();
+}
+
+// Bulk Edit
+function bulkEdit() {
+    const selected = Array.from(document.querySelectorAll('.article-checkbox:checked'));
+    const count = selected.length;
+    
+    if (count === 0) return;
+    
+    document.getElementById('bulkCount').textContent = count;
+    const modal = new bootstrap.Modal(document.getElementById('bulkEditModal'));
+    modal.show();
+}
+
+function submitBulkEdit() {
+    const selected = Array.from(document.querySelectorAll('.article-checkbox:checked'));
+    const ids = selected.map(cb => parseInt(cb.value));
+    const catMain = document.getElementById('bulkCategoryMain').value;
+    const catSub = document.getElementById('bulkCategorySub').value;
+    
+    fetch('/articles/bulk-update', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            ids: ids,
+            category_main: catMain,
+            category_sub: catSub
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showAlert(`${data.count} articles mis à jour`, 'success');
+            setTimeout(() => location.reload(), 1500);
+        } else {
+            showAlert('Erreur: ' + (data.error || 'Échec'), 'danger');
+        }
+    })
+    .catch(error => showAlert('Erreur réseau: ' + error, 'danger'));
+    
+    bootstrap.Modal.getInstance(document.getElementById('bulkEditModal')).hide();
+}
+
+// Alert
+function showAlert(message, type) {
+    const alertHTML = `
+        <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    `;
+    document.getElementById('alertZone').innerHTML = alertHTML;
+}
+</script>
+{% endblock %}

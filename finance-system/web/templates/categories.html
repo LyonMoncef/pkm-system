@@ -1,11 +1,28 @@
 {% extends "base.html" %}
 
-{% block title %}Gestion Catégories - Finance System{% endblock %}
+{% block title %}Gestion Catégories - {{ taxonomy[2] }}{% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="col-12">
-        <h1 class="mb-4"><i class="bi bi-tags"></i> Gestion des Catégories</h1>
+        <h1 class="mb-4">
+            {{ taxonomy[3] }} {{ taxonomy[2] }}
+        </h1>
+        <p class="text-muted">{{ taxonomy[4] }}</p>
+    </div>
+</div>
+
+<!-- Taxonomy Switcher -->
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="btn-group" role="group">
+            {% for tax in taxonomies %}
+            <a href="/categories/{{ tax[1] }}" 
+               class="btn btn-{{ 'primary' if tax[1] == current_taxonomy else 'outline-primary' }}">
+                {{ tax[3] }} {{ tax[2] }}
+            </a>
+            {% endfor %}
+        </div>
     </div>
 </div>
 
@@ -16,30 +33,26 @@
 <div class="row mb-4">
     <div class="col-12">
         <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h5><i class="bi bi-folder-fill"></i> Hiérarchie des Catégories</h5>
-                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
-                    <i class="bi bi-plus-circle"></i> Ajouter Catégorie
-                </button>
+            <div class="card-header">
+                <h5><i class="bi bi-folder-fill"></i> Hiérarchie des Catégories ({{ categories_tree|length }} principales)</h5>
             </div>
             <div class="card-body">
-                {% for cat_key, cat_data in taxonomy.items() %}
+                {% for cat_key, cat_data in categories_tree.items() %}
                 <div class="category-group mb-4">
                     <div class="d-flex justify-content-between align-items-center mb-2 p-3 bg-light rounded">
                         <div>
                             <h5 class="mb-0">
                                 {{ cat_data.icon }} 
                                 <span class="category-name">{{ cat_data.display_name }}</span>
-                                {% if cat_key in stats %}
+                                {% if cat_data.display_name in stats %}
                                 <span class="badge bg-primary ms-2">{{ stats[cat_data.display_name].count }} articles</span>
                                 <span class="badge bg-success ms-1">{{ "%.2f"|format(stats[cat_data.display_name].total) }}€</span>
                                 {% endif %}
                             </h5>
-                            <small class="text-muted">{{ cat_data.description }}</small>
                         </div>
                         <div>
                             <button class="btn btn-sm btn-outline-primary" 
-                                    onclick="editCategory('{{ cat_data.display_name }}', 'main')">
+                                    onclick="editCategory('{{ cat_data.display_name }}', 'main', {{ cat_data.id }})">
                                 <i class="bi bi-pencil"></i> Renommer
                             </button>
                         </div>
@@ -47,48 +60,24 @@
                     
                     <!-- Subcategories -->
                     <div class="ps-4">
-                        {% for subcat_key, subcat_data in cat_data.get('subcategories', {}).items() %}
+                        {% for subcat in cat_data.subcategories %}
                         <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
                             <div>
+                                {{ '&nbsp;&nbsp;' * (subcat.level - 1)|safe }}
                                 <i class="bi bi-arrow-return-right"></i>
-                                <span class="subcat-name">{{ subcat_data.display }}</span>
-                                {% if subcat_data.get('keywords') %}
-                                <small class="text-muted ms-2">
-                                    <i class="bi bi-tag"></i> 
-                                    {{ subcat_data.keywords|join(', ') }}
-                                </small>
-                                {% endif %}
+                                <span class="subcat-name">{{ subcat.display }}</span>
                             </div>
                             <div>
                                 <button class="btn btn-sm btn-outline-secondary" 
-                                        onclick="editCategory('{{ subcat_data.display }}', 'sub')">
+                                        onclick="editCategory('{{ subcat.display }}', 'sub', {{ subcat.id }})">
                                     <i class="bi bi-pencil"></i>
                                 </button>
                             </div>
                         </div>
                         {% endfor %}
-                        
-                        <button class="btn btn-sm btn-link" 
-                                onclick="addSubcategory('{{ cat_key }}', '{{ cat_data.display_name }}')">
-                            <i class="bi bi-plus"></i> Ajouter sous-catégorie
-                        </button>
                     </div>
                 </div>
                 {% endfor %}
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Usage Stats -->
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h5><i class="bi bi-pie-chart"></i> Répartition des Dépenses</h5>
-            </div>
-            <div class="card-body">
-                <canvas id="categoryChart" height="80"></canvas>
             </div>
         </div>
     </div>
@@ -104,6 +93,7 @@
             </div>
             <div class="modal-body">
                 <form id="editCategoryForm">
+                    <input type="hidden" id="editCategoryId">
                     <input type="hidden" id="editOldName">
                     <input type="hidden" id="editLevel">
                     
@@ -135,53 +125,10 @@
 {% endblock %}
 
 {% block scripts %}
-<!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
-
 <script>
-// Chart - Category Distribution
-const ctx = document.getElementById('categoryChart');
-const categoryData = {{ stats|tojson }};
-
-const labels = Object.keys(categoryData);
-const amounts = labels.map(cat => categoryData[cat].total);
-const counts = labels.map(cat => categoryData[cat].count);
-
-new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: 'Montant (€)',
-            data: amounts,
-            backgroundColor: [
-                '#4CAF50', '#2196F3', '#9C27B0', '#FF9800', 
-                '#E91E63', '#F44336', '#00BCD4', '#FFC107', '#9E9E9E'
-            ]
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'right',
-            },
-            tooltip: {
-                callbacks: {
-                    label: function(context) {
-                        const label = context.label || '';
-                        const value = context.parsed;
-                        const count = counts[context.dataIndex];
-                        return `${label}: ${value.toFixed(2)}€ (${count} articles)`;
-                    }
-                }
-            }
-        }
-    }
-});
-
 // Edit Category
-function editCategory(name, level) {
+function editCategory(name, level, categoryId) {
+    document.getElementById('editCategoryId').value = categoryId;
     document.getElementById('editOldName').value = name;
     document.getElementById('editCurrentName').value = name;
     document.getElementById('editNewName').value = name;
@@ -197,8 +144,8 @@ function submitEditCategory() {
     const newName = document.getElementById('editNewName').value;
     const level = document.getElementById('editLevel').value;
     
-    if (!newName) {
-        showAlert('Veuillez saisir un nouveau nom', 'danger');
+    if (!newName || newName === oldName) {
+        showAlert('Veuillez saisir un nouveau nom différent', 'warning');
         return;
     }
     
@@ -216,14 +163,14 @@ function submitEditCategory() {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            showAlert(`Catégorie renommée: ${oldName} → ${newName}`, 'success');
-            setTimeout(() => location.reload(), 1500);
+            showAlert(`✅ Catégorie renommée: ${oldName} → ${newName} (${data.affected} articles modifiés)`, 'success');
+            setTimeout(() => location.reload(), 2000);
         } else {
-            showAlert('Erreur: ' + (data.error || 'Échec du renommage'), 'danger');
+            showAlert('❌ Erreur: ' + (data.error || 'Échec du renommage'), 'danger');
         }
     })
     .catch(error => {
-        showAlert('Erreur réseau: ' + error, 'danger');
+        showAlert('❌ Erreur réseau: ' + error, 'danger');
     });
     
     bootstrap.Modal.getInstance(document.getElementById('editCategoryModal')).hide();
